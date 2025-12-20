@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://b33oyk8pm2kyx"]
+
+[ext_resource type="PackedScene" uid="uid://d0ote2txgenh3" path="res://Nodes/Entities/TestDoor.blend" id="1_6nafq"]
+[ext_resource type="Material" uid="uid://dfxygu2lkm5cw" path="res://Assets/Shaders/Test/TestInteractiveMat.tres" id="2_q6srg"]
+[ext_resource type="Script" uid="uid://d3gc1sv71m48d" path="res://Nodes/Entities/TestDoor.cs" id="2_yvqdl"]
+
+[node name="TestDoor" instance=ExtResource("1_6nafq")]
+script = ExtResource("2_yvqdl")
+
+[node name="Cube" parent="." index="0"]
+material_override = ExtResource("2_q6srg")
+surface_material_override/0 = ExtResource("2_q6srg")
+
+[node name="StaticBody3D" parent="Cube" index="0"]
+collision_layer = 4

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cb8pakvbt1sbs"]
+
+[ext_resource type="Script" uid="uid://c5in53nna4i8" path="res://Nodes/Player/PlayerData.cs" id="1_85a3u"]
+
+[resource]
+script = ExtResource("1_85a3u")
+MoveSpeed = 4.0
+TurnSpeed = 3.0
+LookSpeed = 3.0
+Gravity = 9.8

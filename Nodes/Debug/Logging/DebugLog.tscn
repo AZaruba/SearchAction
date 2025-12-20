@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://bw0i4ae03id06"]
+
+[ext_resource type="Script" uid="uid://xrcyusjmhbf7" path="res://Nodes/Debug/Logging/DebugLog.cs" id="1_p7ipf"]
+
+[node name="DebugLog" type="Control" node_paths=PackedStringArray("LogLine1", "LogLine2", "LogLine3")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p7ipf")
+LogLine1 = NodePath("LogLine1")
+LogLine2 = NodePath("LogLine2")
+LogLine3 = NodePath("LogLine3")
+
+[node name="LogLine1" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 128.0
+offset_right = 256.0
+offset_bottom = 152.0
+text = "Testing this log for information"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="LogLine2" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 152.0
+offset_right = 256.0
+offset_bottom = 176.0
+text = "Testing this log for information"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="LogLine3" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 176.0
+offset_right = 256.0
+offset_bottom = 200.0
+text = "Testing this log for information"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0

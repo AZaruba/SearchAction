@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://8chcibmfnpra"]
+
+[ext_resource type="PackedScene" uid="uid://dy2wjiojafjcy" path="res://Assets/Models/Environments/Mansion.blend" id="1_emiwf"]
+[ext_resource type="Material" uid="uid://dm3xl3is11hf3" path="res://Assets/Shaders/Test/TestEnvMat.tres" id="2_vur0x"]
+
+[node name="Mansion" instance=ExtResource("1_emiwf")]
+
+[node name="House" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_vur0x")

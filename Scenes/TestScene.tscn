@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bsvcsug2emh60"]
+[gd_scene load_steps=6 format=3 uid="uid://bsvcsug2emh60"]
 
 [ext_resource type="PackedScene" uid="uid://c7ppsx32tqpyq" path="res://Assets/Models/Environments/TestHouse.tscn" id="2_8k7wh"]
 [ext_resource type="PackedScene" uid="uid://b33oyk8pm2kyx" path="res://Nodes/Entities/TestDoor.tscn" id="3_iufkg"]
 [ext_resource type="PackedScene" uid="uid://bw0i4ae03id06" path="res://Nodes/Debug/Logging/DebugLog.tscn" id="4_0f5h7"]
 [ext_resource type="PackedScene" uid="uid://dsk41q2rvkrai" path="res://Nodes/Player/PlayerCharacter.tscn" id="4_iufkg"]
+[ext_resource type="PackedScene" uid="uid://8chcibmfnpra" path="res://Assets/Models/Environments/mansion.tscn" id="5_0f5h7"]
 
 [node name="Root" type="Node3D"]
 
@@ -13,7 +14,12 @@ floor_constant_speed = true
 floor_max_angle = 1.3089969
 floor_snap_length = 0.2
 
+[node name="OmniLight3D" type="OmniLight3D" parent="PlayerCharacter"]
+light_energy = 2.0
+omni_range = 10.0
+
 [node name="TestHouse" parent="." instance=ExtResource("2_8k7wh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 491.03073, 0, 0)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="TestHouse"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 3, 3)
@@ -52,6 +58,8 @@ light_energy = 0.1
 directional_shadow_mode = 0
 
 [node name="TestDoor" parent="." instance=ExtResource("3_iufkg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0, 6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0, 15)
 
 [node name="DebugLog" parent="." instance=ExtResource("4_0f5h7")]
+
+[node name="Mansion" parent="." instance=ExtResource("5_0f5h7")]

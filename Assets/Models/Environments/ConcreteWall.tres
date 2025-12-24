@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://k3sjks67q823"]
+
+[resource]
+resource_name = "ConcreteWall"
+cull_mode = 2
+shading_mode = 2
+disable_specular_occlusion = true
+albedo_color = Color(0.67859995, 0.70563996, 0.78, 1)
+roughness = 0.5

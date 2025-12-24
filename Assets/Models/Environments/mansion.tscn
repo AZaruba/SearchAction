@@ -1,9 +1,35 @@
-[gd_scene load_steps=3 format=3 uid="uid://8chcibmfnpra"]
+[gd_scene load_steps=16 format=3 uid="uid://f7a4itxgeb4k"]
 
 [ext_resource type="PackedScene" uid="uid://dy2wjiojafjcy" path="res://Assets/Models/Environments/Mansion.blend" id="1_emiwf"]
-[ext_resource type="Material" uid="uid://dm3xl3is11hf3" path="res://Assets/Shaders/Test/TestEnvMat.tres" id="2_vur0x"]
+[ext_resource type="Material" uid="uid://bpa1ok4ay8yew" path="res://Assets/Models/Environments/WoodFloor.tres" id="2_0paiu"]
+[ext_resource type="Material" uid="uid://bvyfrcuiyp6n1" path="res://Assets/Models/Environments/TileFloor.tres" id="3_hx06e"]
+[ext_resource type="Material" uid="uid://ce4e4s1xem1uo" path="res://Assets/Models/Environments/CarpetFloor.tres" id="4_r2pl6"]
+[ext_resource type="Material" uid="uid://k61pnwt28ixq" path="res://Assets/Models/Environments/ConcreteFloor.tres" id="5_w2w46"]
+[ext_resource type="Material" uid="uid://b2ia3psqu7mvs" path="res://Assets/Models/Environments/PlasterWall.tres" id="6_crwrj"]
+[ext_resource type="Material" uid="uid://chpqa45hw0fkv" path="res://Assets/Models/Environments/WoodWall.tres" id="7_2biiv"]
+[ext_resource type="Material" uid="uid://dtd727lnm16mn" path="res://Assets/Models/Environments/TileWall.tres" id="8_x573r"]
+[ext_resource type="Material" uid="uid://k3sjks67q823" path="res://Assets/Models/Environments/ConcreteWall.tres" id="9_gpxs5"]
+[ext_resource type="Material" uid="uid://c38tdog4el80" path="res://Assets/Models/Environments/Stairs.tres" id="10_o20ms"]
+[ext_resource type="Material" uid="uid://dpmecfdyxv7mk" path="res://Assets/Models/Environments/PoolTile.tres" id="11_dfi2u"]
+[ext_resource type="Material" uid="uid://bgtlr1xyb0a1v" path="res://Assets/Models/Environments/Ceiling.tres" id="12_pflpx"]
+[ext_resource type="Material" uid="uid://ubywv3edrmiu" path="res://Assets/Models/Environments/Exterior.tres" id="13_mwdgg"]
+[ext_resource type="Material" uid="uid://i0gcguqd2m1b" path="res://Assets/Models/Environments/ExteriorFloor.tres" id="14_p5xqx"]
+[ext_resource type="Material" uid="uid://cn0s3iin4rp21" path="res://Assets/Models/Environments/Window.tres" id="15_d62lx"]
 
 [node name="Mansion" instance=ExtResource("1_emiwf")]
 
 [node name="House" parent="." index="0"]
-surface_material_override/0 = ExtResource("2_vur0x")
+surface_material_override/0 = ExtResource("2_0paiu")
+surface_material_override/1 = ExtResource("3_hx06e")
+surface_material_override/2 = ExtResource("4_r2pl6")
+surface_material_override/3 = ExtResource("5_w2w46")
+surface_material_override/4 = ExtResource("6_crwrj")
+surface_material_override/5 = ExtResource("7_2biiv")
+surface_material_override/6 = ExtResource("8_x573r")
+surface_material_override/7 = ExtResource("9_gpxs5")
+surface_material_override/8 = ExtResource("10_o20ms")
+surface_material_override/9 = ExtResource("11_dfi2u")
+surface_material_override/10 = ExtResource("12_pflpx")
+surface_material_override/11 = ExtResource("13_mwdgg")
+surface_material_override/12 = ExtResource("14_p5xqx")
+surface_material_override/13 = ExtResource("15_d62lx")

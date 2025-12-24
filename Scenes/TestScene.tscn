@@ -1,12 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://bsvcsug2emh60"]
+[gd_scene load_steps=8 format=3 uid="uid://bsvcsug2emh60"]
 
+[ext_resource type="Sky" uid="uid://ble1xcqnre6ho" path="res://Assets/Skybox/NightSky.tres" id="1_qsjrb"]
 [ext_resource type="PackedScene" uid="uid://c7ppsx32tqpyq" path="res://Assets/Models/Environments/TestHouse.tscn" id="2_8k7wh"]
 [ext_resource type="PackedScene" uid="uid://b33oyk8pm2kyx" path="res://Nodes/Entities/TestDoor.tscn" id="3_iufkg"]
 [ext_resource type="PackedScene" uid="uid://bw0i4ae03id06" path="res://Nodes/Debug/Logging/DebugLog.tscn" id="4_0f5h7"]
 [ext_resource type="PackedScene" uid="uid://dsk41q2rvkrai" path="res://Nodes/Player/PlayerCharacter.tscn" id="4_iufkg"]
-[ext_resource type="PackedScene" uid="uid://8chcibmfnpra" path="res://Assets/Models/Environments/mansion.tscn" id="5_0f5h7"]
+[ext_resource type="PackedScene" uid="uid://f7a4itxgeb4k" path="res://Assets/Models/Environments/mansion.tscn" id="5_0f5h7"]
+
+[sub_resource type="Environment" id="Environment_c264a"]
+background_mode = 2
+background_energy_multiplier = 0.03
+sky = ExtResource("1_qsjrb")
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_sky_contribution = 0.0
+ambient_light_energy = 0.01
+tonemap_mode = 2
+glow_enabled = true
 
 [node name="Root" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_c264a")
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("4_iufkg")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1, 0)
@@ -15,8 +29,17 @@ floor_max_angle = 1.3089969
 floor_snap_length = 0.2
 
 [node name="OmniLight3D" type="OmniLight3D" parent="PlayerCharacter"]
-light_energy = 2.0
-omni_range = 10.0
+visible = false
+light_color = Color(1, 0.88666666, 0.83, 1)
+light_energy = 3.0
+omni_range = 14.0
+omni_attenuation = 2.0
+
+[node name="SpotLight3D" type="SpotLight3D" parent="PlayerCharacter"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+light_energy = 4.0
+spot_range = 20.0
+spot_attenuation = 1.8
 
 [node name="TestHouse" parent="." instance=ExtResource("2_8k7wh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 491.03073, 0, 0)
@@ -51,11 +74,6 @@ spot_range = 14.193
 spot_attenuation = 0.48
 spot_angle = 18.09
 spot_angle_attenuation = 0.20306318
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="TestHouse"]
-transform = Transform3D(0.6170359, -0.0999916, 0.78055644, 0, 0.9918944, 0.12706462, -0.78693503, -0.078403436, 0.6120345, 0, 0, 0)
-light_energy = 0.1
-directional_shadow_mode = 0
 
 [node name="TestDoor" parent="." instance=ExtResource("3_iufkg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0, 15)

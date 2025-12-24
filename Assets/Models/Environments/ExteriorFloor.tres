@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://i0gcguqd2m1b"]
+
+[resource]
+resource_name = "ExteriorFloor"
+cull_mode = 2
+shading_mode = 2
+specular_mode = 2
+disable_specular_occlusion = true
+albedo_color = Color(0.33847326, 0.33847275, 0.33847287, 1)
+roughness = 0.5

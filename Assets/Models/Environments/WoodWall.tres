@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://chpqa45hw0fkv"]
+
+[resource]
+resource_name = "WoodWall"
+cull_mode = 2
+shading_mode = 2
+specular_mode = 2
+disable_specular_occlusion = true
+albedo_color = Color(0.33, 0.20553502, 0.089099996, 1)
+roughness = 0.5

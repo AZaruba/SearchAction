@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://ubywv3edrmiu"]
+
+[resource]
+resource_name = "Exterior"
+cull_mode = 2
+shading_mode = 2
+specular_mode = 2
+albedo_color = Color(0.22, 0.14644668, 0.09020001, 1)
+roughness = 0.5

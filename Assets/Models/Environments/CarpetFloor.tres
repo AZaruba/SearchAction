@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://ce4e4s1xem1uo"]
+
+[resource]
+resource_name = "CarpetFloor"
+cull_mode = 2
+shading_mode = 2
+specular_mode = 2
+albedo_color = Color(0.0455, 0.07595004, 0.35, 1)
+roughness = 0.5

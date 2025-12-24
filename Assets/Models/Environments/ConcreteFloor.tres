@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://k61pnwt28ixq"]
+
+[resource]
+resource_name = "ConcreteFloor"
+cull_mode = 2
+shading_mode = 2
+specular_mode = 2
+disable_specular_occlusion = true
+albedo_color = Color(0.7917, 0.8252184, 0.91, 1)
+roughness = 0.5

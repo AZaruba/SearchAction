@@ -1,12 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c7ppsx32tqpyq"]
+[gd_scene load_steps=2 format=3 uid="uid://c7ppsx32tqpyq"]
 
 [ext_resource type="PackedScene" uid="uid://bjapbux3s8766" path="res://Assets/Models/Environments/TestHouse.blend" id="1_bjeja"]
-[ext_resource type="Material" uid="uid://dm3xl3is11hf3" path="res://Assets/Shaders/Test/TestEnvMat.tres" id="2_ce6hg"]
 
 [node name="TestHouse" instance=ExtResource("1_bjeja")]
-
-[node name="HouseGeo" parent="." index="0"]
-surface_material_override/0 = ExtResource("2_ce6hg")
 
 [node name="StaticBody3D" parent="HouseGeo" index="0"]
 collision_layer = 2

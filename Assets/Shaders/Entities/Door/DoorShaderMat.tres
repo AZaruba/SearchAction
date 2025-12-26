@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cc1eyeiydrb3m"]
+
+[ext_resource type="Shader" uid="uid://cjh52d03eqh3f" path="res://Assets/Shaders/Entities/Door/DoorShader.tres" id="1_7s6o4"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_7s6o4")

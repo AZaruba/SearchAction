@@ -74,8 +74,9 @@ public partial class PlayerCharacter : CharacterBody3D
     if (result.TryGetValue("collider", out Variant collider))
     {
       DebugLog.LogToScreen("Detected " + collider, 3);
-      UnlockableEntity attachedEntity = collider.As<StaticBody3D>().GetParent().GetParent<UnlockableEntity>();
-      attachedEntity.OnInteractWithItem();
+      // better way to find our UnlockableEntity?
+      UnlockableEntity attachedEntity = collider.As<StaticBody3D>().GetParent().GetParent().GetParent<UnlockableEntity>();
+      attachedEntity.OnInteract();
     }
     else
     {

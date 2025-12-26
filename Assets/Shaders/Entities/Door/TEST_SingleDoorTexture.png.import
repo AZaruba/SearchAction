@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ck6bn8inj4wcc"
-path.s3tc="res://.godot/imported/skybox.png-89834338ecc2a17a018161b8fdeb92aa.s3tc.ctex"
-path.etc2="res://.godot/imported/skybox.png-89834338ecc2a17a018161b8fdeb92aa.etc2.ctex"
+uid="uid://dprsqfym2815t"
+path.s3tc="res://.godot/imported/TEST_SingleDoorTexture.png-a0f94c01618b7f2fd6803ef93687f320.s3tc.ctex"
+path.etc2="res://.godot/imported/TEST_SingleDoorTexture.png-a0f94c01618b7f2fd6803ef93687f320.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Skybox/skybox.png"
-dest_files=["res://.godot/imported/skybox.png-89834338ecc2a17a018161b8fdeb92aa.s3tc.ctex", "res://.godot/imported/skybox.png-89834338ecc2a17a018161b8fdeb92aa.etc2.ctex"]
+source_file="res://Assets/Shaders/Entities/Door/TEST_SingleDoorTexture.png"
+dest_files=["res://.godot/imported/TEST_SingleDoorTexture.png-a0f94c01618b7f2fd6803ef93687f320.s3tc.ctex", "res://.godot/imported/TEST_SingleDoorTexture.png-a0f94c01618b7f2fd6803ef93687f320.etc2.ctex"]
 
 [params]
 

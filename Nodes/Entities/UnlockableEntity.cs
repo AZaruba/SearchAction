@@ -7,6 +7,18 @@ public partial class UnlockableEntity : Node3D
   
   [Export] public ItemID requiredItem;
 
+  public virtual void OnInteract()
+  {
+    if (requiredItem == ItemID.None)
+    {
+      OnInteractWithItem();
+    }
+    else
+    {
+      OnInteractWithoutItem();
+    }
+  }
+
   public virtual void OnInteractWithItem()
   {
     

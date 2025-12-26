@@ -1,0 +1,47 @@
+[gd_resource type="VisualShader" load_steps=4 format=3 uid="uid://cjh52d03eqh3f"]
+
+[ext_resource type="Texture2D" uid="uid://dprsqfym2815t" path="res://Assets/Shaders/Entities/Door/TEST_SingleDoorTexture.png" id="1_pjf8n"]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_pjf8n"]
+texture = ExtResource("1_pjf8n")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_k4b60"]
+texture = ExtResource("1_pjf8n")
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform sampler2D tex_vtx_2;
+uniform sampler2D tex_frg_2;
+
+
+
+void vertex() {
+// Texture2D:2
+	vec4 n_out2p0 = texture(tex_vtx_2, UV);
+
+
+// Output:0
+	COLOR.rgb = vec3(n_out2p0.xyz);
+
+
+}
+
+void fragment() {
+// Texture2D:2
+	vec4 n_out2p0 = texture(tex_frg_2, UV);
+
+
+// Output:0
+	ALBEDO = vec3(n_out2p0.xyz);
+
+
+}
+"
+nodes/vertex/2/node = SubResource("VisualShaderNodeTexture_k4b60")
+nodes/vertex/2/position = Vector2(-400, 360)
+nodes/vertex/connections = PackedInt32Array(2, 0, 0, 6)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_pjf8n")
+nodes/fragment/2/position = Vector2(-380, 440)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0)

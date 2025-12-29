@@ -1,13 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://08e4tfmy8v50"]
+[gd_scene load_steps=9 format=3 uid="uid://08e4tfmy8v50"]
 
 [ext_resource type="Script" uid="uid://cha1r8aqbcisq" path="res://Nodes/UI/Inventory/InventoryController.cs" id="1_37fcu"]
 [ext_resource type="PackedScene" uid="uid://br1caiktq7fbj" path="res://Nodes/UI/Inventory/InventoryIcon.tscn" id="1_e0e0o"]
+[ext_resource type="Texture2D" uid="uid://csykdpvnnwy6a" path="res://Assets/2D/Inventory/Clothes/Sweater.png" id="3_kgjj0"]
+[ext_resource type="Texture2D" uid="uid://ifal8hdi6l8c" path="res://Assets/2D/Inventory/Clothes/Swimsuit.png" id="4_mcien"]
+[ext_resource type="Texture2D" uid="uid://c8y8dvf0tr7qm" path="res://Assets/2D/Inventory/Head/Headlamp.png" id="5_303pr"]
+[ext_resource type="Texture2D" uid="uid://csh17ai24y78t" path="res://Assets/2D/Inventory/Items/Lighter.png" id="6_egdkt"]
+[ext_resource type="Texture2D" uid="uid://bp3mv1q820fcy" path="res://Assets/2D/Inventory/Keys/RubyKey.png" id="7_ohmyt"]
+[ext_resource type="Texture2D" uid="uid://pl11cc0pnw3n" path="res://Assets/2D/Inventory/Keys/SaphKey.png" id="8_ibsio"]
 
 [node name="Inventory" type="CanvasLayer"]
-visible = false
 script = ExtResource("1_37fcu")
 
 [node name="Container" type="Control" parent="."]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -135,3 +141,27 @@ offset_left = 304.0
 offset_top = 16.0
 offset_right = 264.0
 offset_bottom = -24.0
+
+[node name="Sweater2" type="Sprite2D" parent="Container"]
+position = Vector2(64, 80)
+texture = ExtResource("3_kgjj0")
+
+[node name="Swimsuit2" type="Sprite2D" parent="Container"]
+position = Vector2(32, 80)
+texture = ExtResource("4_mcien")
+
+[node name="Headlamp2" type="Sprite2D" parent="Container"]
+position = Vector2(64, 32)
+texture = ExtResource("5_303pr")
+
+[node name="Lighter2" type="Sprite2D" parent="Container"]
+position = Vector2(32, 128)
+texture = ExtResource("6_egdkt")
+
+[node name="RubyKey" type="Sprite2D" parent="Container"]
+position = Vector2(143, 32)
+texture = ExtResource("7_ohmyt")
+
+[node name="SaphKey" type="Sprite2D" parent="Container"]
+position = Vector2(175, 32)
+texture = ExtResource("8_ibsio")

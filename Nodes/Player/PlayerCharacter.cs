@@ -25,9 +25,18 @@ public partial class PlayerCharacter : CharacterBody3D
 
     // apply state actions
     ProcessState((float)delta);
-    DebugLog.LogToScreen("Current Move Direction: " + Data.CurrentVelocity.ToString());
+    DebugLog.LogToScreen("Current Move Reate: " + Data.CurrentVelocity.Length());
+    DebugLog.LogToScreen("Current Rotation Rate: " + Data.CurrentRotationRate, 2);
+
+    if (Input.IsActionJustPressed(InputActions.OpenInventory))
+    {
+      ProgressTracker.CollectItem(ItemID.TestKey);
+    }
 
     // synchronize engine
+
+    // Need to "Redirect" movement with rotation, as the rotation acceleration gives the rotation weight, preventing "drifting" feeling
+    Data.CurrentVelocity = Data.CurrentVelocity.Rotated(UpDirection, Data.CurrentRotationRate * (float)delta);
     Velocity = Data.CurrentVelocity;
     Basis = Basis.Rotated(UpDirection, Data.CurrentRotationRate * (float)delta).Orthonormalized();
     MoveAndSlide();
@@ -70,17 +79,14 @@ public partial class PlayerCharacter : CharacterBody3D
     PhysicsDirectSpaceState3D spaceState = GetWorld3D().DirectSpaceState;
     PhysicsRayQueryParameters3D rayParams = PhysicsRayQueryParameters3D.Create(Position, Position + Basis.Z * 2, 4);
     Dictionary result = spaceState.IntersectRay(rayParams);
-    DebugLog.LogToScreen("Casting Ray From: " + rayParams.From.ToString() + " To " + rayParams.To.ToString(), 2);
     if (result.TryGetValue("collider", out Variant collider))
     {
-      DebugLog.LogToScreen("Detected " + collider, 3);
       // better way to find our UnlockableEntity?
       UnlockableEntity attachedEntity = collider.As<StaticBody3D>().GetParent().GetParent().GetParent<UnlockableEntity>();
       attachedEntity.OnInteract();
     }
     else
     {
-      DebugLog.LogToScreen("No object detected", 3);
     }
   }
 }

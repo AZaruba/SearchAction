@@ -4,8 +4,9 @@ using Godot;
 public partial class PlayerData : Resource
 {
   [Export] public float MoveSpeed;
+  [Export] public float MoveAcceleration;
   [Export] public float TurnSpeed;
-  [Export] public float LookSpeed;
+  [Export] public float TurnAcceleration;
   [Export] public float Gravity;
 
   public Vector3 CurrentVelocity;

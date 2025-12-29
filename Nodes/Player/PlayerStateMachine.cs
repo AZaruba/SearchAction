@@ -64,12 +64,31 @@ public class PlayerGroundedState : IPlayerState
 
   public override void ProcessMove(float delta, float fbAxis, float lrAxis)
   {
-    DataRef.CurrentVelocity = DataRef.MoveSpeed * (DataRef.CurrentDirection.Z * fbAxis + DataRef.CurrentDirection.X * lrAxis);
+    
+    Vector3 Direction = DataRef.CurrentDirection.Z * fbAxis + DataRef.CurrentDirection.X * lrAxis;
+    float CurrentMoveSpeed = DataRef.CurrentVelocity.Length();
+    if (Direction.Length() != 0)
+    {
+      DataRef.CurrentVelocity += DataRef.MoveAcceleration * Direction * delta;
+      DataRef.CurrentVelocity = DataRef.CurrentVelocity.LimitLength(DataRef.MoveSpeed);
+    }
+    else
+    {
+      float NewSpeed = Mathf.Max(CurrentMoveSpeed - DataRef.MoveAcceleration * delta, 0);
+      DataRef.CurrentVelocity = DataRef.CurrentVelocity.Normalized() * NewSpeed;
+    }
   }
 
   public override void ProcessTurn(float delta, float lrAxis)
   {
-    DataRef.CurrentRotationRate = DataRef.LookSpeed * lrAxis;
+    if (lrAxis != 0)
+    {
+      DataRef.CurrentRotationRate += DataRef.TurnAcceleration * delta * lrAxis;
+      DataRef.CurrentRotationRate = Mathf.Clamp(Mathf.Abs(DataRef.CurrentRotationRate), 0, DataRef.TurnSpeed) * Mathf.Sign(DataRef.CurrentRotationRate);
+    } else
+    {
+      DataRef.CurrentRotationRate = Mathf.Clamp(Mathf.Abs(DataRef.CurrentRotationRate) - DataRef.TurnAcceleration * delta, 0, DataRef.TurnSpeed) * Mathf.Sign(DataRef.CurrentRotationRate);
+    }
   }
 
   public override void ProcessLook(float delta, float TurnInput)

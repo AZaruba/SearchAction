@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_85a3u")
 MoveSpeed = 6.0
-TurnSpeed = 3.0
-LookSpeed = 3.0
+MoveAcceleration = 30.0
+TurnSpeed = 2.5
+TurnAcceleration = 20.0
 Gravity = 9.8

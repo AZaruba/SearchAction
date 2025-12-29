@@ -5,8 +5,19 @@ namespace Authorship.src
     ERR_ITEM = -1,
     None,
     TestKey,
-    TestHat,
-    TestClothes,
-    TestEquip
+    RubyKey,
+    SaphKey,
+    EmerKey,
+    Headlamp,
+    DiveMask,
+    TDGlasses,
+    Sweater,
+    Swimsuit,
+    WinterCoat,
+    Lighter,
+    BoltCutters,
+    Fins,
+    Treads,
+    WorkGloves,
   }
 }

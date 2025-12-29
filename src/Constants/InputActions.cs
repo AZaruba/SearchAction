@@ -13,6 +13,7 @@ namespace Authorship.src
     public static readonly string LookRight = "LookRight";
 
     public static readonly string Interact = "Interact";
+    public static readonly string OpenInventory = "OpenInventory";
 
 #if DEBUG
     public static readonly string DEBUG_Reset = "DEBUG_Reset";

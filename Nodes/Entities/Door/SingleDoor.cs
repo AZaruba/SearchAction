@@ -21,6 +21,7 @@ public partial class SingleDoor : UnlockableEntity
   {
     if (!unlocked)
     {
+      GD.Print("Unlocked the door!");
       AnimPlayer.Play(OPEN_ANIM);
       unlocked = true;
     }
@@ -31,6 +32,7 @@ public partial class SingleDoor : UnlockableEntity
   // TODO: Add animation for locked door
   public override void OnInteractWithoutItem()
   {
+    GD.Print("You can't open that!");
     AnimPlayer.Play(LOCKED_ANIM);
     base.OnInteractWithoutItem();
   }

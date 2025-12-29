@@ -9,7 +9,7 @@ public partial class UnlockableEntity : Node3D
 
   public virtual void OnInteract()
   {
-    if (requiredItem == ItemID.None)
+    if (ProgressTracker.IsItemCollected(requiredItem))
     {
       OnInteractWithItem();
     }

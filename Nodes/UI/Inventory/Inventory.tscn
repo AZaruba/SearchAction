@@ -1,0 +1,137 @@
+[gd_scene load_steps=3 format=3 uid="uid://08e4tfmy8v50"]
+
+[ext_resource type="Script" uid="uid://cha1r8aqbcisq" path="res://Nodes/UI/Inventory/InventoryController.cs" id="1_37fcu"]
+[ext_resource type="PackedScene" uid="uid://br1caiktq7fbj" path="res://Nodes/UI/Inventory/InventoryIcon.tscn" id="1_e0e0o"]
+
+[node name="Inventory" type="CanvasLayer"]
+visible = false
+script = ExtResource("1_37fcu")
+
+[node name="Container" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Headlamp" parent="Container" instance=ExtResource("1_e0e0o")]
+layout_mode = 0
+anchors_preset = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -24.0
+offset_bottom = -24.0
+
+[node name="Mask" parent="Container" instance=ExtResource("1_e0e0o")]
+layout_mode = 0
+anchors_preset = 0
+offset_left = 48.0
+offset_top = 16.0
+offset_right = 8.0
+offset_bottom = -24.0
+
+[node name="3DGlasses" parent="Container" instance=ExtResource("1_e0e0o")]
+layout_mode = 0
+anchors_preset = 0
+offset_left = 80.0
+offset_top = 16.0
+offset_right = 40.0
+offset_bottom = -24.0
+
+[node name="WinterCoat" parent="Container" instance=ExtResource("1_e0e0o")]
+layout_mode = 0
+anchors_preset = 0
+offset_left = 16.0
+offset_top = 64.0
+offset_right = -24.0
+offset_bottom = 24.0
+
+[node name="Sweater" parent="Container" instance=ExtResource("1_e0e0o")]
+layout_mode = 0
+anchors_preset = 0
+offset_left = 48.0
+offset_top = 64.0
+offset_right = 8.0
+offset_bottom = 24.0
+
+[node name="Swimsuit" parent="Container" instance=ExtResource("1_e0e0o")]
+layout_mode = 0
+anchors_preset = 0
+offset_left = 80.0
+offset_top = 64.0
+offset_right = 40.0
+offset_bottom = 24.0
+
+[node name="BoltCutters" parent="Container" instance=ExtResource("1_e0e0o")]
+layout_mode = 0
+anchors_preset = 0
+offset_left = 16.0
+offset_top = 112.0
+offset_right = -24.0
+offset_bottom = 72.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Lighter" parent="Container" instance=ExtResource("1_e0e0o")]
+layout_mode = 0
+anchors_preset = 0
+offset_left = 48.0
+offset_top = 112.0
+offset_right = 8.0
+offset_bottom = 72.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Fins" parent="Container" instance=ExtResource("1_e0e0o")]
+layout_mode = 0
+anchors_preset = 0
+offset_left = 80.0
+offset_top = 112.0
+offset_right = 40.0
+offset_bottom = 72.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Ruby" parent="Container" instance=ExtResource("1_e0e0o")]
+layout_mode = 0
+anchors_preset = 0
+offset_left = 128.0
+offset_top = 16.0
+offset_right = 88.0
+offset_bottom = -24.0
+
+[node name="Sapphire" parent="Container" instance=ExtResource("1_e0e0o")]
+layout_mode = 0
+anchors_preset = 0
+offset_left = 160.0
+offset_top = 16.0
+offset_right = 120.0
+offset_bottom = -24.0
+
+[node name="Emerald" parent="Container" instance=ExtResource("1_e0e0o")]
+layout_mode = 0
+anchors_preset = 0
+offset_left = 192.0
+offset_top = 16.0
+offset_right = 152.0
+offset_bottom = -24.0
+
+[node name="Speed1" parent="Container" instance=ExtResource("1_e0e0o")]
+layout_mode = 0
+anchors_preset = 0
+offset_left = 240.0
+offset_top = 16.0
+offset_right = 200.0
+offset_bottom = -24.0
+
+[node name="Speed2" parent="Container" instance=ExtResource("1_e0e0o")]
+layout_mode = 0
+anchors_preset = 0
+offset_left = 272.0
+offset_top = 16.0
+offset_right = 232.0
+offset_bottom = -24.0
+
+[node name="Speed3" parent="Container" instance=ExtResource("1_e0e0o")]
+layout_mode = 0
+anchors_preset = 0
+offset_left = 304.0
+offset_top = 16.0
+offset_right = 264.0
+offset_bottom = -24.0

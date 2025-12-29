@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bsvcsug2emh60"]
+[gd_scene load_steps=9 format=3 uid="uid://bsvcsug2emh60"]
 
 [ext_resource type="Sky" uid="uid://ble1xcqnre6ho" path="res://Assets/Skybox/NightSky.tres" id="1_qsjrb"]
 [ext_resource type="PackedScene" uid="uid://c7ppsx32tqpyq" path="res://Assets/Models/Environments/TestHouse.tscn" id="2_8k7wh"]
 [ext_resource type="PackedScene" uid="uid://bw0i4ae03id06" path="res://Nodes/Debug/Logging/DebugLog.tscn" id="4_0f5h7"]
 [ext_resource type="PackedScene" uid="uid://dsk41q2rvkrai" path="res://Nodes/Player/PlayerCharacter.tscn" id="4_iufkg"]
 [ext_resource type="PackedScene" uid="uid://f7a4itxgeb4k" path="res://Assets/Models/Environments/mansion.tscn" id="5_0f5h7"]
+[ext_resource type="PackedScene" uid="uid://08e4tfmy8v50" path="res://Nodes/UI/Inventory/Inventory.tscn" id="7_6xh1p"]
 [ext_resource type="PackedScene" uid="uid://bhjeu6bj48qky" path="res://Assets/Models/Entities/SingleDoor/SingleDoor.tscn" id="7_c264a"]
 
 [sub_resource type="Environment" id="Environment_c264a"]
@@ -75,20 +76,21 @@ spot_angle = 18.09
 spot_angle_attenuation = 0.20306318
 
 [node name="DebugLog" parent="." instance=ExtResource("4_0f5h7")]
+offset_left = -1.0
 
 [node name="Mansion" parent="." instance=ExtResource("5_0f5h7")]
 
 [node name="Doors" type="Node" parent="."]
 
 [node name="PBClosetDoor" parent="Doors" instance=ExtResource("7_c264a")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -25, 8, -9.999996)
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -25, 8, -10.799996)
 
 [node name="PBBathroomDoor" parent="Doors" instance=ExtResource("7_c264a")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -25, 8, -17.999996)
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -25, 8, -18.799995)
 requiredItem = 1
 
 [node name="SideHallDoor" parent="Doors" instance=ExtResource("7_c264a")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 10, 0, 1)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 10.8, 0, 1)
 
 [node name="OfficeDoor" parent="Doors" instance=ExtResource("7_c264a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2, 8, -5)
@@ -96,3 +98,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2, 8, -5)
 [node name="LibraryDoor" parent="Doors" instance=ExtResource("7_c264a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.199999, 0, -19)
 requiredItem = 1
+
+[node name="Inventory" parent="." instance=ExtResource("7_6xh1p")]

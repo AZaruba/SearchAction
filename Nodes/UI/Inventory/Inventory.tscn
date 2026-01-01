@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://08e4tfmy8v50"]
+[gd_scene load_steps=12 format=3 uid="uid://08e4tfmy8v50"]
 
 [ext_resource type="Script" uid="uid://cha1r8aqbcisq" path="res://Nodes/UI/Inventory/InventoryController.cs" id="1_37fcu"]
 [ext_resource type="PackedScene" uid="uid://br1caiktq7fbj" path="res://Nodes/UI/Inventory/InventoryItem.tscn" id="1_e0e0o"]
+[ext_resource type="Script" uid="uid://xkp344ulyibo" path="res://Nodes/UI/Inventory/InventoryCategory.cs" id="2_egdkt"]
 [ext_resource type="Texture2D" uid="uid://csykdpvnnwy6a" path="res://Assets/2D/Inventory/Clothes/Sweater.png" id="3_kgjj0"]
 [ext_resource type="Theme" uid="uid://ce8jt1qspx28d" path="res://Assets/2D/Fonts/InventoryTheme.tres" id="4_303pr"]
+[ext_resource type="Texture2D" uid="uid://dkru6pcbxm6db" path="res://Assets/2D/Inventory/InventoryIcon1.png" id="4_egdkt"]
 [ext_resource type="Texture2D" uid="uid://ifal8hdi6l8c" path="res://Assets/2D/Inventory/Clothes/Swimsuit.png" id="4_mcien"]
 [ext_resource type="Texture2D" uid="uid://c8y8dvf0tr7qm" path="res://Assets/2D/Inventory/Head/Headlamp.png" id="5_303pr"]
 [ext_resource type="Texture2D" uid="uid://csh17ai24y78t" path="res://Assets/2D/Inventory/Items/Lighter.png" id="6_egdkt"]
@@ -11,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://pl11cc0pnw3n" path="res://Assets/2D/Inventory/Keys/SaphKey.png" id="8_ibsio"]
 
 [node name="Inventory" type="CanvasLayer"]
+visible = false
 script = ExtResource("1_37fcu")
 
 [node name="Container" type="Control" parent="."]
@@ -25,6 +28,7 @@ anchors_preset = 0
 offset_top = 16.0
 offset_right = 16.0
 offset_bottom = 32.0
+script = ExtResource("2_egdkt")
 
 [node name="Headlamp" parent="Container/Head" instance=ExtResource("1_e0e0o")]
 layout_mode = 0
@@ -37,6 +41,8 @@ offset_right = 16.0
 offset_bottom = 16.0
 grow_horizontal = 1
 grow_vertical = 1
+ItemIcon = ExtResource("5_303pr")
+ID = 5
 
 [node name="Mask" parent="Container/Head" instance=ExtResource("1_e0e0o")]
 layout_mode = 0
@@ -49,6 +55,8 @@ offset_right = 48.0
 offset_bottom = 16.0
 grow_horizontal = 1
 grow_vertical = 1
+ItemIcon = ExtResource("4_egdkt")
+ID = 6
 
 [node name="3DGlasses" parent="Container/Head" instance=ExtResource("1_e0e0o")]
 layout_mode = 0
@@ -61,17 +69,15 @@ offset_right = 80.0
 offset_bottom = 16.0
 grow_horizontal = 1
 grow_vertical = 1
-
-[node name="Headlamp2" type="Sprite2D" parent="Container/Head"]
-position = Vector2(64, 32)
-texture = ExtResource("5_303pr")
+ItemIcon = ExtResource("4_egdkt")
+ID = 7
 
 [node name="HeadLabel" type="RichTextLabel" parent="Container/Head"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 16.0
+offset_left = 18.0
 offset_top = 2.0
-offset_right = 72.0
+offset_right = 74.0
 offset_bottom = 16.0
 theme = ExtResource("4_303pr")
 text = "HEAD"
@@ -83,6 +89,8 @@ anchors_preset = 0
 offset_top = 64.0
 offset_right = 16.0
 offset_bottom = 80.0
+script = ExtResource("2_egdkt")
+Category = 1
 
 [node name="WinterCoat" parent="Container/Body" instance=ExtResource("1_e0e0o")]
 layout_mode = 0
@@ -95,6 +103,9 @@ offset_right = 16.0
 offset_bottom = 16.0
 grow_horizontal = 1
 grow_vertical = 1
+ItemIcon = ExtResource("4_egdkt")
+ID = 10
+Category = 1
 
 [node name="Sweater" parent="Container/Body" instance=ExtResource("1_e0e0o")]
 layout_mode = 0
@@ -107,6 +118,9 @@ offset_right = 48.0
 offset_bottom = 16.0
 grow_horizontal = 1
 grow_vertical = 1
+ItemIcon = ExtResource("3_kgjj0")
+ID = 8
+Category = 1
 
 [node name="Swimsuit" parent="Container/Body" instance=ExtResource("1_e0e0o")]
 layout_mode = 0
@@ -119,34 +133,31 @@ offset_right = 80.0
 offset_bottom = 16.0
 grow_horizontal = 1
 grow_vertical = 1
-
-[node name="Sweater2" type="Sprite2D" parent="Container/Body"]
-position = Vector2(64, 32)
-texture = ExtResource("3_kgjj0")
-
-[node name="Swimsuit2" type="Sprite2D" parent="Container/Body"]
-position = Vector2(32, 32)
-texture = ExtResource("4_mcien")
+ItemIcon = ExtResource("4_mcien")
+ID = 9
+Category = 1
 
 [node name="BodyLabel" type="RichTextLabel" parent="Container/Body"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 16.0
+offset_left = 18.0
 offset_top = 2.0
-offset_right = 72.0
+offset_right = 74.0
 offset_bottom = 16.0
 theme = ExtResource("4_303pr")
 text = "BODY"
 scroll_active = false
 autowrap_mode = 0
 
-[node name="Items" type="Control" parent="Container"]
+[node name="Tools" type="Control" parent="Container"]
 anchors_preset = 0
 offset_top = 112.0
 offset_right = 16.0
 offset_bottom = 128.0
+script = ExtResource("2_egdkt")
+Category = 2
 
-[node name="BoltCutters" parent="Container/Items" instance=ExtResource("1_e0e0o")]
+[node name="BoltCutters" parent="Container/Tools" instance=ExtResource("1_e0e0o")]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = -6.0
@@ -158,9 +169,12 @@ offset_right = 16.0
 offset_bottom = 112.0
 grow_horizontal = 1
 grow_vertical = 1
+ItemIcon = ExtResource("4_egdkt")
+ID = 12
+Category = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Lighter" parent="Container/Items" instance=ExtResource("1_e0e0o")]
+[node name="Lighter" parent="Container/Tools" instance=ExtResource("1_e0e0o")]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = -6.0
@@ -172,9 +186,12 @@ offset_right = 48.0
 offset_bottom = 112.0
 grow_horizontal = 1
 grow_vertical = 1
+ItemIcon = ExtResource("6_egdkt")
+ID = 11
+Category = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Fins" parent="Container/Items" instance=ExtResource("1_e0e0o")]
+[node name="Fins" parent="Container/Tools" instance=ExtResource("1_e0e0o")]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = -6.0
@@ -186,18 +203,17 @@ offset_right = 80.0
 offset_bottom = 112.0
 grow_horizontal = 1
 grow_vertical = 1
+ItemIcon = ExtResource("4_egdkt")
+ID = 13
+Category = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Lighter2" type="Sprite2D" parent="Container/Items"]
-position = Vector2(32, 32)
-texture = ExtResource("6_egdkt")
-
-[node name="BodyLabel" type="RichTextLabel" parent="Container/Items"]
+[node name="ToolLabel" type="RichTextLabel" parent="Container/Tools"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 16.0
+offset_left = 18.0
 offset_top = 2.0
-offset_right = 72.0
+offset_right = 74.0
 offset_bottom = 16.0
 theme = ExtResource("4_303pr")
 text = "TOOL"
@@ -210,6 +226,8 @@ offset_left = 112.0
 offset_top = 16.0
 offset_right = 128.0
 offset_bottom = 32.0
+script = ExtResource("2_egdkt")
+Category = 3
 
 [node name="Ruby" parent="Container/Keys" instance=ExtResource("1_e0e0o")]
 layout_mode = 0
@@ -222,6 +240,9 @@ offset_right = 16.0
 offset_bottom = 16.0
 grow_horizontal = 1
 grow_vertical = 1
+ItemIcon = ExtResource("7_ohmyt")
+ID = 2
+Category = 3
 
 [node name="Sapphire" parent="Container/Keys" instance=ExtResource("1_e0e0o")]
 layout_mode = 0
@@ -234,6 +255,9 @@ offset_right = 48.0
 offset_bottom = 16.0
 grow_horizontal = 1
 grow_vertical = 1
+ItemIcon = ExtResource("8_ibsio")
+ID = 3
+Category = 3
 
 [node name="Emerald" parent="Container/Keys" instance=ExtResource("1_e0e0o")]
 layout_mode = 0
@@ -246,21 +270,16 @@ offset_right = 80.0
 offset_bottom = 16.0
 grow_horizontal = 1
 grow_vertical = 1
+ItemIcon = ExtResource("4_egdkt")
+ID = 4
+Category = 3
 
-[node name="RubyKey" type="Sprite2D" parent="Container/Keys"]
-position = Vector2(31, 32)
-texture = ExtResource("7_ohmyt")
-
-[node name="SaphKey" type="Sprite2D" parent="Container/Keys"]
-position = Vector2(63, 32)
-texture = ExtResource("8_ibsio")
-
-[node name="BodyLabel" type="RichTextLabel" parent="Container/Keys"]
+[node name="KeysLabel" type="RichTextLabel" parent="Container/Keys"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 16.0
+offset_left = 18.0
 offset_top = 2.0
-offset_right = 72.0
+offset_right = 74.0
 offset_bottom = 16.0
 theme = ExtResource("4_303pr")
 text = "KEYS"
@@ -273,6 +292,8 @@ offset_left = 224.0
 offset_top = 16.0
 offset_right = 240.0
 offset_bottom = 32.0
+script = ExtResource("2_egdkt")
+Category = 4
 
 [node name="Speed1" parent="Container/Upgrades" instance=ExtResource("1_e0e0o")]
 layout_mode = 0
@@ -285,6 +306,9 @@ offset_right = 16.0
 offset_bottom = 16.0
 grow_horizontal = 1
 grow_vertical = 1
+ItemIcon = ExtResource("4_egdkt")
+ID = 16
+Category = 4
 
 [node name="Speed2" parent="Container/Upgrades" instance=ExtResource("1_e0e0o")]
 layout_mode = 0
@@ -297,6 +321,9 @@ offset_right = 48.0
 offset_bottom = 16.0
 grow_horizontal = 1
 grow_vertical = 1
+ItemIcon = ExtResource("4_egdkt")
+ID = 17
+Category = 4
 
 [node name="Speed3" parent="Container/Upgrades" instance=ExtResource("1_e0e0o")]
 layout_mode = 0
@@ -309,13 +336,16 @@ offset_right = 80.0
 offset_bottom = 16.0
 grow_horizontal = 1
 grow_vertical = 1
+ItemIcon = ExtResource("4_egdkt")
+ID = 18
+Category = 4
 
-[node name="BodyLabel" type="RichTextLabel" parent="Container/Upgrades"]
+[node name="UpgradeLabel" type="RichTextLabel" parent="Container/Upgrades"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 16.0
+offset_left = 18.0
 offset_top = 2.0
-offset_right = 114.0
+offset_right = 116.0
 offset_bottom = 16.0
 theme = ExtResource("4_303pr")
 text = "UPGRADE"

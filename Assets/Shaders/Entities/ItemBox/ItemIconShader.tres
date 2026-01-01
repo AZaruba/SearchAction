@@ -1,0 +1,36 @@
+[gd_resource type="VisualShader" load_steps=4 format=3 uid="uid://cquyigeu4c6yw"]
+
+[ext_resource type="Texture2D" uid="uid://ifal8hdi6l8c" path="res://Assets/2D/Inventory/Clothes/Swimsuit.png" id="1_j3us8"]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_unole"]
+output_port_for_preview = 0
+texture = ExtResource("1_j3us8")
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_j3us8"]
+constant = 0.5
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform sampler2D tex_frg_2;
+
+
+
+void fragment() {
+// Texture2D:2
+	vec4 n_out2p0 = texture(tex_frg_2, UV);
+
+
+// Output:0
+	ALBEDO = vec3(n_out2p0.xyz);
+	ALPHA_TEXTURE_COORDINATE = vec2(n_out2p0.xy);
+
+
+}
+"
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_unole")
+nodes/fragment/2/position = Vector2(-380, 300)
+nodes/fragment/3/node = SubResource("VisualShaderNodeFloatConstant_j3us8")
+nodes/fragment/3/position = Vector2(-160, 1600)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 2, 0, 0, 22)

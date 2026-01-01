@@ -5,26 +5,38 @@ using System.Collections.Generic;
 
 public class ProgressInfo
 {
-  public Dictionary<ItemID, bool> CollectedItems = new Dictionary<ItemID, bool>()
-  {
-    { ItemID.TestKey, false }
-  };
+  public Dictionary<ItemID, bool> CollectedItems;
   
   public ItemID EquippedHat;
-  public ItemID EquippedClothes;
-  public ItemID EquippedItem;
+  public ItemID EquippedBody;
+  public ItemID EquippedTool;
 
   public ProgressInfo()
   {
     CollectedItems  = new Dictionary<ItemID, bool>()
     {
-      { ItemID.TestKey, false },
-      { ItemID.Sweater, true }
+      { ItemID.RubyKey, false },
+      { ItemID.SaphKey, false },
+      { ItemID.EmerKey, false },
+      { ItemID.Headlamp, false },
+      { ItemID.DiveMask, false },
+      { ItemID.TDGlasses, false },
+      { ItemID.Sweater, true },
+      { ItemID.Swimsuit, true },
+      { ItemID.WinterCoat, false },
+      { ItemID.Lighter, false },
+      { ItemID.BoltCutters, false },
+      { ItemID.Fins, false },
+      { ItemID.WorkGloves, false },
+      { ItemID.Treads, false },
+      { ItemID.SpeedOne, false },
+      { ItemID.SpeedTwo, false },
+      { ItemID.SpeedThree, false },
     };
 
     EquippedHat = ItemID.None;
-    EquippedClothes = ItemID.None;
-    EquippedItem = ItemID.None;
+    EquippedBody = ItemID.Sweater;
+    EquippedTool = ItemID.None;
   }
 }
 
@@ -38,11 +50,15 @@ public partial class ProgressTracker : Node
   {
     Progress = new ProgressInfo();
     Instance = this;
+
+    EventBus.Instance.ItemPickup += CollectItem;
+
     base._Ready();
   }
 
   public static void CollectItem(ItemID collectedItem)
   {
+    GD.Print("Collecting the " + collectedItem);
     if (!Instance.Progress.CollectedItems.ContainsKey(collectedItem))
     {
       throw new Exception("COULD NOT FIND ITEM " + collectedItem.ToString());
@@ -67,6 +83,38 @@ public partial class ProgressTracker : Node
     else
     {
       return Instance.Progress.CollectedItems[itemID];
+    }
+  }
+
+  public static void EquipItem(ItemID id, ItemCategory cat)
+  {
+    if (cat == ItemCategory.Hat)
+    {
+      Instance.Progress.EquippedHat = id;
+    }
+    else if (cat == ItemCategory.Body)
+    {
+      Instance.Progress.EquippedBody = id;
+    }
+    else if (cat == ItemCategory.Tool)
+    {
+      Instance.Progress.EquippedTool = id;
+    }
+  }
+
+  public static ItemID GetEquippedItem(ItemCategory cat)
+  {
+    if (cat == ItemCategory.Hat)
+    {
+      return Instance.Progress.EquippedHat;
+    }
+    else if (cat == ItemCategory.Body)
+    { 
+      return Instance.Progress.EquippedBody;
+    }
+    else 
+    { 
+      return Instance.Progress.EquippedTool;
     }
   }
 }

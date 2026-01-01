@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://ku23ph55uolu"
-path="res://.godot/imported/ItemBox.blend-337cafd7e0224958efcf50a0fd1bcafd.scn"
+path="res://.godot/imported/ItemBox.blend-c10c13140f88d2e7df22045c5b351638.scn"
 
 [deps]
 
-source_file="res://Assets/Models/Entities/ItemBox.blend"
-dest_files=["res://.godot/imported/ItemBox.blend-337cafd7e0224958efcf50a0fd1bcafd.scn"]
+source_file="res://Assets/Models/Entities/ItemBox/ItemBox.blend"
+dest_files=["res://.godot/imported/ItemBox.blend-c10c13140f88d2e7df22045c5b351638.scn"]
 
 [params]
 
@@ -37,7 +37,15 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={}
+_subresources={
+"nodes": {
+"PATH:Icosphere": {
+"generate/physics": true,
+"physics/layer": 8,
+"physics/shape_type": 4
+}
+}
+}
 blender/nodes/visible=0
 blender/nodes/active_collection_only=false
 blender/nodes/punctual_lights=true

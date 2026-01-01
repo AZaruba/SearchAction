@@ -1,6 +1,15 @@
 
 namespace Authorship.src
 {
+  public enum ItemCategory
+  {
+    ERR_CAT = -1,
+    Hat,
+    Body,
+    Tool,
+    Key,
+    Upgrade
+  }
   public enum ItemID {
     ERR_ITEM = -1,
     None,
@@ -19,5 +28,8 @@ namespace Authorship.src
     Fins,
     Treads,
     WorkGloves,
+    SpeedOne,
+    SpeedTwo, // but with a bus
+    SpeedThree,
   }
 }

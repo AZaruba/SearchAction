@@ -25,12 +25,13 @@ public partial class PlayerCharacter : CharacterBody3D
 
     // apply state actions
     ProcessState((float)delta);
-    DebugLog.LogToScreen("Current Move Reate: " + Data.CurrentVelocity.Length());
+    DebugLog.LogToScreen("Current Move Rate: " + Data.CurrentVelocity.Length());
     DebugLog.LogToScreen("Current Rotation Rate: " + Data.CurrentRotationRate, 2);
 
     if (Input.IsActionJustPressed(InputActions.OpenInventory))
     {
-      ProgressTracker.CollectItem(ItemID.TestKey);
+      GD.Print("Attempting to pickup Ruby Key");
+      EventBus.Emit(EventBus.SignalName.ItemPickup, ItemID.RubyKey);
     }
 
     // synchronize engine

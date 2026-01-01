@@ -1,12 +1,31 @@
+using Authorship.src;
 using Godot;
 using System;
 
 public partial class InventoryItem : TextureButton
 {
 	
+	[Export] Texture2D ItemIcon;
+	[Export] TextureRect ItemTextureRect;
+	[Export] TextureRect BackgroundTextureRect;
+
+	[Export] ItemID ID;
+	[Export] ItemCategory Category;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		ItemTextureRect.Texture = ItemIcon;
+		EventBus.Instance.ItemPickup += OnItemPickup;
+		if (ProgressTracker.IsItemCollected(ID))
+		{
+			// collecte default items
+			ItemTextureRect.Visible = true;
+		}
+		if (ProgressTracker.GetEquippedItem(Category) == ID)
+		{
+			BackgroundTextureRect.Visible = false;
+			GetParent<InventoryCategory>().OnItemSelected(ID);
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -14,8 +33,37 @@ public partial class InventoryItem : TextureButton
 	{
 	}
 
+	public void ValidateSelection(ItemID id)
+	{
+		if (id != ID)
+		{
+			BackgroundTextureRect.Visible = true;
+		}
+	}
+
 	private void OnClick()
 	{
-		GD.Print("Clicked?");
+		GD.Print("Attempting to equip " + ID);
+    if (ProgressTracker.IsItemCollected(ID))
+		{
+			GD.Print("You have the " + ID);
+			if (Category == ItemCategory.Key || Category == ItemCategory.Upgrade)
+			{
+				GD.Print("But it is a " + Category + " so it won't equip");
+				return;
+			}
+			
+			BackgroundTextureRect.Visible = false;
+			EventBus.Emit(EventBus.SignalName.SelectItem, ID, Category);
+			GetParent<InventoryCategory>().OnItemSelected(ID);
+		}
+	}
+
+	private void OnItemPickup(ItemID id)
+	{
+		if (this.ID == id)
+		{
+			 ItemTextureRect.Visible = true;
+		}
 	}
 }

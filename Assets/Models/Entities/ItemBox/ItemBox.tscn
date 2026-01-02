@@ -1,12 +1,46 @@
-[gd_scene load_steps=4 format=3 uid="uid://ccglv7aoo0nlw"]
+[gd_scene load_steps=8 format=3 uid="uid://ccglv7aoo0nlw"]
 
 [ext_resource type="PackedScene" uid="uid://ku23ph55uolu" path="res://Assets/Models/Entities/ItemBox/ItemBox.blend" id="1_70d2o"]
 [ext_resource type="Material" uid="uid://cc2gnpk4ujig8" path="res://Assets/Shaders/Entities/ItemBox/ItemBoxMat.tres" id="2_a5xhd"]
-[ext_resource type="Material" uid="uid://l5f4tyu7fycg" path="res://Assets/Shaders/Entities/ItemBox/ItemIconMat.tres" id="3_qeji4"]
+[ext_resource type="Script" uid="uid://8px66i6ghf0m" path="res://Assets/Models/Entities/ItemBox/ItemBox.cs" id="2_qeji4"]
+[ext_resource type="Curve" uid="uid://fbetxbkrdoqj" path="res://Assets/Curves/Motion/ItemBox/MotionSine.tres" id="3_e12so"]
+[ext_resource type="Material" uid="uid://l5f4tyu7fycg" path="res://Assets/Shaders/Entities/ItemBox/ItemBgMat.tres" id="3_qeji4"]
+[ext_resource type="Texture2D" uid="uid://ifal8hdi6l8c" path="res://Assets/2D/Inventory/Clothes/Swimsuit.png" id="4_e12so"]
 
-[node name="ItemBox" instance=ExtResource("1_70d2o")]
+[sub_resource type="SphereShape3D" id="SphereShape3D_e12so"]
+radius = 0.4
+
+[node name="ItemBox" node_paths=PackedStringArray("timer", "CollisionArea", "ItemIconSprite") instance=ExtResource("1_70d2o")]
+script = ExtResource("2_qeji4")
+timer = NodePath("Timer")
+curve = ExtResource("3_e12so")
+CollisionArea = NodePath("Icosphere/Area3D")
+BounceDistance = 0.25
+RotationRate = 1.0
+Item = 9
+ItemIconSprite = NodePath("Icosphere/Sprite3D")
 
 [node name="Icosphere" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0017929077, 0.99830127, -0.0009187162)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.002, 0.858, -0.001)
 surface_material_override/0 = ExtResource("2_a5xhd")
 surface_material_override/1 = ExtResource("3_qeji4")
+
+[node name="Area3D" type="Area3D" parent="Icosphere" index="0"]
+collision_layer = 8
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Icosphere/Area3D" index="0"]
+shape = SubResource("SphereShape3D_e12so")
+
+[node name="Sprite3D" type="Sprite3D" parent="Icosphere" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.002, 0, 0)
+pixel_size = 0.02
+billboard = 1
+alpha_cut = 3
+texture_filter = 0
+texture = ExtResource("4_e12so")
+
+[node name="Timer" type="Timer" parent="." index="1"]
+process_callback = 0
+wait_time = 3.0
+autostart = true

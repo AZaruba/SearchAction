@@ -1,7 +1,0 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://l5f4tyu7fycg"]
-
-[ext_resource type="Shader" uid="uid://cquyigeu4c6yw" path="res://Assets/Shaders/Entities/ItemBox/ItemIconShader.tres" id="1_c6lwl"]
-
-[resource]
-render_priority = 0
-shader = ExtResource("1_c6lwl")

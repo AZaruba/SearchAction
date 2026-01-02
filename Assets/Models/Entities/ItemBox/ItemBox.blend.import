@@ -40,7 +40,6 @@ materials/extract_path=""
 _subresources={
 "nodes": {
 "PATH:Icosphere": {
-"generate/physics": true,
 "physics/layer": 8,
 "physics/shape_type": 4
 }

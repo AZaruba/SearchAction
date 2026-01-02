@@ -28,12 +28,6 @@ public partial class PlayerCharacter : CharacterBody3D
     DebugLog.LogToScreen("Current Move Rate: " + Data.CurrentVelocity.Length());
     DebugLog.LogToScreen("Current Rotation Rate: " + Data.CurrentRotationRate, 2);
 
-    if (Input.IsActionJustPressed(InputActions.OpenInventory))
-    {
-      GD.Print("Attempting to pickup Ruby Key");
-      EventBus.Emit(EventBus.SignalName.ItemPickup, ItemID.RubyKey);
-    }
-
     // synchronize engine
 
     // Need to "Redirect" movement with rotation, as the rotation acceleration gives the rotation weight, preventing "drifting" feeling

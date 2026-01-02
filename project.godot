@@ -111,8 +111,13 @@ Pause={
 3d_physics/layer_1="Player"
 3d_physics/layer_2="Environment"
 3d_physics/layer_3="Doors"
+3d_physics/layer_4="Pickups"
+3d_physics/layer_5="Interactibles"
+3d_physics/layer_6="WaterVolume"
+3d_physics/layer_7="Ice"
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 textures/vram_compression/import_etc2_astc=true
 shading/overrides/force_vertex_shading=true

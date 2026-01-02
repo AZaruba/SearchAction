@@ -3,31 +3,29 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ifal8hdi6l8c"
-path.s3tc="res://.godot/imported/Swimsuit.png-2c3e8e149ecf17f66f9dc9eb9bfdb1fb.s3tc.ctex"
-path.etc2="res://.godot/imported/Swimsuit.png-2c3e8e149ecf17f66f9dc9eb9bfdb1fb.etc2.ctex"
+path="res://.godot/imported/Swimsuit.png-2c3e8e149ecf17f66f9dc9eb9bfdb1fb.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Assets/2D/Inventory/Clothes/Swimsuit.png"
-dest_files=["res://.godot/imported/Swimsuit.png-2c3e8e149ecf17f66f9dc9eb9bfdb1fb.s3tc.ctex", "res://.godot/imported/Swimsuit.png-2c3e8e149ecf17f66f9dc9eb9bfdb1fb.etc2.ctex"]
+dest_files=["res://.godot/imported/Swimsuit.png-2c3e8e149ecf17f66f9dc9eb9bfdb1fb.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
-roughness/mode=0
+roughness/mode=1
 roughness/src_normal=""
 process/channel_remap/red=0
 process/channel_remap/green=1

@@ -22,7 +22,7 @@ public class ProgressInfo
       { ItemID.DiveMask, false },
       { ItemID.TDGlasses, false },
       { ItemID.Sweater, true },
-      { ItemID.Swimsuit, true },
+      { ItemID.Swimsuit, false },
       { ItemID.WinterCoat, false },
       { ItemID.Lighter, false },
       { ItemID.BoltCutters, false },

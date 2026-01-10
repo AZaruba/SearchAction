@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1sxxkcovj6rq"]
+
+[ext_resource type="Script" uid="uid://bjq177fbo2vku" path="res://Nodes/Entities/Volumes/WaterVolume/WaterVolume.cs" id="1_2uq67"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lio5f"]
+
+[node name="WaterVolume" type="Area3D"]
+collision_layer = 32
+monitorable = false
+script = ExtResource("1_2uq67")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_lio5f")

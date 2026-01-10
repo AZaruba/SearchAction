@@ -84,4 +84,14 @@ public partial class PlayerCharacter : CharacterBody3D
     {
     }
   }
+
+  public void OnWaterVolumeEntered()
+  {
+    
+  }
+
+  public void OnWaterVolumeExited()
+  {
+    
+  }
 }

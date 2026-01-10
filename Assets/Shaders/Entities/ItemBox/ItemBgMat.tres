@@ -1,8 +1,0 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://l5f4tyu7fycg"]
-
-[ext_resource type="Shader" uid="uid://cquyigeu4c6yw" path="res://Assets/Shaders/Entities/ItemBox/ItemBGShader.tres" id="1_7kaiq"]
-
-[resource]
-render_priority = 0
-shader = ExtResource("1_7kaiq")
-shader_parameter/ColorParameter = Color(1, 0.727924, 0.623581, 1)

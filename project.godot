@@ -115,6 +115,7 @@ Pause={
 3d_physics/layer_5="Interactibles"
 3d_physics/layer_6="WaterVolume"
 3d_physics/layer_7="Ice"
+3d_physics/layer_8="ColdVolume"
 
 [rendering]
 

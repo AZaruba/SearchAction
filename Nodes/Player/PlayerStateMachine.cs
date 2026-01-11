@@ -69,7 +69,7 @@ public class PlayerSwimmingState : IPlayerState
         DataRef.SwimmingRate = Vector3.Up * Mathf.Min(6, DataRef.SwimmingRate.Y + delta * 3);
         if (DataRef.Position.Y >= DataRef.WaterVolumeSurface.Y)
         {
-          DataRef.SwimmingRate = Vector3.Zero;
+          DataRef.SwimmingRate = Vector3.Down * Mathf.Lerp(DataRef.Position.Y, DataRef.WaterVolumeSurface.Y, 0.5f);
         }
       }
       else if (Input.IsActionPressed(InputActions.SwimDown))
@@ -90,7 +90,8 @@ public class PlayerSwimmingState : IPlayerState
       } 
       else
       {
-        DataRef.SwimmingRate = Vector3.Zero;
+        DataRef.SwimmingRate = Vector3.Down * Mathf.Lerp(DataRef.Position.Y, DataRef.WaterVolumeSurface.Y, 0.5f);
+        //DataRef.SwimmingRate = Vector3.Zero;
       }
     }
   }

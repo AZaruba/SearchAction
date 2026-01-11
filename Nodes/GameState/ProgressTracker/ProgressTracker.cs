@@ -34,7 +34,7 @@ public class ProgressInfo
       { ItemID.SpeedThree, false },
     };
 
-    EquippedHat = ItemID.None;
+    EquippedHat = ItemID.DiveMask;
     EquippedBody = ItemID.Sweater;
     EquippedTool = ItemID.None;
   }

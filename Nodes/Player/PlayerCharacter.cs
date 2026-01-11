@@ -7,6 +7,7 @@ using Godot.Collections;
 public partial class PlayerCharacter : CharacterBody3D
 {
   [Export] PlayerData Data;
+  [Export] CanvasLayer WaterOverlay;
   StateMachine<IPlayerState> StateMachine;
 
   public override void _Ready()
@@ -96,6 +97,10 @@ public partial class PlayerCharacter : CharacterBody3D
     if (Input.IsActionJustPressed(InputActions.Interact))
     {
       CastInteractionRay();
+    }
+    if (StateMachine.GetCurrentState().Key() == StateManagement.State.SWIMMING)
+    {
+      WaterOverlay.Visible = Position.Y < Data.WaterVolumeSurface.Y;
     }
   }
 

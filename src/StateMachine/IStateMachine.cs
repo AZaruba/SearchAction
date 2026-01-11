@@ -91,4 +91,5 @@ public abstract class IState {
 	public virtual void Act(float delta) { /* by default do nothing! */ }
 
 	public void PrintCurrentState() { GD.Print(thisState); }
+	public State Key() { return thisState; }
 }

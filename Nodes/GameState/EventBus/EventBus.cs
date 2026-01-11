@@ -22,7 +22,6 @@ public partial class EventBus : Node
 
   public static void Emit(string SignalName, ItemID itemId)
   {
-    GD.Print("Emitting " + SignalName);
     Instance.EmitSignal(SignalName, (int)itemId);
   }
 

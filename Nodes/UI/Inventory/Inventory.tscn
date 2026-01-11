@@ -1,11 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://08e4tfmy8v50"]
+[gd_scene load_steps=11 format=3 uid="uid://08e4tfmy8v50"]
 
 [ext_resource type="Script" uid="uid://cha1r8aqbcisq" path="res://Nodes/UI/Inventory/InventoryController.cs" id="1_37fcu"]
 [ext_resource type="PackedScene" uid="uid://br1caiktq7fbj" path="res://Nodes/UI/Inventory/InventoryItem.tscn" id="1_e0e0o"]
 [ext_resource type="Script" uid="uid://xkp344ulyibo" path="res://Nodes/UI/Inventory/InventoryCategory.cs" id="2_egdkt"]
 [ext_resource type="Texture2D" uid="uid://csykdpvnnwy6a" path="res://Assets/2D/Inventory/Clothes/Sweater.png" id="3_kgjj0"]
 [ext_resource type="Theme" uid="uid://ce8jt1qspx28d" path="res://Assets/2D/Fonts/InventoryTheme.tres" id="4_303pr"]
-[ext_resource type="Texture2D" uid="uid://dkru6pcbxm6db" path="res://Assets/2D/Inventory/InventoryIcon1.png" id="4_egdkt"]
 [ext_resource type="Texture2D" uid="uid://ifal8hdi6l8c" path="res://Assets/2D/Inventory/Clothes/Swimsuit.png" id="4_mcien"]
 [ext_resource type="Texture2D" uid="uid://c8y8dvf0tr7qm" path="res://Assets/2D/Inventory/Head/Headlamp.png" id="5_303pr"]
 [ext_resource type="Texture2D" uid="uid://csh17ai24y78t" path="res://Assets/2D/Inventory/Items/Lighter.png" id="6_egdkt"]
@@ -55,7 +54,6 @@ offset_right = 48.0
 offset_bottom = 16.0
 grow_horizontal = 1
 grow_vertical = 1
-ItemIcon = ExtResource("4_egdkt")
 ID = 6
 
 [node name="3DGlasses" parent="Container/Head" instance=ExtResource("1_e0e0o")]
@@ -69,7 +67,6 @@ offset_right = 80.0
 offset_bottom = 16.0
 grow_horizontal = 1
 grow_vertical = 1
-ItemIcon = ExtResource("4_egdkt")
 ID = 7
 
 [node name="HeadLabel" type="RichTextLabel" parent="Container/Head"]
@@ -103,7 +100,6 @@ offset_right = 16.0
 offset_bottom = 16.0
 grow_horizontal = 1
 grow_vertical = 1
-ItemIcon = ExtResource("4_egdkt")
 ID = 10
 Category = 1
 
@@ -169,7 +165,6 @@ offset_right = 16.0
 offset_bottom = 112.0
 grow_horizontal = 1
 grow_vertical = 1
-ItemIcon = ExtResource("4_egdkt")
 ID = 12
 Category = 2
 metadata/_edit_use_anchors_ = true
@@ -203,7 +198,6 @@ offset_right = 80.0
 offset_bottom = 112.0
 grow_horizontal = 1
 grow_vertical = 1
-ItemIcon = ExtResource("4_egdkt")
 ID = 13
 Category = 2
 metadata/_edit_use_anchors_ = true
@@ -270,7 +264,6 @@ offset_right = 80.0
 offset_bottom = 16.0
 grow_horizontal = 1
 grow_vertical = 1
-ItemIcon = ExtResource("4_egdkt")
 ID = 4
 Category = 3
 
@@ -306,7 +299,6 @@ offset_right = 16.0
 offset_bottom = 16.0
 grow_horizontal = 1
 grow_vertical = 1
-ItemIcon = ExtResource("4_egdkt")
 ID = 16
 Category = 4
 
@@ -321,7 +313,6 @@ offset_right = 48.0
 offset_bottom = 16.0
 grow_horizontal = 1
 grow_vertical = 1
-ItemIcon = ExtResource("4_egdkt")
 ID = 17
 Category = 4
 
@@ -336,7 +327,6 @@ offset_right = 80.0
 offset_bottom = 16.0
 grow_horizontal = 1
 grow_vertical = 1
-ItemIcon = ExtResource("4_egdkt")
 ID = 18
 Category = 4
 

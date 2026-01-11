@@ -49,7 +49,8 @@ public class PlayerSwimmingState : IPlayerState
 
   public override void EnterState()
   {
-    
+    GD.Print("Enter swimming");
+    DataRef.SwimmingRate = Vector3.Zero;
   }
 
   public override void ExitState()
@@ -63,13 +64,12 @@ public class PlayerSwimmingState : IPlayerState
 
     if (ProgressTracker.GetEquippedItem(ItemCategory.Hat) == ItemID.DiveMask)
     {
-      DebugLog.LogToScreen("Mask Equipped");
       if (Input.IsActionPressed(InputActions.SwimUp))
       {
         DataRef.SwimmingRate = Vector3.Up * Mathf.Min(6, DataRef.SwimmingRate.Y + delta * 3);
         if (DataRef.Position.Y >= DataRef.WaterVolumeSurface.Y)
         {
-          DataRef.SwimmingRate = Vector3.Down * Mathf.Lerp(DataRef.Position.Y, DataRef.WaterVolumeSurface.Y, 0.5f);
+          DataRef.SwimmingRate = Vector3.Down * (DataRef.Position.Y - DataRef.WaterVolumeSurface.Y);
         }
       }
       else if (Input.IsActionPressed(InputActions.SwimDown))
@@ -83,14 +83,13 @@ public class PlayerSwimmingState : IPlayerState
     }
     else
     {
-      DebugLog.LogToScreen("Mask NOT Equipped");
       if (DataRef.Position.Y < DataRef.WaterVolumeSurface.Y)
       {
         DataRef.SwimmingRate = Vector3.Up * Mathf.Min(6, DataRef.SwimmingRate.Y + delta * 5);
       } 
       else
       {
-        DataRef.SwimmingRate = Vector3.Down * Mathf.Lerp(DataRef.Position.Y, DataRef.WaterVolumeSurface.Y, 0.5f);
+          DataRef.SwimmingRate = Vector3.Down * Mathf.Round(DataRef.Position.Y - DataRef.WaterVolumeSurface.Y);
         //DataRef.SwimmingRate = Vector3.Zero;
       }
     }
@@ -103,12 +102,12 @@ public class PlayerSwimmingState : IPlayerState
     float CurrentMoveSpeed = DataRef.CurrentVelocity.Length();
     if (Direction.Length() != 0)
     {
-      DataRef.CurrentVelocity += DataRef.MoveAcceleration * Direction * delta;
+      DataRef.CurrentVelocity += DataRef.MoveAcceleration * Direction * delta * 0.1f;
       DataRef.CurrentVelocity = DataRef.CurrentVelocity.LimitLength(DataRef.MoveSpeed);
     }
     else
     {
-      float NewSpeed = Mathf.Max(CurrentMoveSpeed - DataRef.MoveAcceleration * delta, 0);
+      float NewSpeed = Mathf.Max(CurrentMoveSpeed - DataRef.MoveAcceleration * delta * 0.2f, 0);
       DataRef.CurrentVelocity = DataRef.CurrentVelocity.Normalized() * NewSpeed;
     }
   }
@@ -216,6 +215,7 @@ public class PlayerFallingState : IPlayerState
 
   public override void EnterState()
   {
+    GD.Print("Enter falling");
     DataRef.SwimmingRate = Vector3.Zero;
   }
 

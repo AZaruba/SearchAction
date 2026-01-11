@@ -109,7 +109,6 @@ omni_range = 10.0
 omni_attenuation = 0.7
 
 [node name="DebugLog" parent="." instance=ExtResource("4_0f5h7")]
-visible = false
 offset_left = -1.0
 
 [node name="Mansion" parent="." instance=ExtResource("5_0f5h7")]
@@ -147,7 +146,7 @@ Icon = ExtResource("9_5rbs6")
 [node name="WaterVolume" parent="." node_paths=PackedStringArray("Volume") instance=ExtResource("10_201fe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -71)
 Volume = NodePath("WaterShape")
-DesiredHeight = Vector3(0, -0.3, 0)
+DesiredHeight = Vector3(0, -0.1, 0)
 
 [node name="WaterShape" type="CollisionShape3D" parent="WaterVolume"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -5.3, 0)

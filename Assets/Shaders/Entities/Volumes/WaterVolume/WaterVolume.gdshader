@@ -7,9 +7,9 @@ void fragment() {
     vec2 uv = SCREEN_UV;
 
     // Ripple effect
-    float rippleSpeed = 1.5;
-    float rippleDensity = 10.0;
-    float rippleStrength = 0.02;
+    float rippleSpeed = 2.5;
+    float rippleDensity = 5.0;
+    float rippleStrength = 0.01;
 
     // Calculate angle and distance from the center of the screen
     vec2 center = vec2(0.5, 0.5);

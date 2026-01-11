@@ -30,11 +30,10 @@ public partial class PlayerCharacter : CharacterBody3D
 
     // update state
     UpdateState();
-
+    
     // apply state actions
     ProcessState((float)delta);
-    DebugLog.LogToScreen("Current Float Rate: " + Data.SwimmingRate, 2);
-    DebugLog.LogToScreen("Current State: " + StateMachine.GetCurrentState(), 3);
+    DebugLog.LogToScreen($"State {StateMachine.GetCurrentState().Key()}", 3);
 
     // synchronize engine
 
@@ -76,6 +75,7 @@ public partial class PlayerCharacter : CharacterBody3D
     {
       if (!IsOnFloor())
       {
+        DebugLog.LogToScreen($"But when we transition it is {MotionMode}", 2);
         StateMachine.Execute(StateManagement.Command.FALL);
       }
       else if (MotionMode == MotionModeEnum.Grounded)
@@ -126,6 +126,8 @@ public partial class PlayerCharacter : CharacterBody3D
   {
     Data.WaterVolumeSurface = desiredHeight;
     MotionMode = MotionModeEnum.Floating;
+    DebugLog.LogToScreen($"Got To Motion Mode {MotionMode}");
+    GD.Print($"Got To Motion Mode {MotionMode}");
     StateMachine.Execute(StateManagement.Command.ENTER_WATER);
   }
 

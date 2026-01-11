@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bsvcsug2emh60"]
+[gd_scene load_steps=16 format=3 uid="uid://bsvcsug2emh60"]
 
 [ext_resource type="Sky" uid="uid://ble1xcqnre6ho" path="res://Assets/Skybox/NightSky.tres" id="1_qsjrb"]
 [ext_resource type="PackedScene" uid="uid://c7ppsx32tqpyq" path="res://Assets/Models/Environments/TestHouse.tscn" id="2_8k7wh"]
@@ -30,6 +30,9 @@ transparency = 1
 shading_mode = 0
 albedo_color = Color(0.17280002, 0.4372799, 0.72, 0.39607844)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_201fe"]
+size = Vector3(16, 4, 28)
+
 [node name="Root" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -37,6 +40,7 @@ environment = SubResource("Environment_c264a")
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("4_iufkg")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -25, 1, -80)
+collision_mask = 263
 floor_constant_speed = true
 floor_max_angle = 1.3089969
 floor_snap_length = 0.2
@@ -153,3 +157,10 @@ shape = SubResource("BoxShape3D_xjl2p")
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 25, 0, -0.3, 0)
 mesh = SubResource("PlaneMesh_xjl2p")
 surface_material_override/0 = SubResource("StandardMaterial3D_201fe")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="WaterVolume"]
+collision_layer = 256
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WaterVolume/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
+shape = SubResource("BoxShape3D_201fe")

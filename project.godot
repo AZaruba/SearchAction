@@ -126,6 +126,7 @@ SwimDown={
 3d_physics/layer_6="WaterVolume"
 3d_physics/layer_7="Ice"
 3d_physics/layer_8="ColdVolume"
+3d_physics/layer_9="WaterBarrier"
 
 [rendering]
 

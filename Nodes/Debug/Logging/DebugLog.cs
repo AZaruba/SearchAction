@@ -19,6 +19,7 @@ public partial class DebugLog : Control
   {
     base._Process(delta);
 
+#if DEBUG
     if (Input.IsActionJustPressed(InputActions.DEBUG_Toggle_Log))
     {
       Instance.Visible = !Instance.Visible;
@@ -33,6 +34,7 @@ public partial class DebugLog : Control
       // how to reload appropriately?
       GetTree().ReloadCurrentScene();
     }
+#endif
   }
 
   public static void LogToScreen(string textIn, int line = 1)

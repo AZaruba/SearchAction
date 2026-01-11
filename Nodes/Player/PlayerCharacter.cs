@@ -21,6 +21,8 @@ public partial class PlayerCharacter : CharacterBody3D
   {
     base._PhysicsProcess(delta);
 
+    SetCollisionMaskValue(9, ProgressTracker.GetEquippedItem(ItemCategory.Body) != ItemID.Swimsuit);
+
     // synchronize character
     Data.CurrentGroundNormal = GetFloorNormal();
     Data.CurrentDirection = Basis;

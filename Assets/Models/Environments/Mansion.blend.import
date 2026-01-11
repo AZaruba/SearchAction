@@ -38,10 +38,91 @@ materials/extract=1
 materials/extract_format=0
 materials/extract_path=""
 _subresources={
+"materials": {
+"CarpetFloor": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Assets/Models/Environments/CarpetFloor.tres",
+"use_external/path": "uid://ce4e4s1xem1uo"
+},
+"Ceiling": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Assets/Models/Environments/Ceiling.tres",
+"use_external/path": "uid://bgtlr1xyb0a1v"
+},
+"ConcreteFloor": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Assets/Models/Environments/ConcreteFloor.tres",
+"use_external/path": "uid://k61pnwt28ixq"
+},
+"ConcreteWall": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Assets/Models/Environments/ConcreteWall.tres",
+"use_external/path": "uid://k3sjks67q823"
+},
+"Exterior": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Assets/Models/Environments/Exterior.tres",
+"use_external/path": "uid://ubywv3edrmiu"
+},
+"ExteriorFloor": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Assets/Models/Environments/ExteriorFloor.tres",
+"use_external/path": "uid://i0gcguqd2m1b"
+},
+"PlasterWall": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Assets/Models/Environments/PlasterWall.tres",
+"use_external/path": "uid://b2ia3psqu7mvs"
+},
+"PoolTile": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Assets/Models/Environments/PoolTile.tres",
+"use_external/path": "uid://dpmecfdyxv7mk"
+},
+"Snow": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Assets/Models/Environments/Snow.tres",
+"use_external/path": "uid://dk0imq0pnnofo"
+},
+"Stairs": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Assets/Models/Environments/Stairs.tres",
+"use_external/path": "uid://c38tdog4el80"
+},
+"TileFloor": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Assets/Models/Environments/TileFloor.tres",
+"use_external/path": "uid://bvyfrcuiyp6n1"
+},
+"TileWall": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Assets/Models/Environments/TileWall.tres",
+"use_external/path": "uid://dtd727lnm16mn"
+},
+"Window": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Assets/Models/Environments/Window.tres",
+"use_external/path": "uid://cn0s3iin4rp21"
+},
+"WoodFloor": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Assets/Models/Environments/WoodFloor.tres",
+"use_external/path": "uid://bpa1ok4ay8yew"
+},
+"WoodWall": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Assets/Models/Environments/WoodWall.tres",
+"use_external/path": "uid://chpqa45hw0fkv"
+}
+},
 "nodes": {
 "PATH:House": {
 "generate/physics": true,
 "physics/shape_type": 2
+},
+"PATH:Landscape": {
+"generate/physics": true,
+"physics/layer": 2
 }
 }
 }

@@ -10,7 +10,9 @@ namespace StateManagement {
    LEAVE_WATER,
    SLIDE,
    MOUNT,
-   DISMOUNT
+   DISMOUNT,
+   FALL,
+   LAND
   }
 
   public enum State
@@ -22,6 +24,7 @@ namespace StateManagement {
     DIVING,
     SLIDING,
     CLIMBING,
+    FALLING,
     ERROR_STATE = -1
 
   }

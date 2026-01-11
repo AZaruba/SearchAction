@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bsvcsug2emh60"]
+[gd_scene load_steps=13 format=3 uid="uid://bsvcsug2emh60"]
 
 [ext_resource type="Sky" uid="uid://ble1xcqnre6ho" path="res://Assets/Skybox/NightSky.tres" id="1_qsjrb"]
 [ext_resource type="PackedScene" uid="uid://c7ppsx32tqpyq" path="res://Assets/Models/Environments/TestHouse.tscn" id="2_8k7wh"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bhjeu6bj48qky" path="res://Assets/Models/Entities/SingleDoor/SingleDoor.tscn" id="7_c264a"]
 [ext_resource type="PackedScene" uid="uid://ccglv7aoo0nlw" path="res://Assets/Models/Entities/ItemBox/ItemBox.tscn" id="8_6xh1p"]
 [ext_resource type="Texture2D" uid="uid://pl11cc0pnw3n" path="res://Assets/2D/Inventory/Keys/SaphKey.png" id="9_5rbs6"]
+[ext_resource type="PackedScene" uid="uid://c1sxxkcovj6rq" path="res://Nodes/Entities/Volumes/WaterVolume/WaterVolume.tscn" id="10_201fe"]
 
 [sub_resource type="Environment" id="Environment_c264a"]
 background_mode = 2
@@ -18,6 +19,9 @@ ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.0
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xjl2p"]
+size = Vector3(17, 10, 47)
 
 [node name="Root" type="Node3D"]
 
@@ -99,6 +103,10 @@ offset_left = -1.0
 
 [node name="Mansion" parent="." instance=ExtResource("5_0f5h7")]
 
+[node name="OmniLight3D" type="OmniLight3D" parent="Mansion"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 3, -76)
+omni_range = 69.556
+
 [node name="Doors" type="Node" parent="."]
 
 [node name="PBClosetDoor" parent="Doors" instance=ExtResource("7_c264a")]
@@ -122,4 +130,14 @@ requiredItem = 1
 
 [node name="TestItemBox" parent="." instance=ExtResource("8_6xh1p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -3)
+Item = 6
 Icon = ExtResource("9_5rbs6")
+
+[node name="WaterVolume" parent="." node_paths=PackedStringArray("Volume") instance=ExtResource("10_201fe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -74)
+Volume = NodePath("WaterShape")
+DesiredHeight = Vector3(0, 5, 0)
+
+[node name="WaterShape" type="CollisionShape3D" parent="WaterVolume"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -5.3, 3)
+shape = SubResource("BoxShape3D_xjl2p")

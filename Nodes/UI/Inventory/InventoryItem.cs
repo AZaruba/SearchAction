@@ -43,10 +43,8 @@ public partial class InventoryItem : TextureButton
 
 	private void OnClick()
 	{
-		GD.Print("Attempting to equip " + ID);
     if (ProgressTracker.IsItemCollected(ID))
 		{
-			GD.Print("You have the " + ID);
 			if (Category == ItemCategory.Key || Category == ItemCategory.Upgrade)
 			{
 				GD.Print("But it is a " + Category + " so it won't equip");

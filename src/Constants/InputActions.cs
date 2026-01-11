@@ -15,6 +15,9 @@ namespace Authorship.src
     public static readonly string Interact = "Interact";
     public static readonly string OpenInventory = "OpenInventory";
 
+    public static readonly string SwimUp = "SwimUp";
+    public static readonly string SwimDown = "SwimDown";
+
 #if DEBUG
     public static readonly string DEBUG_Reset = "DEBUG_Reset";
     public static readonly string DEBUG_Exit = "DEBUG_Exit";

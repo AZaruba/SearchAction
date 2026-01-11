@@ -52,13 +52,13 @@ public partial class ProgressTracker : Node
     Instance = this;
 
     EventBus.Instance.ItemPickup += CollectItem;
+    EventBus.Instance.SelectItem += EquipItem;
 
     base._Ready();
   }
 
   public static void CollectItem(ItemID collectedItem)
   {
-    GD.Print("Collecting the " + collectedItem);
     if (!Instance.Progress.CollectedItems.ContainsKey(collectedItem))
     {
       throw new Exception("COULD NOT FIND ITEM " + collectedItem.ToString());
@@ -88,8 +88,10 @@ public partial class ProgressTracker : Node
 
   public static void EquipItem(ItemID id, ItemCategory cat)
   {
+      GD.Print(id);
     if (cat == ItemCategory.Hat)
     {
+      GD.Print(id);
       Instance.Progress.EquippedHat = id;
     }
     else if (cat == ItemCategory.Body)

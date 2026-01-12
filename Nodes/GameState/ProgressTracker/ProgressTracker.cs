@@ -18,25 +18,26 @@ public class ProgressInfo
       { ItemID.RubyKey, false },
       { ItemID.SaphKey, false },
       { ItemID.EmerKey, false },
-      { ItemID.Headlamp, false },
-      { ItemID.DiveMask, false },
-      { ItemID.TDGlasses, false },
+      { ItemID.ReadingGlasses, true },
+      { ItemID.Headlamp, true },
+      { ItemID.DiveMask, true },
+      { ItemID.TDGlasses, true },
       { ItemID.Sweater, true },
       { ItemID.Swimsuit, true },
       { ItemID.WinterCoat, false },
-      { ItemID.Lighter, false },
+      { ItemID.Lighter, true },
       { ItemID.BoltCutters, false },
-      { ItemID.Fins, false },
+      { ItemID.Fins, true },
       { ItemID.WorkGloves, false },
-      { ItemID.Treads, false },
+      { ItemID.Treads, true },
       { ItemID.SpeedOne, false },
       { ItemID.SpeedTwo, false },
       { ItemID.SpeedThree, false },
     };
 
-    EquippedHat = ItemID.DiveMask;
+    EquippedHat = ItemID.ReadingGlasses;
     EquippedBody = ItemID.Sweater;
-    EquippedTool = ItemID.None;
+    EquippedTool = ItemID.Treads;
   }
 }
 
@@ -56,6 +57,13 @@ public partial class ProgressTracker : Node
 
     base._Ready();
   }
+
+    public override void _ExitTree()
+    {
+    EventBus.Instance.ItemPickup -= CollectItem;
+    EventBus.Instance.SelectItem -= EquipItem;
+    }
+
 
   public static void CollectItem(ItemID collectedItem)
   {
@@ -101,6 +109,7 @@ public partial class ProgressTracker : Node
     else if (cat == ItemCategory.Tool)
     {
       Instance.Progress.EquippedTool = id;
+      EventBus.Emit(EventBus.SignalName.ChangeEquippedItem, id);
     }
   }
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://08e4tfmy8v50"]
+[gd_scene load_steps=15 format=3 uid="uid://08e4tfmy8v50"]
 
 [ext_resource type="Script" uid="uid://cha1r8aqbcisq" path="res://Nodes/UI/Inventory/InventoryController.cs" id="1_37fcu"]
 [ext_resource type="PackedScene" uid="uid://br1caiktq7fbj" path="res://Nodes/UI/Inventory/InventoryItem.tscn" id="1_e0e0o"]
@@ -6,13 +6,16 @@
 [ext_resource type="Texture2D" uid="uid://csykdpvnnwy6a" path="res://Assets/2D/Inventory/Clothes/Sweater.png" id="3_kgjj0"]
 [ext_resource type="Theme" uid="uid://ce8jt1qspx28d" path="res://Assets/2D/Fonts/InventoryTheme.tres" id="4_303pr"]
 [ext_resource type="Texture2D" uid="uid://ifal8hdi6l8c" path="res://Assets/2D/Inventory/Clothes/Swimsuit.png" id="4_mcien"]
+[ext_resource type="Texture2D" uid="uid://cwcm4r4kn02uf" path="res://Assets/2D/Inventory/Head/Readers.png" id="4_ohmyt"]
 [ext_resource type="Texture2D" uid="uid://c8y8dvf0tr7qm" path="res://Assets/2D/Inventory/Head/Headlamp.png" id="5_303pr"]
+[ext_resource type="Texture2D" uid="uid://dssmvexgsppxx" path="res://Assets/2D/Inventory/Head/DiveMask.png" id="5_egdkt"]
 [ext_resource type="Texture2D" uid="uid://csh17ai24y78t" path="res://Assets/2D/Inventory/Items/Lighter.png" id="6_egdkt"]
+[ext_resource type="Texture2D" uid="uid://iq2n6gvgwbt3" path="res://Assets/2D/Inventory/Head/3DGlasses.png" id="7_b7edi"]
 [ext_resource type="Texture2D" uid="uid://bp3mv1q820fcy" path="res://Assets/2D/Inventory/Keys/RubyKey.png" id="7_ohmyt"]
 [ext_resource type="Texture2D" uid="uid://pl11cc0pnw3n" path="res://Assets/2D/Inventory/Keys/SaphKey.png" id="8_ibsio"]
+[ext_resource type="Texture2D" uid="uid://dviqibxavl8s0" path="res://Assets/2D/Inventory/Items/Fins.png" id="11_ibsio"]
 
 [node name="Inventory" type="CanvasLayer"]
-visible = false
 script = ExtResource("1_37fcu")
 
 [node name="Container" type="Control" parent="."]
@@ -29,7 +32,7 @@ offset_right = 16.0
 offset_bottom = 32.0
 script = ExtResource("2_egdkt")
 
-[node name="Headlamp" parent="Container/Head" instance=ExtResource("1_e0e0o")]
+[node name="Readers" parent="Container/Head" instance=ExtResource("1_e0e0o")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -37,6 +40,20 @@ anchor_bottom = 0.0
 offset_left = 16.0
 offset_top = 16.0
 offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 1
+grow_vertical = 1
+ItemIcon = ExtResource("4_ohmyt")
+ID = 8
+
+[node name="Headlamp" parent="Container/Head" instance=ExtResource("1_e0e0o")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 48.0
+offset_top = 16.0
+offset_right = 48.0
 offset_bottom = 16.0
 grow_horizontal = 1
 grow_vertical = 1
@@ -48,12 +65,13 @@ layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 48.0
+offset_left = 80.0
 offset_top = 16.0
-offset_right = 48.0
+offset_right = 80.0
 offset_bottom = 16.0
 grow_horizontal = 1
 grow_vertical = 1
+ItemIcon = ExtResource("5_egdkt")
 ID = 6
 
 [node name="3DGlasses" parent="Container/Head" instance=ExtResource("1_e0e0o")]
@@ -61,12 +79,13 @@ layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 80.0
+offset_left = 112.0
 offset_top = 16.0
-offset_right = 80.0
+offset_right = 112.0
 offset_bottom = 16.0
 grow_horizontal = 1
 grow_vertical = 1
+ItemIcon = ExtResource("7_b7edi")
 ID = 7
 
 [node name="HeadLabel" type="RichTextLabel" parent="Container/Head"]
@@ -100,7 +119,7 @@ offset_right = 16.0
 offset_bottom = 16.0
 grow_horizontal = 1
 grow_vertical = 1
-ID = 10
+ID = 11
 Category = 1
 
 [node name="Sweater" parent="Container/Body" instance=ExtResource("1_e0e0o")]
@@ -115,7 +134,7 @@ offset_bottom = 16.0
 grow_horizontal = 1
 grow_vertical = 1
 ItemIcon = ExtResource("3_kgjj0")
-ID = 8
+ID = 9
 Category = 1
 
 [node name="Swimsuit" parent="Container/Body" instance=ExtResource("1_e0e0o")]
@@ -130,7 +149,7 @@ offset_bottom = 16.0
 grow_horizontal = 1
 grow_vertical = 1
 ItemIcon = ExtResource("4_mcien")
-ID = 9
+ID = 10
 Category = 1
 
 [node name="BodyLabel" type="RichTextLabel" parent="Container/Body"]
@@ -165,7 +184,7 @@ offset_right = 16.0
 offset_bottom = 112.0
 grow_horizontal = 1
 grow_vertical = 1
-ID = 12
+ID = 13
 Category = 2
 metadata/_edit_use_anchors_ = true
 
@@ -182,7 +201,7 @@ offset_bottom = 112.0
 grow_horizontal = 1
 grow_vertical = 1
 ItemIcon = ExtResource("6_egdkt")
-ID = 11
+ID = 12
 Category = 2
 metadata/_edit_use_anchors_ = true
 
@@ -198,7 +217,26 @@ offset_right = 80.0
 offset_bottom = 112.0
 grow_horizontal = 1
 grow_vertical = 1
-ID = 13
+ItemIcon = ExtResource("11_ibsio")
+ID = 14
+Category = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Treads" parent="Container/Tools" instance=ExtResource("1_e0e0o")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 2.0
+anchor_top = -6.0
+anchor_right = 2.0
+anchor_bottom = -6.0
+offset_left = 80.0
+offset_top = 112.0
+offset_right = 80.0
+offset_bottom = 112.0
+grow_horizontal = 1
+grow_vertical = 1
+ItemIcon = ExtResource("6_egdkt")
+ID = 15
 Category = 2
 metadata/_edit_use_anchors_ = true
 
@@ -216,9 +254,9 @@ autowrap_mode = 0
 
 [node name="Keys" type="Control" parent="Container"]
 anchors_preset = 0
-offset_left = 112.0
+offset_left = 144.0
 offset_top = 16.0
-offset_right = 128.0
+offset_right = 160.0
 offset_bottom = 32.0
 script = ExtResource("2_egdkt")
 Category = 3
@@ -281,10 +319,10 @@ autowrap_mode = 0
 
 [node name="Upgrades" type="Control" parent="Container"]
 anchors_preset = 0
-offset_left = 224.0
-offset_top = 16.0
-offset_right = 240.0
-offset_bottom = 32.0
+offset_left = 112.0
+offset_top = 64.0
+offset_right = 128.0
+offset_bottom = 80.0
 script = ExtResource("2_egdkt")
 Category = 4
 

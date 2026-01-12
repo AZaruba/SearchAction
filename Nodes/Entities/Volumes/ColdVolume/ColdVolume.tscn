@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfllvjutouh7h"]
+
+[ext_resource type="Script" uid="uid://llcacajkjeue" path="res://Nodes/Entities/Volumes/ColdVolume/ColdVolume.cs" id="1_5xmlu"]
+
+[node name="ColdVolume" type="Area3D"]
+collision_layer = 128
+script = ExtResource("1_5xmlu")

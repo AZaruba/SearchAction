@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://t622wlat3n41"]
+
+[ext_resource type="Script" uid="uid://cd771xkg5it5l" path="res://Nodes/Entities/Volumes/IceVolume/IceVolume.cs" id="1_8p3pw"]
+
+[node name="IceVolume" type="Area3D"]
+collision_layer = 64
+monitorable = false
+script = ExtResource("1_8p3pw")
+
+[connection signal="body_entered" from="." to="." method="OnPlayerEntered"]
+[connection signal="body_exited" from="." to="." method="OnPlayerExited"]

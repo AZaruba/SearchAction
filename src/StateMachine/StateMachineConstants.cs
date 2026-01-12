@@ -9,6 +9,7 @@ namespace StateManagement {
    ENTER_WATER,
    LEAVE_WATER,
    SLIDE,
+   END_SLIDE,
    MOUNT,
    DISMOUNT,
    FALL,

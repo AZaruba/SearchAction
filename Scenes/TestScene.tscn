@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bsvcsug2emh60"]
+[gd_scene load_steps=18 format=3 uid="uid://bsvcsug2emh60"]
 
 [ext_resource type="Sky" uid="uid://ble1xcqnre6ho" path="res://Assets/Skybox/NightSky.tres" id="1_qsjrb"]
 [ext_resource type="PackedScene" uid="uid://c7ppsx32tqpyq" path="res://Assets/Models/Environments/TestHouse.tscn" id="2_8k7wh"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ccglv7aoo0nlw" path="res://Assets/Models/Entities/ItemBox/ItemBox.tscn" id="8_6xh1p"]
 [ext_resource type="Texture2D" uid="uid://pl11cc0pnw3n" path="res://Assets/2D/Inventory/Keys/SaphKey.png" id="9_5rbs6"]
 [ext_resource type="PackedScene" uid="uid://c1sxxkcovj6rq" path="res://Nodes/Entities/Volumes/WaterVolume/WaterVolume.tscn" id="10_201fe"]
+[ext_resource type="PackedScene" uid="uid://t622wlat3n41" path="res://Nodes/Entities/Volumes/IceVolume/IceVolume.tscn" id="11_xjl2p"]
 
 [sub_resource type="Environment" id="Environment_c264a"]
 background_mode = 2
@@ -33,13 +34,16 @@ albedo_color = Color(0.17280002, 0.4372799, 0.72, 0.39607844)
 [sub_resource type="BoxShape3D" id="BoxShape3D_201fe"]
 size = Vector3(16, 4, 28)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ytmxh"]
+size = Vector3(4, 3, 0.5)
+
 [node name="Root" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_c264a")
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("4_iufkg")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -25, 1, -80)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.7149506, 1, -0.86637545)
 collision_mask = 263
 floor_constant_speed = true
 floor_max_angle = 1.3089969
@@ -109,7 +113,6 @@ omni_range = 10.0
 omni_attenuation = 0.7
 
 [node name="DebugLog" parent="." instance=ExtResource("4_0f5h7")]
-offset_left = -1.0
 
 [node name="Mansion" parent="." instance=ExtResource("5_0f5h7")]
 
@@ -134,13 +137,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2, 8, -5)
 
 [node name="LibraryDoor" parent="Doors" instance=ExtResource("7_c264a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.199999, 0, -19)
-requiredItem = 1
+requiredItem = 2
 
 [node name="Inventory" parent="." instance=ExtResource("7_6xh1p")]
 
 [node name="TestItemBox" parent="." instance=ExtResource("8_6xh1p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -3)
-Item = 6
+Item = 2
 Icon = ExtResource("9_5rbs6")
 
 [node name="WaterVolume" parent="." node_paths=PackedStringArray("Volume") instance=ExtResource("10_201fe")]
@@ -163,3 +166,23 @@ collision_layer = 256
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WaterVolume/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
 shape = SubResource("BoxShape3D_201fe")
+
+[node name="ForwardGardenIce" parent="." node_paths=PackedStringArray("Destination") instance=ExtResource("11_xjl2p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, -32)
+Destination = NodePath("Destination")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ForwardGardenIce"]
+shape = SubResource("BoxShape3D_ytmxh")
+
+[node name="Destination" type="Node3D" parent="ForwardGardenIce"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
+
+[node name="BackGardenIce" parent="." node_paths=PackedStringArray("Destination") instance=ExtResource("11_xjl2p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, -39)
+Destination = NodePath("Destination")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BackGardenIce"]
+shape = SubResource("BoxShape3D_ytmxh")
+
+[node name="Destination" type="Node3D" parent="BackGardenIce"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)

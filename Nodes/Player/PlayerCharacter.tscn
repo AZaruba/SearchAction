@@ -12,7 +12,7 @@ shader_parameter/fog_color = Color(0, 0.4833331, 1, 0.5019608)
 
 [node name="PlayerCharacter" type="CharacterBody3D" node_paths=PackedStringArray("WaterOverlay")]
 physics_interpolation_mode = 1
-collision_mask = 7
+collision_mask = 199
 script = ExtResource("1_5w4vw")
 Data = ExtResource("2_8pxfe")
 WaterOverlay = NodePath("WaterEffect")

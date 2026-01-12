@@ -28,6 +28,12 @@ public partial class InventoryItem : TextureButton
 		}
 	}
 
+    public override void _ExitTree()
+    {
+		EventBus.Instance.ItemPickup -= OnItemPickup;
+    }
+
+
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{

@@ -13,6 +13,7 @@ public partial class PlayerCharacter : CharacterBody3D
   public override void _Ready()
   {
     InitData();
+    InitMessages();
     InitStateMachine();
     base._Ready();
   }
@@ -33,7 +34,6 @@ public partial class PlayerCharacter : CharacterBody3D
     
     // apply state actions
     ProcessState((float)delta);
-    DebugLog.LogToScreen($"State {StateMachine.GetCurrentState().Key()}", 3);
 
     // synchronize engine
 
@@ -44,38 +44,12 @@ public partial class PlayerCharacter : CharacterBody3D
     MoveAndSlide();
   }
 
-  private void InitData()
-  {
-    Data.CurrentVelocity = Vector3.Zero;
-    Data.Position = Position;
-    Data.CurrentRotationRate = 0;
-    Data.CurrentGroundNormal = GetFloorNormal();
-    Data.CurrentDirection = Basis;
-    Data.SwimmingRate = Vector3.Zero;
-    Data.WaterVolumeSurface = Vector3.Zero;
-  }
-
-  private void InitStateMachine()
-  {
-    StateMachine = new StateMachine<IPlayerState>();
-    StateMachine.AddState(StateManagement.State.GROUNDED, new PlayerGroundedState(StateManagement.State.GROUNDED, Data));
-    StateMachine.AddState(StateManagement.State.SWIMMING,new PlayerSwimmingState(StateManagement.State.SWIMMING, Data));
-    StateMachine.AddState(StateManagement.State.FALLING,new PlayerFallingState(StateManagement.State.FALLING, Data));
-    StateMachine.AddTransition(StateManagement.State.GROUNDED, StateManagement.Command.ENTER_WATER, StateManagement.State.SWIMMING);
-    StateMachine.AddTransition(StateManagement.State.FALLING, StateManagement.Command.ENTER_WATER, StateManagement.State.SWIMMING);
-    StateMachine.AddTransition(StateManagement.State.SWIMMING, StateManagement.Command.LEAVE_WATER, StateManagement.State.GROUNDED);
-    StateMachine.AddTransition(StateManagement.State.GROUNDED, StateManagement.Command.FALL, StateManagement.State.FALLING);
-    StateMachine.AddTransition(StateManagement.State.FALLING, StateManagement.Command.LAND, StateManagement.State.GROUNDED);
-    StateMachine.Start(StateManagement.State.GROUNDED);
-  }
-
   private void UpdateState()
   {
     if (MotionMode == MotionModeEnum.Grounded)
     {
       if (!IsOnFloor())
       {
-        DebugLog.LogToScreen($"But when we transition it is {MotionMode}", 2);
         StateMachine.Execute(StateManagement.Command.FALL);
       }
       else if (MotionMode == MotionModeEnum.Grounded)
@@ -104,6 +78,10 @@ public partial class PlayerCharacter : CharacterBody3D
     {
       WaterOverlay.Visible = Position.Y < Data.WaterVolumeSurface.Y;
     }
+    if (Data.Position.DistanceSquaredTo(Data.SlidingTarget) < 1.1f)
+    {
+      StateMachine.Execute(StateManagement.Command.END_SLIDE);
+    }
   }
 
   private void CastInteractionRay()
@@ -126,8 +104,6 @@ public partial class PlayerCharacter : CharacterBody3D
   {
     Data.WaterVolumeSurface = desiredHeight;
     MotionMode = MotionModeEnum.Floating;
-    DebugLog.LogToScreen($"Got To Motion Mode {MotionMode}");
-    GD.Print($"Got To Motion Mode {MotionMode}");
     StateMachine.Execute(StateManagement.Command.ENTER_WATER);
   }
 
@@ -136,5 +112,104 @@ public partial class PlayerCharacter : CharacterBody3D
     MotionMode = MotionModeEnum.Grounded;
     Data.WaterVolumeSurface = Vector3.Zero;
     StateMachine.Execute(StateManagement.Command.LEAVE_WATER);
+  }
+
+  public void OnIceVolumeEntered(Vector3 targetLocation)
+  {
+    if (ProgressTracker.GetEquippedItem(ItemCategory.Tool) == ItemID.Treads)
+    {
+      return;
+    }
+
+    // only if sliding is NOT already happening
+    if (StateMachine.GetCurrentState().Key() != StateManagement.State.SLIDING)
+    {
+      // future note - what about multi step sliding?
+      Data.SlidingTarget = targetLocation;
+    }
+    StateMachine.Execute(StateManagement.Command.SLIDE);
+  }
+
+  public void OnIceVolumeExited()
+  {
+    
+  }
+
+  public void OnColdVolumeEntered(Vector3 resetLocation)
+  {
+    
+  }
+
+  public void OnColdVolumeExited()
+  {
+    
+  }
+
+  private void OnEquipItem(ItemID item)
+  {
+    if (item == ItemID.Fins)
+    {
+      Data.CurrentToolSwimModifier = 1.5f;
+      Data.CurrentToolMoveModifier = 0.1f;
+    }
+    else if (item == ItemID.Treads)
+    {
+      Data.CurrentToolSwimModifier = 0.1f;
+      Data.CurrentToolMoveModifier = 0.6f;
+    }
+    else
+    {
+      Data.CurrentToolSwimModifier = 1;
+      Data.CurrentToolMoveModifier = 0.7f;
+    }
+    DebugLog.LogToScreen($"Current Move Mod: {Data.CurrentToolMoveModifier}");
+    DebugLog.LogToScreen($"Current Swim Mod: {Data.CurrentToolSwimModifier}",2);
+    DebugLog.LogToScreen($"Current Tool: {item}",3);
+  }
+  
+
+  private void InitData()
+  {
+    Data.CurrentVelocity = Vector3.Zero;
+    Data.Position = Position;
+    Data.CurrentRotationRate = 0;
+    Data.CurrentGroundNormal = GetFloorNormal();
+    Data.CurrentDirection = Basis;
+    Data.SwimmingRate = Vector3.Zero;
+    Data.WaterVolumeSurface = Vector3.Zero;
+    Data.CurrentTimeInCold = 0;
+    Data.SlidingTarget = Vector3.Zero;
+  }
+
+  private void InitMessages()
+  {
+    EventBus.Instance.ChangeEquippedItem += OnEquipItem;
+  }
+
+  private void InitStateMachine()
+  {
+    StateMachine = new StateMachine<IPlayerState>();
+    StateMachine.AddState(StateManagement.State.GROUNDED, new PlayerGroundedState(StateManagement.State.GROUNDED, Data));
+    StateMachine.AddState(StateManagement.State.SWIMMING, new PlayerSwimmingState(StateManagement.State.SWIMMING, Data));
+    StateMachine.AddState(StateManagement.State.FALLING, new PlayerFallingState(StateManagement.State.FALLING, Data));
+    StateMachine.AddState(StateManagement.State.SLIDING, new PlayerSlidingState(StateManagement.State.SLIDING, Data));
+
+    StateMachine.AddTransition(StateManagement.State.GROUNDED, StateManagement.Command.ENTER_WATER, StateManagement.State.SWIMMING);
+    StateMachine.AddTransition(StateManagement.State.GROUNDED, StateManagement.Command.SLIDE, StateManagement.State.SLIDING);
+    StateMachine.AddTransition(StateManagement.State.GROUNDED, StateManagement.Command.FALL, StateManagement.State.FALLING);
+
+    StateMachine.AddTransition(StateManagement.State.FALLING, StateManagement.Command.LAND, StateManagement.State.GROUNDED);
+    StateMachine.AddTransition(StateManagement.State.FALLING, StateManagement.Command.ENTER_WATER, StateManagement.State.SWIMMING);
+
+    StateMachine.AddTransition(StateManagement.State.SWIMMING, StateManagement.Command.LEAVE_WATER, StateManagement.State.GROUNDED);
+
+    StateMachine.AddTransition(StateManagement.State.SLIDING, StateManagement.Command.END_SLIDE, StateManagement.State.GROUNDED);
+
+    StateMachine.Start(StateManagement.State.GROUNDED);
+  }
+  
+  public override void _ExitTree()
+  {
+    EventBus.Instance.ChangeEquippedItem -= OnEquipItem;
   }
 }

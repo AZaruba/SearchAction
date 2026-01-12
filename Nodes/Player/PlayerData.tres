@@ -9,3 +9,5 @@ MoveAcceleration = 30.0
 TurnSpeed = 2.5
 TurnAcceleration = 20.0
 Gravity = 9.8
+SlideVelocity = 9.0
+ColdResetTime = 3.0

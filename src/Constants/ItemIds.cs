@@ -20,6 +20,7 @@ namespace Authorship.src
     Headlamp,
     DiveMask,
     TDGlasses,
+    ReadingGlasses,
     Sweater,
     Swimsuit,
     WinterCoat,

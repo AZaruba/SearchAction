@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bsvcsug2emh60"]
+[gd_scene load_steps=19 format=3 uid="uid://bsvcsug2emh60"]
 
 [ext_resource type="Sky" uid="uid://ble1xcqnre6ho" path="res://Assets/Skybox/NightSky.tres" id="1_qsjrb"]
 [ext_resource type="PackedScene" uid="uid://c7ppsx32tqpyq" path="res://Assets/Models/Environments/TestHouse.tscn" id="2_8k7wh"]
@@ -32,7 +32,10 @@ shading_mode = 0
 albedo_color = Color(0.17280002, 0.4372799, 0.72, 0.39607844)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_201fe"]
-size = Vector3(16, 4, 28)
+size = Vector3(16, 4, 38)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hctok"]
+size = Vector3(8, 2, 18)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ytmxh"]
 size = Vector3(4, 3, 0.5)
@@ -156,7 +159,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -5.3, 0)
 shape = SubResource("BoxShape3D_xjl2p")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WaterVolume"]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 25, 0, -0.3, 0)
+transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 30, 0, -0.3, -3)
 mesh = SubResource("PlaneMesh_xjl2p")
 surface_material_override/0 = SubResource("StandardMaterial3D_201fe")
 
@@ -164,8 +167,12 @@ surface_material_override/0 = SubResource("StandardMaterial3D_201fe")
 collision_layer = 256
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WaterVolume/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
 shape = SubResource("BoxShape3D_201fe")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="WaterVolume/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -24)
+shape = SubResource("BoxShape3D_hctok")
 
 [node name="ForwardGardenIce" parent="." node_paths=PackedStringArray("Destination") instance=ExtResource("11_xjl2p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, -32)

@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://dlk3re05kefyw"]
+
+[ext_resource type="Material" uid="uid://cxdmexivrtiah" path="res://Assets/Particles/SnowfallMat.tres" id="1_w8xlr"]
+[ext_resource type="Script" uid="uid://baa1aaubk4n8c" path="res://Assets/Particles/Snowfall.cs" id="2_4l513"]
+
+[sub_resource type="Curve" id="Curve_8xqgx"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.92899406, 0.3820225), -2.559355, -2.559355, 0, 0, Vector2(1, 0), -5.933988, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_w8xlr"]
+curve = SubResource("Curve_8xqgx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8xqgx"]
+lifetime_randomness = 0.5
+emission_shape_offset = Vector3(0, 8, 0)
+emission_shape = 3
+emission_box_extents = Vector3(20, 0.1, 20)
+angle_min = -44.99999
+angle_max = 45.00001
+velocity_pivot = Vector3(1, 0, 1)
+direction = Vector3(0, -1, 0)
+spread = 60.0
+initial_velocity_min = 2.0
+initial_velocity_max = 8.0
+gravity = Vector3(0, -6, 0)
+damping_min = 2.0
+damping_max = 6.0000005
+scale_min = 0.19999999
+scale_curve = SubResource("CurveTexture_w8xlr")
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_4l513"]
+material = ExtResource("1_w8xlr")
+size = Vector2(0.2, 0.2)
+
+[node name="Snowfall" type="GPUParticles3D"]
+transform = Transform3D(1, 0, 0, 0, 0.9999965, -0.0026528975, 0, 0.0026528975, 0.9999965, 0, 0, 0)
+cast_shadow = 0
+amount = 5000
+lifetime = 8.0
+randomness = 1.0
+visibility_aabb = AABB(-38.105312, -165.69182, -39.955124, 74.38356, 173.98795, 78.73056)
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_8xqgx")
+draw_pass_1 = SubResource("QuadMesh_4l513")
+script = ExtResource("2_4l513")

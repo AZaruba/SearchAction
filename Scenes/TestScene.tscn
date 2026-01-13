@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://bsvcsug2emh60"]
+[gd_scene load_steps=20 format=3 uid="uid://bsvcsug2emh60"]
 
 [ext_resource type="Sky" uid="uid://ble1xcqnre6ho" path="res://Assets/Skybox/NightSky.tres" id="1_qsjrb"]
 [ext_resource type="PackedScene" uid="uid://c7ppsx32tqpyq" path="res://Assets/Models/Environments/TestHouse.tscn" id="2_8k7wh"]
+[ext_resource type="PackedScene" uid="uid://dlk3re05kefyw" path="res://Assets/Particles/Snowfall.tscn" id="3_ytmxh"]
 [ext_resource type="PackedScene" uid="uid://bw0i4ae03id06" path="res://Nodes/Debug/Logging/DebugLog.tscn" id="4_0f5h7"]
 [ext_resource type="PackedScene" uid="uid://dsk41q2rvkrai" path="res://Nodes/Player/PlayerCharacter.tscn" id="4_iufkg"]
 [ext_resource type="PackedScene" uid="uid://f7a4itxgeb4k" path="res://Assets/Models/Environments/mansion.tscn" id="5_0f5h7"]
@@ -57,6 +58,8 @@ light_color = Color(1, 0.88666666, 0.83, 1)
 light_energy = 3.0
 omni_range = 14.0
 omni_attenuation = 2.0
+
+[node name="Snowfall" parent="PlayerCharacter" instance=ExtResource("3_ytmxh")]
 
 [node name="TestHouse" parent="." instance=ExtResource("2_8k7wh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 491.03073, 0, 0)
@@ -143,6 +146,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.199999, 0, -19)
 requiredItem = 2
 
 [node name="Inventory" parent="." instance=ExtResource("7_6xh1p")]
+visible = false
 
 [node name="TestItemBox" parent="." instance=ExtResource("8_6xh1p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -3)
@@ -193,3 +197,33 @@ shape = SubResource("BoxShape3D_ytmxh")
 
 [node name="Destination" type="Node3D" parent="BackGardenIce"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+
+[node name="ParticleColliders" type="Node3D" parent="."]
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="ParticleColliders"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 4, 5)
+size = Vector3(32, 8, 14)
+
+[node name="GPUParticlesCollisionBox3D2" type="GPUParticlesCollisionBox3D" parent="ParticleColliders"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -8, 4, -36)
+size = Vector3(52, 8, 72)
+
+[node name="GPUParticlesCollisionBox3D3" type="GPUParticlesCollisionBox3D" parent="ParticleColliders"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 28.000002, 4, -57)
+size = Vector3(20, 8, 30)
+
+[node name="GPUParticlesCollisionBox3D6" type="GPUParticlesCollisionBox3D" parent="ParticleColliders"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -20, 4, -88)
+size = Vector3(28, 8, 33)
+
+[node name="GPUParticlesCollisionBox3D4" type="GPUParticlesCollisionBox3D" parent="ParticleColliders"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 28.000002, 4, -8)
+size = Vector3(20, 8, 44)
+
+[node name="GPUParticlesCollisionBox3D5" type="GPUParticlesCollisionBox3D" parent="ParticleColliders"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -24.999998, 4, -8)
+size = Vector3(18, 8, 44)
+
+[node name="GPUParticlesCollisionBox3D7" type="GPUParticlesCollisionBox3D" parent="ParticleColliders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -50)
+size = Vector3(200, 2, 200)

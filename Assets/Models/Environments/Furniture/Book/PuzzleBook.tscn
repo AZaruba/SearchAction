@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvy3pn8o1yakq"]
+
+[ext_resource type="PackedScene" uid="uid://bmry85luga2kh" path="res://Assets/Models/Environments/Furniture/Book/Book.blend" id="1_7dtja"]
+[ext_resource type="Material" uid="uid://by3m0k475nubu" path="res://Assets/Models/Environments/Furniture/Book/BookMat.tres" id="2_aw40u"]
+[ext_resource type="Script" uid="uid://dugsl3yfdwi5o" path="res://Assets/Models/Environments/Furniture/Book/PuzzleBook.cs" id="2_vvmxg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ekhxc"]
+size = Vector3(0.7, 0.9, 0.2)
+
+[node name="PuzzleBook" instance=ExtResource("1_7dtja")]
+
+[node name="Book" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_aw40u")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Book" index="0"]
+collision_layer = 16
+script = ExtResource("2_vvmxg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Book/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9802322e-08, 0.45, 2.9802322e-08)
+shape = SubResource("BoxShape3D_ekhxc")
+
+[connection signal="input_event" from="Book/StaticBody3D" to="Book/StaticBody3D" method="OnMouseInput"]

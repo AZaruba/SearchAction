@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://b3u6sx4bs6knv"]
+
+[ext_resource type="PackedScene" uid="uid://cv4ruli83200r" path="res://Assets/Models/Environments/Furniture/Bookshelf/Bookshelf.blend" id="1_mgnk6"]
+[ext_resource type="Material" uid="uid://dm2pcv4jx40r6" path="res://Assets/Models/Environments/Furniture/Bookshelf/EnvObjectMaterial.tres" id="2_nfguh"]
+[ext_resource type="PackedScene" uid="uid://ceau0pqiaxdt3" path="res://Assets/Models/Environments/Furniture/BookRow/BookRow2.blend" id="3_b47f4"]
+[ext_resource type="PackedScene" uid="uid://pcvmm83yhioa" path="res://Assets/Models/Environments/Furniture/BookRow/BookRow.blend" id="4_il0te"]
+[ext_resource type="PackedScene" uid="uid://bwtqloolh820y" path="res://Assets/Models/Environments/Furniture/BookRow/BookStack.blend" id="5_man2x"]
+[ext_resource type="PackedScene" uid="uid://cvy3pn8o1yakq" path="res://Assets/Models/Environments/Furniture/Book/PuzzleBook.tscn" id="6_nfguh"]
+
+[node name="Bookshelf2" instance=ExtResource("1_mgnk6")]
+
+[node name="Bookshelf" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_nfguh")
+
+[node name="StaticBody3D" parent="Bookshelf" index="0"]
+input_ray_pickable = false
+
+[node name="UnusedBooks" type="Node3D" parent="." index="1"]
+
+[node name="BookRow2" parent="UnusedBooks" index="0" instance=ExtResource("3_b47f4")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.1, -0.99999994)
+
+[node name="BookRow4" parent="UnusedBooks" index="1" instance=ExtResource("3_b47f4")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.1, 0.9)
+
+[node name="BookRow5" parent="UnusedBooks" index="2" instance=ExtResource("3_b47f4")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.1, 1.8499999)
+
+[node name="BookRow" parent="UnusedBooks" index="3" instance=ExtResource("4_il0te")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.1, -0.1)
+
+[node name="BookRow3" parent="UnusedBooks" index="4" instance=ExtResource("3_b47f4")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.70000005, -0.8999999)
+
+[node name="BookRow7" parent="UnusedBooks" index="5" instance=ExtResource("3_b47f4")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.70000005, 1.8499999)
+
+[node name="BookRow9" parent="UnusedBooks" index="6" instance=ExtResource("3_b47f4")]
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, 1.509958e-07, 0, 1, 0, 1.3000001, -1.8)
+
+[node name="BookRow11" parent="UnusedBooks" index="7" instance=ExtResource("3_b47f4")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.3000001, 1.8499999)
+
+[node name="BookRow12" parent="UnusedBooks" index="8" instance=ExtResource("4_il0te")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.3000001, -0.1)
+
+[node name="BookRow13" parent="UnusedBooks" index="9" instance=ExtResource("3_b47f4")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.9000001, -0.99999994)
+
+[node name="BookRow14" parent="UnusedBooks" index="10" instance=ExtResource("3_b47f4")]
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, 1.509958e-07, 0, 1, 0, 1.9000001, -0.90000015)
+
+[node name="BookRow15" parent="UnusedBooks" index="11" instance=ExtResource("3_b47f4")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.9000001, 1.8499999)
+
+[node name="BookRow16" parent="UnusedBooks" index="12" instance=ExtResource("4_il0te")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.9000001, 0.9)
+
+[node name="BookStack" parent="UnusedBooks" index="13" instance=ExtResource("5_man2x")]
+transform = Transform3D(-0.64278764, 0, 0.76604444, 0, 1, 0, -0.76604444, 0, -0.64278764, 0, 0.7, -0.4)
+
+[node name="PuzzleBook" parent="." index="2" instance=ExtResource("6_nfguh")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.3000001, 0.6)

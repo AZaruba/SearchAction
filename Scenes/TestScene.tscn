@@ -1,7 +1,6 @@
-[gd_scene load_steps=20 format=3 uid="uid://bsvcsug2emh60"]
+[gd_scene load_steps=19 format=3 uid="uid://bsvcsug2emh60"]
 
 [ext_resource type="Sky" uid="uid://ble1xcqnre6ho" path="res://Assets/Skybox/NightSky.tres" id="1_qsjrb"]
-[ext_resource type="PackedScene" uid="uid://c7ppsx32tqpyq" path="res://Assets/Models/Environments/TestHouse.tscn" id="2_8k7wh"]
 [ext_resource type="PackedScene" uid="uid://dlk3re05kefyw" path="res://Assets/Particles/Snowfall.tscn" id="3_ytmxh"]
 [ext_resource type="PackedScene" uid="uid://bw0i4ae03id06" path="res://Nodes/Debug/Logging/DebugLog.tscn" id="4_0f5h7"]
 [ext_resource type="PackedScene" uid="uid://dsk41q2rvkrai" path="res://Nodes/Player/PlayerCharacter.tscn" id="4_iufkg"]
@@ -9,8 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://08e4tfmy8v50" path="res://Nodes/UI/Inventory/Inventory.tscn" id="7_6xh1p"]
 [ext_resource type="PackedScene" uid="uid://bhjeu6bj48qky" path="res://Assets/Models/Entities/SingleDoor/SingleDoor.tscn" id="7_c264a"]
 [ext_resource type="PackedScene" uid="uid://ccglv7aoo0nlw" path="res://Assets/Models/Entities/ItemBox/ItemBox.tscn" id="8_6xh1p"]
-[ext_resource type="Texture2D" uid="uid://pl11cc0pnw3n" path="res://Assets/2D/Inventory/Keys/SaphKey.png" id="9_5rbs6"]
 [ext_resource type="PackedScene" uid="uid://c1sxxkcovj6rq" path="res://Nodes/Entities/Volumes/WaterVolume/WaterVolume.tscn" id="10_201fe"]
+[ext_resource type="Texture2D" uid="uid://iq2n6gvgwbt3" path="res://Assets/2D/Inventory/Head/3DGlasses.png" id="10_ytmxh"]
 [ext_resource type="PackedScene" uid="uid://t622wlat3n41" path="res://Nodes/Entities/Volumes/IceVolume/IceVolume.tscn" id="11_xjl2p"]
 
 [sub_resource type="Environment" id="Environment_c264a"]
@@ -47,76 +46,22 @@ size = Vector3(4, 3, 0.5)
 environment = SubResource("Environment_c264a")
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("4_iufkg")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.7149506, 1, -0.86637545)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 21.71495, 1, -22.866375)
 collision_mask = 263
 floor_constant_speed = true
 floor_max_angle = 1.3089969
 floor_snap_length = 0.2
 
 [node name="OmniLight3D" type="OmniLight3D" parent="PlayerCharacter"]
+visible = false
 light_color = Color(1, 0.88666666, 0.83, 1)
 light_energy = 3.0
 omni_range = 14.0
 omni_attenuation = 2.0
 
 [node name="Snowfall" parent="PlayerCharacter" instance=ExtResource("3_ytmxh")]
-
-[node name="TestHouse" parent="." instance=ExtResource("2_8k7wh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 491.03073, 0, 0)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="TestHouse"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 3, 3)
-light_energy = 5.0
-light_volumetric_fog_energy = 0.0
-light_bake_mode = 1
-omni_attenuation = 2.0
-
-[node name="OmniLight3D2" type="OmniLight3D" parent="TestHouse"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 3, 9)
-light_energy = 5.0
-light_volumetric_fog_energy = 0.0
-light_bake_mode = 1
-omni_attenuation = 2.0
-
-[node name="SpotLight3D" type="SpotLight3D" parent="TestHouse"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 7, 0)
-light_energy = 16.0
-spot_range = 20.0
-spot_angle = 50.0
-spot_angle_attenuation = 0.7071071
-
-[node name="SpotLight3D2" type="SpotLight3D" parent="TestHouse"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -19, 8, 5)
-light_color = Color(0, 1, 1, 1)
-light_energy = 3.969
-light_bake_mode = 1
-spot_range = 14.193
-spot_attenuation = 0.48
-spot_angle = 18.09
-spot_angle_attenuation = 0.20306318
-
-[node name="MainHallLights" type="Node3D" parent="TestHouse"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -491, 0, 0)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="TestHouse/MainHallLights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-light_color = Color(1, 0.8351667, 0.57, 1)
-omni_range = 20.0
-omni_attenuation = 0.7
-
-[node name="OmniLight3D2" type="OmniLight3D" parent="TestHouse/MainHallLights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2, 9)
-light_color = Color(1, 0.8351667, 0.57, 1)
-light_energy = 0.5
-omni_range = 10.0
-omni_attenuation = 0.7
-
-[node name="OmniLight3D3" type="OmniLight3D" parent="TestHouse/MainHallLights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, 9)
-light_color = Color(1, 0.8351667, 0.57, 1)
-light_energy = 0.5
-omni_range = 10.0
-omni_attenuation = 0.7
+transform = Transform3D(1, 0, 0, 0, 0.9999965, -0.0026528975, 0, 0.0026528975, 0.9999965, 0, 1, 0)
+visibility_aabb = AABB(-30.324068, -1.5484649, -28.909891, 57.440937, 12.82168, 56.40091)
 
 [node name="DebugLog" parent="." instance=ExtResource("4_0f5h7")]
 
@@ -126,20 +71,27 @@ omni_attenuation = 0.7
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 3, -76)
 omni_range = 69.556
 
+[node name="OmniLight3D2" type="OmniLight3D" parent="Mansion"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 5, -19)
+light_color = Color(1, 0.7593334, 0.62, 1)
+light_energy = 0.5
+omni_range = 4096.0
+omni_attenuation = 0.725
+
 [node name="Doors" type="Node" parent="."]
 
 [node name="PBClosetDoor" parent="Doors" instance=ExtResource("7_c264a")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -25, 8, -10.799996)
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -25, 6, -10.799996)
 
 [node name="PBBathroomDoor" parent="Doors" instance=ExtResource("7_c264a")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -25, 8, -18.799995)
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -25, 6, -18.799995)
 requiredItem = 1
 
 [node name="SideHallDoor" parent="Doors" instance=ExtResource("7_c264a")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 10.8, 0, 1)
 
 [node name="OfficeDoor" parent="Doors" instance=ExtResource("7_c264a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2, 8, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2, 6, -5)
 
 [node name="LibraryDoor" parent="Doors" instance=ExtResource("7_c264a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.199999, 0, -19)
@@ -149,9 +101,9 @@ requiredItem = 2
 visible = false
 
 [node name="TestItemBox" parent="." instance=ExtResource("8_6xh1p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, -36)
 Item = 2
-Icon = ExtResource("9_5rbs6")
+Icon = ExtResource("10_ytmxh")
 
 [node name="WaterVolume" parent="." node_paths=PackedStringArray("Volume") instance=ExtResource("10_201fe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -71)
@@ -201,28 +153,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
 [node name="ParticleColliders" type="Node3D" parent="."]
 
 [node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="ParticleColliders"]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 4, 5)
-size = Vector3(32, 8, 14)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 3, 5)
+size = Vector3(32, 6, 14)
 
 [node name="GPUParticlesCollisionBox3D2" type="GPUParticlesCollisionBox3D" parent="ParticleColliders"]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -8, 4, -36)
-size = Vector3(52, 8, 72)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -8.5, 6, -35.5)
+size = Vector3(51, 12, 71)
 
 [node name="GPUParticlesCollisionBox3D3" type="GPUParticlesCollisionBox3D" parent="ParticleColliders"]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 28.000002, 4, -57)
-size = Vector3(20, 8, 30)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 26.500002, 6, -56.5)
+size = Vector3(21, 12, 29)
 
 [node name="GPUParticlesCollisionBox3D6" type="GPUParticlesCollisionBox3D" parent="ParticleColliders"]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -20, 4, -88)
-size = Vector3(28, 8, 33)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -20, 6, -87.75)
+size = Vector3(28, 12, 33.5)
 
 [node name="GPUParticlesCollisionBox3D4" type="GPUParticlesCollisionBox3D" parent="ParticleColliders"]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 28.000002, 4, -8)
-size = Vector3(20, 8, 44)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 27.000002, 6, -8)
+size = Vector3(20, 12, 44)
 
 [node name="GPUParticlesCollisionBox3D5" type="GPUParticlesCollisionBox3D" parent="ParticleColliders"]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -24.999998, 4, -8)
-size = Vector3(18, 8, 44)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -24.999998, 6, -8)
+size = Vector3(18, 12, 44)
 
 [node name="GPUParticlesCollisionBox3D7" type="GPUParticlesCollisionBox3D" parent="ParticleColliders"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -50)

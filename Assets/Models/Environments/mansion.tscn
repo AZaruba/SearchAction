@@ -1,35 +1,51 @@
-[gd_scene load_steps=16 format=3 uid="uid://f7a4itxgeb4k"]
+[gd_scene load_steps=4 format=3 uid="uid://f7a4itxgeb4k"]
 
 [ext_resource type="PackedScene" uid="uid://dy2wjiojafjcy" path="res://Assets/Models/Environments/Mansion.blend" id="1_emiwf"]
-[ext_resource type="Material" uid="uid://bpa1ok4ay8yew" path="res://Assets/Models/Environments/WoodFloor.tres" id="2_0paiu"]
-[ext_resource type="Material" uid="uid://bvyfrcuiyp6n1" path="res://Assets/Models/Environments/TileFloor.tres" id="3_hx06e"]
-[ext_resource type="Material" uid="uid://ce4e4s1xem1uo" path="res://Assets/Models/Environments/CarpetFloor.tres" id="4_r2pl6"]
-[ext_resource type="Material" uid="uid://k61pnwt28ixq" path="res://Assets/Models/Environments/ConcreteFloor.tres" id="5_w2w46"]
-[ext_resource type="Material" uid="uid://b2ia3psqu7mvs" path="res://Assets/Models/Environments/PlasterWall.tres" id="6_crwrj"]
-[ext_resource type="Material" uid="uid://chpqa45hw0fkv" path="res://Assets/Models/Environments/WoodWall.tres" id="7_2biiv"]
-[ext_resource type="Material" uid="uid://dtd727lnm16mn" path="res://Assets/Models/Environments/TileWall.tres" id="8_x573r"]
-[ext_resource type="Material" uid="uid://k3sjks67q823" path="res://Assets/Models/Environments/ConcreteWall.tres" id="9_gpxs5"]
-[ext_resource type="Material" uid="uid://c38tdog4el80" path="res://Assets/Models/Environments/Stairs.tres" id="10_o20ms"]
-[ext_resource type="Material" uid="uid://dpmecfdyxv7mk" path="res://Assets/Models/Environments/PoolTile.tres" id="11_dfi2u"]
-[ext_resource type="Material" uid="uid://bgtlr1xyb0a1v" path="res://Assets/Models/Environments/Ceiling.tres" id="12_pflpx"]
-[ext_resource type="Material" uid="uid://ubywv3edrmiu" path="res://Assets/Models/Environments/Exterior.tres" id="13_mwdgg"]
-[ext_resource type="Material" uid="uid://i0gcguqd2m1b" path="res://Assets/Models/Environments/ExteriorFloor.tres" id="14_p5xqx"]
-[ext_resource type="Material" uid="uid://cn0s3iin4rp21" path="res://Assets/Models/Environments/Window.tres" id="15_d62lx"]
+[ext_resource type="PackedScene" uid="uid://c4umls0ry084r" path="res://Assets/Models/Environments/Furniture/Bookshelf/Bookshelf.tscn" id="2_emiwf"]
+[ext_resource type="PackedScene" uid="uid://b3u6sx4bs6knv" path="res://Assets/Models/Environments/Furniture/Bookshelf/PuzzleBookshelf.tscn" id="3_vur0x"]
 
 [node name="Mansion" instance=ExtResource("1_emiwf")]
 
-[node name="House" parent="." index="0"]
-surface_material_override/0 = ExtResource("2_0paiu")
-surface_material_override/1 = ExtResource("3_hx06e")
-surface_material_override/2 = ExtResource("4_r2pl6")
-surface_material_override/3 = ExtResource("5_w2w46")
-surface_material_override/4 = ExtResource("6_crwrj")
-surface_material_override/5 = ExtResource("7_2biiv")
-surface_material_override/6 = ExtResource("8_x573r")
-surface_material_override/7 = ExtResource("9_gpxs5")
-surface_material_override/8 = ExtResource("10_o20ms")
-surface_material_override/9 = ExtResource("11_dfi2u")
-surface_material_override/10 = ExtResource("12_pflpx")
-surface_material_override/11 = ExtResource("13_mwdgg")
-surface_material_override/12 = ExtResource("14_p5xqx")
-surface_material_override/13 = ExtResource("15_d62lx")
+[node name="Bookshelves" type="Node" parent="." index="2"]
+
+[node name="Bookshelf" parent="Bookshelves" index="0" instance=ExtResource("2_emiwf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.3, 0, -26)
+
+[node name="Bookshelf2" parent="Bookshelves" index="1" instance=ExtResource("2_emiwf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.3, 0, -22)
+
+[node name="Bookshelf6" parent="Bookshelves" index="2" instance=ExtResource("2_emiwf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.3, 0, -12)
+
+[node name="Bookshelf3" parent="Bookshelves" index="3" instance=ExtResource("2_emiwf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.3, 2.5000002, -26)
+
+[node name="Bookshelf4" parent="Bookshelves" index="4" instance=ExtResource("2_emiwf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.3, 2.5000002, -22)
+
+[node name="Bookshelf7" parent="Bookshelves" index="5" instance=ExtResource("2_emiwf")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 29.3, 0, -16)
+
+[node name="Bookshelf8" parent="Bookshelves" index="6" instance=ExtResource("2_emiwf")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 29.3, 0, -12)
+
+[node name="Bookshelf9" parent="Bookshelves" index="7" instance=ExtResource("2_emiwf")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 29.3, 2.5000002, -16)
+
+[node name="Bookshelf11" parent="Bookshelves" index="8" instance=ExtResource("2_emiwf")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 29.3, 0, -20)
+
+[node name="Bookshelf12" parent="Bookshelves" index="9" instance=ExtResource("2_emiwf")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 29.3, 2.5000002, -20)
+
+[node name="Bookshelf13" parent="Bookshelves" index="10" instance=ExtResource("2_emiwf")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 29.3, 0, -26)
+
+[node name="Bookshelf14" parent="Bookshelves" index="11" instance=ExtResource("2_emiwf")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 29.3, 2.5000002, -26)
+
+[node name="Bookshelf10" parent="Bookshelves" index="12" instance=ExtResource("2_emiwf")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 29.3, 2.5000002, -12)
+
+[node name="Bookshelf2" parent="." index="3" instance=ExtResource("3_vur0x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.300001, 0, -16)

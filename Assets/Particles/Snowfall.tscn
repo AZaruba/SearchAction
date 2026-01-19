@@ -12,7 +12,7 @@ curve = SubResource("Curve_8xqgx")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8xqgx"]
 lifetime_randomness = 0.5
-emission_shape_offset = Vector3(0, 8, 0)
+emission_shape_offset = Vector3(0, 10, 0)
 emission_shape = 3
 emission_box_extents = Vector3(20, 0.1, 20)
 angle_min = -44.99999
@@ -41,7 +41,7 @@ cast_shadow = 0
 amount = 5000
 lifetime = 8.0
 randomness = 1.0
-visibility_aabb = AABB(-38.105312, -165.69182, -39.955124, 74.38356, 173.98795, 78.73056)
+visibility_aabb = AABB(-36.62193, -170.86769, -40.451317, 78.30534, 181.1667, 79.47345)
 transform_align = 1
 process_material = SubResource("ParticleProcessMaterial_8xqgx")
 draw_pass_1 = SubResource("QuadMesh_4l513")

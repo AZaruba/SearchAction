@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvt8y3l6fj7x4"
-path.s3tc="res://.godot/imported/Floor_Wood.png-3738dad4ad88921f0386de3017ac383b.s3tc.ctex"
-path.etc2="res://.godot/imported/Floor_Wood.png-3738dad4ad88921f0386de3017ac383b.etc2.ctex"
+uid="uid://dee2hky8frb21"
+path.s3tc="res://.godot/imported/TestBook.png-a0de8aeb945aa9daa4a5a72d50d8de86.s3tc.ctex"
+path.etc2="res://.godot/imported/TestBook.png-a0de8aeb945aa9daa4a5a72d50d8de86.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Textures/Floor_Wood.png"
-dest_files=["res://.godot/imported/Floor_Wood.png-3738dad4ad88921f0386de3017ac383b.s3tc.ctex", "res://.godot/imported/Floor_Wood.png-3738dad4ad88921f0386de3017ac383b.etc2.ctex"]
+source_file="res://Assets/Models/Environments/Furniture/Book/TestBook.png"
+dest_files=["res://.godot/imported/TestBook.png-a0de8aeb945aa9daa4a5a72d50d8de86.s3tc.ctex", "res://.godot/imported/TestBook.png-a0de8aeb945aa9daa4a5a72d50d8de86.etc2.ctex"]
 
 [params]
 

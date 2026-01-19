@@ -4,5 +4,5 @@
 resource_name = "Window"
 transparency = 1
 cull_mode = 2
-albedo_color = Color(0.9063318, 0.9063318, 0.9063318, 1)
+albedo_color = Color(0.91, 0.91, 0.91, 0)
 roughness = 0.5

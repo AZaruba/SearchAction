@@ -1,0 +1,38 @@
+[gd_resource type="VisualShader" load_steps=3 format=3 uid="uid://cqb1x81ow3m2u"]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_tgfkf"]
+output_port_for_preview = 0
+source = 5
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_dwmc3"]
+parameter_name = "Texture2DParameter"
+texture_filter = 1
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_disabled, vertex_lighting;
+
+uniform sampler2D Texture2DParameter : filter_nearest;
+
+
+
+void fragment() {
+	vec4 n_out2p0;
+// Texture2D:2
+	n_out2p0 = texture(Texture2DParameter, UV);
+
+
+// Output:0
+	ALBEDO = vec3(n_out2p0.xyz);
+
+
+}
+"
+modes/specular = 2
+flags/vertex_lighting = true
+nodes/fragment/0/position = Vector2(540, 200)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_tgfkf")
+nodes/fragment/2/position = Vector2(-140, 200)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture2DParameter_dwmc3")
+nodes/fragment/3/position = Vector2(-1020, 260)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 3, 0, 2, 2)

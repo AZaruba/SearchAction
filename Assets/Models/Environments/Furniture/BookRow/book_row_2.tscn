@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bw1uxhg6e3jew"]
+
+[ext_resource type="PackedScene" uid="uid://ceau0pqiaxdt3" path="res://Assets/Models/Environments/Furniture/BookRow/BookRow2.blend" id="1_8ym8h"]
+
+[node name="BookRow2" instance=ExtResource("1_8ym8h")]

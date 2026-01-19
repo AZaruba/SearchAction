@@ -1,24 +1,29 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhjeu6bj48qky"]
+[gd_scene load_steps=8 format=3 uid="uid://bhjeu6bj48qky"]
 
 [ext_resource type="PackedScene" uid="uid://dvxsdamxqlvq7" path="res://Assets/Models/Entities/SingleDoor/SingleDoor.blend" id="1_xa7rr"]
 [ext_resource type="Script" uid="uid://b0ju7fbmi5vy0" path="res://Nodes/Entities/Door/SingleDoor.cs" id="2_e2u1b"]
-[ext_resource type="Texture2D" uid="uid://dprsqfym2815t" path="res://Assets/Shaders/Entities/Door/TEST_SingleDoorTexture.png" id="3_sqhsd"]
+[ext_resource type="Material" uid="uid://cc1eyeiydrb3m" path="res://Assets/Shaders/Entities/Door/DoorShaderMat.tres" id="3_815nw"]
+[ext_resource type="Shader" uid="uid://cjh52d03eqh3f" path="res://Assets/Shaders/Entities/Door/DoorShader.tres" id="4_f488s"]
+[ext_resource type="Texture2D" uid="uid://vm5c8p7wx0f3" path="res://Assets/Models/Entities/SingleDoor/DoorTexture.png" id="5_lelc3"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_phv7y"]
-albedo_texture = ExtResource("3_sqhsd")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_axw30"]
+render_priority = 0
+shader = ExtResource("4_f488s")
+shader_parameter/Texture2DParameter = ExtResource("5_lelc3")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qewgo"]
-size = Vector3(0.4, 2.1, 2)
+size = Vector3(0.2, 2.1, 1.05)
 
 [node name="SingleDoor" node_paths=PackedStringArray("AnimPlayer") instance=ExtResource("1_xa7rr")]
 script = ExtResource("2_e2u1b")
 AnimPlayer = NodePath("AnimationPlayer")
 
 [node name="Door" parent="Skeleton3D" index="0"]
-material_override = SubResource("StandardMaterial3D_phv7y")
+material_override = ExtResource("3_815nw")
+surface_material_override/0 = SubResource("ShaderMaterial_axw30")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Skeleton3D" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.55)
 bone_name = "Hinge"
 bone_idx = 1
 
@@ -28,4 +33,5 @@ collision_layer = 4
 sync_to_physics = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Skeleton3D/BoneAttachment3D/AnimatableBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, 0.475)
 shape = SubResource("BoxShape3D_qewgo")

@@ -3,34 +3,25 @@
 [ext_resource type="Texture2D" uid="uid://dprsqfym2815t" path="res://Assets/Shaders/Entities/Door/TEST_SingleDoorTexture.png" id="1_pjf8n"]
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_pjf8n"]
+source = 5
 texture = ExtResource("1_pjf8n")
 
-[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_k4b60"]
-texture = ExtResource("1_pjf8n")
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_pjf8n"]
+parameter_name = "Texture2DParameter"
+texture_filter = 1
 
 [resource]
 code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_schlick_ggx;
 
-uniform sampler2D tex_vtx_2;
-uniform sampler2D tex_frg_2;
+uniform sampler2D Texture2DParameter : filter_nearest;
 
 
-
-void vertex() {
-// Texture2D:2
-	vec4 n_out2p0 = texture(tex_vtx_2, UV);
-
-
-// Output:0
-	COLOR.rgb = vec3(n_out2p0.xyz);
-
-
-}
 
 void fragment() {
+	vec4 n_out2p0;
 // Texture2D:2
-	vec4 n_out2p0 = texture(tex_frg_2, UV);
+	n_out2p0 = texture(Texture2DParameter, UV);
 
 
 // Output:0
@@ -39,9 +30,8 @@ void fragment() {
 
 }
 "
-nodes/vertex/2/node = SubResource("VisualShaderNodeTexture_k4b60")
-nodes/vertex/2/position = Vector2(-400, 360)
-nodes/vertex/connections = PackedInt32Array(2, 0, 0, 6)
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_pjf8n")
 nodes/fragment/2/position = Vector2(-380, 440)
-nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture2DParameter_pjf8n")
+nodes/fragment/3/position = Vector2(-700, 420)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 3, 0, 2, 2)

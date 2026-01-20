@@ -39,3 +39,6 @@ sync_to_physics = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Skeleton3D/BoneAttachment3D2/AnimatableBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 3.0793072e-17, 1, -1.9709608e-15, 0, 0, 1, -0.1, 1.05, -0.55)
 shape = SubResource("BoxShape3D_4y8ud")
+
+[connection signal="input_event" from="Skeleton3D/BoneAttachment3D/AnimatableBody3D" to="." method="OnMouseInput"]
+[connection signal="input_event" from="Skeleton3D/BoneAttachment3D2/AnimatableBody3D" to="." method="OnMouseInput"]

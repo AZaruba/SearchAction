@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dm2pcv4jx40r6"]
 
-[ext_resource type="Shader" uid="uid://cqb1x81ow3m2u" path="res://Assets/Models/Environments/Furniture/Bookshelf/EnvObjectShader.tres" id="1_iwesi"]
+[ext_resource type="Shader" uid="uid://cqb1x81ow3m2u" path="res://Assets/Shaders/Entities/EnvObjectShader.tres" id="1_iwesi"]
 [ext_resource type="Texture2D" uid="uid://dvt8y3l6fj7x4" path="res://Assets/Textures/Floor_Wood.png" id="2_dglhx"]
 
 [resource]

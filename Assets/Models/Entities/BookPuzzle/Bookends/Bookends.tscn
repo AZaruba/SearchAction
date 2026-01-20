@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://di1odntamhfl0"]
+
+[ext_resource type="PackedScene" uid="uid://c3bo1mec61qs2" path="res://Assets/Models/Entities/BookPuzzle/Bookends/Bookends.blend" id="1_c2oo7"]
+[ext_resource type="Script" uid="uid://ug8uabgfekyw" path="res://Assets/Models/Entities/BookPuzzle/Bookends/Bookends.cs" id="2_cg6dy"]
+[ext_resource type="Shader" uid="uid://cqb1x81ow3m2u" path="res://Assets/Shaders/Entities/EnvObjectShader.tres" id="3_ba1gv"]
+[ext_resource type="Texture2D" uid="uid://bv8p6cix02tah" path="res://Assets/Models/Entities/BookPuzzle/Bookends/Bookends.png" id="4_b8q5d"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0lwir"]
+render_priority = 0
+shader = ExtResource("3_ba1gv")
+shader_parameter/Texture2DParameter = ExtResource("4_b8q5d")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cg6dy"]
+size = Vector3(0.4, 0.2, 0.32)
+
+[node name="Bookends" instance=ExtResource("1_c2oo7")]
+script = ExtResource("2_cg6dy")
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_0lwir")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Cube" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+shape = SubResource("BoxShape3D_cg6dy")
+
+[connection signal="input_event" from="Cube/StaticBody3D" to="." method="OnMouseInput"]

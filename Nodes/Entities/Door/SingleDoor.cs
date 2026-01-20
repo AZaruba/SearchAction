@@ -5,6 +5,8 @@ public partial class SingleDoor : UnlockableEntity
 {
   public static readonly string OPEN_ANIM = "Open";
   public static readonly string LOCKED_ANIM = "OpenLocked";
+
+  public static readonly float INTERACT_DISTANCE = 5;
   private bool unlocked = false;
 
   [Export] AnimationPlayer AnimPlayer;
@@ -35,5 +37,20 @@ public partial class SingleDoor : UnlockableEntity
     GD.Print("You can't open that!");
     AnimPlayer.Play(LOCKED_ANIM);
     base.OnInteractWithoutItem();
+  }
+  private void OnMouseInput(Node3D camera, InputEvent @event, Vector3 eventPosition, Vector3 normal, long shapeIdx)
+  {
+    if (@event is InputEventMouseButton eventMouseButton && eventMouseButton.IsPressed())
+    {
+      DetectDistanceAndInteract(camera.GlobalPosition);
+    }
+  }
+
+  private void DetectDistanceAndInteract(Vector3 CameraPosition)
+  {
+    if (Position.DistanceTo(CameraPosition) < INTERACT_DISTANCE)
+    {
+      OnInteract();
+    }
   }
 }

@@ -1,13 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3u6sx4bs6knv"]
+[gd_scene load_steps=9 format=3 uid="uid://b3u6sx4bs6knv"]
 
 [ext_resource type="PackedScene" uid="uid://cv4ruli83200r" path="res://Assets/Models/Environments/Furniture/Bookshelf/Bookshelf.blend" id="1_mgnk6"]
+[ext_resource type="Script" uid="uid://bjrogl5mmo3j3" path="res://Assets/Models/Environments/Furniture/Bookshelf/PuzzleBookshelf.cs" id="2_b47f4"]
 [ext_resource type="Material" uid="uid://dm2pcv4jx40r6" path="res://Assets/Models/Environments/Furniture/Bookshelf/EnvObjectMaterial.tres" id="2_nfguh"]
 [ext_resource type="PackedScene" uid="uid://ceau0pqiaxdt3" path="res://Assets/Models/Environments/Furniture/BookRow/BookRow2.blend" id="3_b47f4"]
 [ext_resource type="PackedScene" uid="uid://pcvmm83yhioa" path="res://Assets/Models/Environments/Furniture/BookRow/BookRow.blend" id="4_il0te"]
 [ext_resource type="PackedScene" uid="uid://bwtqloolh820y" path="res://Assets/Models/Environments/Furniture/BookRow/BookStack.blend" id="5_man2x"]
 [ext_resource type="PackedScene" uid="uid://cvy3pn8o1yakq" path="res://Assets/Models/Environments/Furniture/Book/PuzzleBook.tscn" id="6_nfguh"]
+[ext_resource type="PackedScene" uid="uid://di1odntamhfl0" path="res://Assets/Models/Entities/BookPuzzle/Bookends/Bookends.tscn" id="8_il0te"]
 
-[node name="Bookshelf2" instance=ExtResource("1_mgnk6")]
+[node name="Bookshelf2" node_paths=PackedStringArray("Books", "BookSlots") instance=ExtResource("1_mgnk6")]
+script = ExtResource("2_b47f4")
+Books = [NodePath("PuzzleBook")]
+BookSlots = [NodePath("Bookends"), NodePath("Bookends2"), NodePath("Bookends3")]
 
 [node name="Bookshelf" parent="." index="0"]
 surface_material_override/0 = ExtResource("2_nfguh")
@@ -60,4 +65,13 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1
 transform = Transform3D(-0.64278764, 0, 0.76604444, 0, 1, 0, -0.76604444, 0, -0.64278764, 0, 0.7, -0.4)
 
 [node name="PuzzleBook" parent="." index="2" instance=ExtResource("6_nfguh")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.3000001, 0.6)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.3, 0.5)
+
+[node name="Bookends" parent="." index="3" instance=ExtResource("8_il0te")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0.1)
+
+[node name="Bookends2" parent="." index="4" instance=ExtResource("8_il0te")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0.4)
+
+[node name="Bookends3" parent="." index="5" instance=ExtResource("8_il0te")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0.7)

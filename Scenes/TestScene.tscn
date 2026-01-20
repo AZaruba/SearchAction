@@ -47,7 +47,7 @@ size = Vector3(4, 3, 0.5)
 environment = SubResource("Environment_c264a")
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("4_iufkg")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 4.63645, 1, 1.5582714)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 22.571783, 1, -19.673033)
 collision_mask = 263
 floor_constant_speed = true
 floor_max_angle = 1.3089969
@@ -94,7 +94,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 10.8
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2, 6, -5)
 
 [node name="LibraryDoor" parent="Doors" instance=ExtResource("7_c264a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.199999, 0, -19)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2, 0, -19.45)
 requiredItem = 2
 
 [node name="DoubleDoor" parent="Doors" instance=ExtResource("7_ytmxh")]

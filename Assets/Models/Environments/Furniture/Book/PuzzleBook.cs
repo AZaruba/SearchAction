@@ -3,40 +3,86 @@ using System;
 
 public partial class PuzzleBook : Node3D
 {
-	[Signal] public delegate void BookPickupEventHandler(PuzzleBook book, int slotID = -1);
-  public static readonly float INTERACT_DISTANCE = 5;
-  [Export] int ID;
+	[Signal] public delegate void BookPickupEventHandler(PuzzleBook book, Node3D camera, int slotID = -1);
+	public static readonly float INTERACT_DISTANCE = 5;
+	[Export] int ID;
 
-  public int CurrentSlot = -1;
-  private void OnMouseInput(Node3D camera, InputEvent @event, Vector3 eventPosition, Vector3 normal, long shapeIdx)
-  {
-	if (@event is InputEventMouseButton eventMouseButton && eventMouseButton.IsPressed())
+	[Export] Vector3 HoldingOffset;
+	[Export] Material BookCover;
+
+	private bool locked = false;
+
+	Tween PositionTween;
+
+	public int CurrentSlot = -1;
+
+	public override void _Ready()
 	{
-	  DetectDistanceAndInteract(camera.GlobalPosition);
+		GetChild<MeshInstance3D>(0).SetSurfaceOverrideMaterial(0, BookCover);
 	}
-  }
-
-
-  private void DetectDistanceAndInteract(Vector3 CameraPosition)
-  {
-	GD.Print("DETECTED");
-	if (GlobalPosition.DistanceTo(CameraPosition) < INTERACT_DISTANCE)
+	private void OnMouseInput(Node3D camera, InputEvent @event, Vector3 eventPosition, Vector3 normal, long shapeIdx)
 	{
-	  // pickup book
-	  OnBookPickup();
+		if (locked)
+		{
+			return;
+		}
+		if (@event is InputEventMouseButton eventMouseButton && eventMouseButton.IsPressed())
+		{
+			DetectDistanceAndInteract(camera);
+		}
 	}
-  }
 
-  public void OnBookPickup()
-  {
-	  GD.Print("EMITTING");
-	  EmitSignal(SignalName.BookPickup, this, CurrentSlot);
-	  this.Visible = false;
-  }
 
-  public void OnBookMovedToSlot(Vector3 SlotPosition)
-  {
-	  this.Position = SlotPosition;
-	  this.Visible = true;
-  }
+	private void DetectDistanceAndInteract(Node3D camera)
+	{
+		GD.Print("DETECTED");
+		if (GlobalPosition.DistanceTo(camera.GlobalPosition) < INTERACT_DISTANCE)
+		{
+			// pickup book
+			OnBookPickup(camera);
+		}
+	}
+
+	public void OnBookPickup(Node3D camera)
+	{
+		GD.Print("EMITTING");
+		EmitSignal(SignalName.BookPickup, this, camera, CurrentSlot);
+	}
+
+	public void MoveBookToPlayer(Node3D camera)
+	{
+		Reparent(camera);
+
+		// Tween to player
+		PositionTween = GetTree().CreateTween().BindNode(this).SetTrans(Tween.TransitionType.Expo).SetEase(Tween.EaseType.Out);
+		PositionTween.Parallel().TweenProperty(this, "position", HoldingOffset, 1f);
+		PositionTween.Parallel().TweenProperty(this, "rotation", new Vector3(Mathf.DegToRad(20), Mathf.Pi, 0), 1f);
+		PositionTween.Play();
+		locked = true;
+		PositionTween.Finished += UnlockBook;
+	}
+
+	public void OnBookMovedToSlot(Vector3 SlotPosition)
+	{
+		GD.Print("Tween start");
+		PositionTween = GetTree().CreateTween().BindNode(this).SetTrans(Tween.TransitionType.Expo).SetEase(Tween.EaseType.Out);
+		PositionTween.Parallel().TweenProperty(this, "position", SlotPosition + Vector3.Right * 0.4f, 0.6f);
+		PositionTween.Parallel().TweenProperty(this, "rotation", new Vector3(0, -Mathf.Pi, 0), 0.6f);
+		PositionTween.TweenProperty(this, "position", SlotPosition, 0.4f).SetEase(Tween.EaseType.In);
+
+		PositionTween.Play();
+		locked = true;
+		PositionTween.Finished += UnlockBook;
+	}
+
+	private void UnlockBook()
+	{
+		locked = false;
+		PositionTween.Finished -= UnlockBook;
+	}
+
+	public bool IsBookLocked()
+	{
+		return locked;
+	}
 }

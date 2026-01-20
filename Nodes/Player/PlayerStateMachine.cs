@@ -53,7 +53,6 @@ public class PlayerSlidingState : IPlayerState
     {
       DataRef.CurrentRotationRate = 0;
       DataRef.CurrentDirection = Basis.LookingAt(DataRef.Position.DirectionTo(DataRef.SlidingTarget), Vector3.Up);
-      DebugLog.LogToScreen($"Target: {DataRef.SlidingTarget}", 2);
       DataRef.CurrentVelocity = DataRef.SlideVelocity * -DataRef.CurrentDirection.Z;
     }
 

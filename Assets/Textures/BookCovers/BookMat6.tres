@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://s8np24fh0bgv"]
+
+[ext_resource type="Shader" uid="uid://cqb1x81ow3m2u" path="res://Assets/Shaders/Entities/EnvObjectShader.tres" id="1_affuf"]
+[ext_resource type="Texture2D" uid="uid://3htdcw51cw4j" path="res://Assets/Textures/BookCovers/Puzz6.png" id="2_5nedt"]
+
+[resource]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_affuf")
+shader_parameter/Texture = ExtResource("2_5nedt")

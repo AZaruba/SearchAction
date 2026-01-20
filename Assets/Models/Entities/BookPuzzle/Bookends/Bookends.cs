@@ -3,7 +3,7 @@ using System;
 
 public partial class Bookends : Node3D
 {	
-    [Signal] public delegate void OnBookendClickedEventHandler(Bookends slot);
+    [Signal] public delegate void OnBookendClickedEventHandler(Bookends slot, Node3D Camera);
 	[Export] public Vector3 SlotPosition;
 
 	public PuzzleBook CurrentBook = null;
@@ -22,8 +22,7 @@ public partial class Bookends : Node3D
 	public void OnBookMovedToSlot(PuzzleBook newBook)
 	{
 		CurrentBook = newBook;
-		CurrentBook.GlobalPosition = SlotPosition + this.GlobalPosition;
-		CurrentBook.Visible = true;
+		CurrentBook.OnBookMovedToSlot(SlotPosition);
 	}
 
 	public void OnBookPickup()
@@ -34,22 +33,25 @@ public partial class Bookends : Node3D
 	{
 		if (@event is InputEventMouseButton eventMouseButton && eventMouseButton.IsPressed())
 		{
-		  DetectDistanceAndInteract(camera.GlobalPosition);
+		  DetectDistanceAndInteract(camera);
 		}
 	}
 
 
-  private void DetectDistanceAndInteract(Vector3 CameraPosition)
+  private void DetectDistanceAndInteract(Node3D camera)
   {
-    GD.Print("BOOKEND DETECTED");
-    if (GlobalPosition.DistanceTo(CameraPosition) < INTERACT_DISTANCE)
-	{
-		EmitSignal(SignalName.OnBookendClicked, this);
-	}
+		if (CurrentBook != null && CurrentBook.IsBookLocked())
+		{
+			return;
+		}
+    if (GlobalPosition.DistanceTo(camera.GlobalPosition) < INTERACT_DISTANCE)
+		{
+			EmitSignal(SignalName.OnBookendClicked, this, camera);
+		}
   }
 
   public bool HasBook()
   {
-	return CurrentBook != null;
+	  return CurrentBook != null;
   }
 }

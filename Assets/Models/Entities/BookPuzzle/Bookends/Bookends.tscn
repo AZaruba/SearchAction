@@ -8,7 +8,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0lwir"]
 render_priority = 0
 shader = ExtResource("3_ba1gv")
-shader_parameter/Texture2DParameter = ExtResource("4_b8q5d")
+shader_parameter/Texture = ExtResource("4_b8q5d")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cg6dy"]
 size = Vector3(0.4, 0.2, 0.32)

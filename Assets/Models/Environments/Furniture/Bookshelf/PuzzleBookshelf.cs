@@ -24,6 +24,7 @@ public partial class PuzzleBookshelf : Node3D
 	{
 		foreach(PuzzleBook book in Books)
 		{
+			GD.Print("Subbing");
 			book.BookPickup += OnBookPickup;
 		}
 
@@ -39,6 +40,10 @@ public partial class PuzzleBookshelf : Node3D
 		{
 			book.BookPickup -= OnBookPickup;
 		}
+		foreach(Bookends slot in BookSlots)
+		{
+			slot.OnBookendClicked -= OnBookendClicked;
+		}
         base._ExitTree();
     }
 
@@ -48,8 +53,14 @@ public partial class PuzzleBookshelf : Node3D
 	{
 	}
 
-	private void OnBookPickup(PuzzleBook book, int currentSlot)
+	private void OnBookPickup(PuzzleBook book, Node3D camera, int currentSlot)
 	{
+		GD.Print("Book picking up time");
+		if (HeldBook != null)
+		{
+			return;
+		}
+
 		if (Books.Contains(book))
 		{
 			GD.Print("Found it, picked it up!");
@@ -57,23 +68,23 @@ public partial class PuzzleBookshelf : Node3D
 			{
 				BookSlots[currentSlot].OnBookPickup();
 			}
+			book.MoveBookToPlayer(camera);
 			HeldBook = book;
 		}
 	}
 
-	private void OnBookendClicked(Bookends bookend)
+	private void OnBookendClicked(Bookends bookend, Node3D camera)
 	{
 		GD.Print("bookend clicked");
 		if(bookend.HasBook() && HeldBook == null)
 		{
-			// pickup?			
-			bookend.CurrentBook.Visible = false;
-			OnBookPickup(bookend.CurrentBook, BookSlots.IndexOf(bookend));
+			// pickup?
+			OnBookPickup(bookend.CurrentBook, camera, BookSlots.IndexOf(bookend));
 		}
-		else if (HeldBook != null)
+		else if (HeldBook != null && !HeldBook.IsBookLocked())
 		{
 			GD.Print("and we have the book");
-			//HeldBook.OnBookMovedToSlot(bookend.SlotPosition);
+			HeldBook.Reparent(bookend);
 			bookend.OnBookMovedToSlot(HeldBook);
 			HeldBook = null;
 		}

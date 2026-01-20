@@ -1,17 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvy3pn8o1yakq"]
+[gd_scene load_steps=6 format=3 uid="uid://cvy3pn8o1yakq"]
 
 [ext_resource type="PackedScene" uid="uid://bmry85luga2kh" path="res://Assets/Models/Environments/Furniture/Book/Book.blend" id="1_7dtja"]
-[ext_resource type="Material" uid="uid://by3m0k475nubu" path="res://Assets/Models/Environments/Furniture/Book/BookMat.tres" id="2_aw40u"]
 [ext_resource type="Script" uid="uid://dugsl3yfdwi5o" path="res://Assets/Models/Environments/Furniture/Book/PuzzleBook.cs" id="2_vvmxg"]
+[ext_resource type="Shader" uid="uid://cqb1x81ow3m2u" path="res://Assets/Shaders/Entities/EnvObjectShader.tres" id="4_5gffp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5gw50"]
+render_priority = 0
+shader = ExtResource("4_5gffp")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ekhxc"]
 size = Vector3(0.7, 0.9, 0.2)
 
 [node name="PuzzleBook" instance=ExtResource("1_7dtja")]
 script = ExtResource("2_vvmxg")
+HoldingOffset = Vector3(0, -0.7, -0.7)
 
 [node name="Book" parent="." index="0"]
-surface_material_override/0 = ExtResource("2_aw40u")
+surface_material_override/0 = SubResource("ShaderMaterial_5gw50")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Book" index="0"]
 collision_layer = 16

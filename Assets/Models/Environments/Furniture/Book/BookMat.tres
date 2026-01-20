@@ -1,9 +1,0 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://by3m0k475nubu"]
-
-[ext_resource type="Shader" uid="uid://cqb1x81ow3m2u" path="res://Assets/Shaders/Entities/EnvObjectShader.tres" id="1_d1lve"]
-[ext_resource type="Texture2D" uid="uid://dee2hky8frb21" path="res://Assets/Models/Environments/Furniture/Book/TestBook.png" id="2_2c56o"]
-
-[resource]
-render_priority = 0
-shader = ExtResource("1_d1lve")
-shader_parameter/Texture2DParameter = ExtResource("2_2c56o")

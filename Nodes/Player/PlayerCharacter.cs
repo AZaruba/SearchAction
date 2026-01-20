@@ -162,9 +162,6 @@ public partial class PlayerCharacter : CharacterBody3D
       Data.CurrentToolSwimModifier = 1;
       Data.CurrentToolMoveModifier = 0.7f;
     }
-    DebugLog.LogToScreen($"Current Move Mod: {Data.CurrentToolMoveModifier}");
-    DebugLog.LogToScreen($"Current Swim Mod: {Data.CurrentToolSwimModifier}",2);
-    DebugLog.LogToScreen($"Current Tool: {item}",3);
   }
   
 

@@ -3,7 +3,7 @@ using System;
 
 public partial class Bookends : Node3D
 {	
-    [Signal] public delegate void OnBookendClickedEventHandler(Bookends slot, Node3D Camera);
+	[Signal] public delegate void OnBookendClickedEventHandler(Bookends slot, Node3D Camera);
 	[Export] public Vector3 SlotPosition;
 
 	public PuzzleBook CurrentBook = null;
@@ -19,15 +19,18 @@ public partial class Bookends : Node3D
 	{
 	}
 
-	public void OnBookMovedToSlot(PuzzleBook newBook)
+	public PuzzleBook OnBookMovedToSlot(PuzzleBook newBook, int idx)
 	{
+		PuzzleBook oldBook = CurrentBook;
 		CurrentBook = newBook;
-		CurrentBook.OnBookMovedToSlot(SlotPosition);
+		CurrentBook.OnBookMovedToSlot(SlotPosition, idx);
+		return oldBook;
 	}
 
 	public void OnBookPickup()
 	{
 		CurrentBook = null;
+		GD.Print(CurrentBook);
 	}
 	private void OnMouseInput(Node3D camera, InputEvent @event, Vector3 eventPosition, Vector3 normal, long shapeIdx)
 	{

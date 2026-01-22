@@ -1,51 +1,452 @@
-[gd_scene load_steps=4 format=3 uid="uid://f7a4itxgeb4k"]
+[gd_scene load_steps=44 format=3 uid="uid://f7a4itxgeb4k"]
 
 [ext_resource type="PackedScene" uid="uid://dy2wjiojafjcy" path="res://Assets/Models/Environments/Mansion.blend" id="1_emiwf"]
 [ext_resource type="PackedScene" uid="uid://c4umls0ry084r" path="res://Assets/Models/Environments/Furniture/Bookshelf/Bookshelf.tscn" id="2_emiwf"]
 [ext_resource type="PackedScene" uid="uid://b3u6sx4bs6knv" path="res://Assets/Models/Environments/Furniture/Bookshelf/PuzzleBookshelf.tscn" id="3_vur0x"]
+[ext_resource type="Script" uid="uid://pll1vjn4ix42" path="res://Nodes/Entities/EventHandlers/PuzzleReceivers/LogEventReceiver.cs" id="4_1ydxa"]
+[ext_resource type="Script" uid="uid://bcbycrwon5xmn" path="res://Nodes/Entities/EventHandlers/IEventTrigger.cs" id="5_eqokd"]
+[ext_resource type="PackedScene" uid="uid://cvy3pn8o1yakq" path="res://Assets/Models/Environments/Furniture/Book/PuzzleBook.tscn" id="6_iall3"]
+[ext_resource type="Texture2D" uid="uid://fd171d24mas0" path="res://Assets/Textures/BookCovers/Puzz1.png" id="7_pho54"]
+[ext_resource type="Texture2D" uid="uid://cmekueuvy3rin" path="res://Assets/Textures/BookCovers/Puzz2.png" id="8_0paiu"]
+[ext_resource type="Texture2D" uid="uid://bf638s4chwscb" path="res://Assets/Textures/BookCovers/Puzz3.png" id="9_hx06e"]
+[ext_resource type="Texture2D" uid="uid://ctedg5uyu211" path="res://Assets/Textures/BookCovers/Puzz4.png" id="10_r2pl6"]
+[ext_resource type="Texture2D" uid="uid://b55ltudf6g0j5" path="res://Assets/Textures/BookCovers/Puzz5.png" id="11_w2w46"]
+[ext_resource type="Texture2D" uid="uid://3htdcw51cw4j" path="res://Assets/Textures/BookCovers/Puzz6.png" id="12_crwrj"]
+[ext_resource type="PackedScene" uid="uid://di1odntamhfl0" path="res://Assets/Models/Entities/BookPuzzle/Bookends/Bookends.tscn" id="13_2biiv"]
+[ext_resource type="PackedScene" uid="uid://knhgc38hgdaa" path="res://Nodes/Entities/MovingObjects/Bookshelf_Sliding.tscn" id="14_0paiu"]
+[ext_resource type="Script" uid="uid://chgx405edixgb" path="res://Nodes/Entities/EventHandlers/PuzzleReceivers/SlidingDoorReceiver.cs" id="15_hx06e"]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_0paiu"]
+output_port_for_preview = 0
+source = 5
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_hx06e"]
+parameter_name = "Texture"
+texture_filter = 1
+
+[sub_resource type="VisualShader" id="VisualShader_r2pl6"]
+resource_local_to_scene = true
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_disabled, vertex_lighting;
+
+uniform sampler2D Texture : filter_nearest;
+
+
+
+void fragment() {
+	vec4 n_out2p0;
+// Texture2D:2
+	n_out2p0 = texture(Texture, UV);
+
+
+// Output:0
+	ALBEDO = vec3(n_out2p0.xyz);
+
+
+}
+"
+modes/specular = 2
+flags/vertex_lighting = true
+nodes/fragment/0/position = Vector2(540, 200)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_0paiu")
+nodes/fragment/2/position = Vector2(-140, 200)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture2DParameter_hx06e")
+nodes/fragment/3/position = Vector2(-700, 200)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 3, 0, 2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w2w46"]
+resource_local_to_scene = true
+render_priority = 0
+shader = SubResource("VisualShader_r2pl6")
+shader_parameter/Texture = ExtResource("7_pho54")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_crwrj"]
+output_port_for_preview = 0
+source = 5
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_2biiv"]
+parameter_name = "Texture"
+texture_filter = 1
+
+[sub_resource type="VisualShader" id="VisualShader_x573r"]
+resource_local_to_scene = true
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_disabled, vertex_lighting;
+
+uniform sampler2D Texture : filter_nearest;
+
+
+
+void fragment() {
+	vec4 n_out2p0;
+// Texture2D:2
+	n_out2p0 = texture(Texture, UV);
+
+
+// Output:0
+	ALBEDO = vec3(n_out2p0.xyz);
+
+
+}
+"
+modes/specular = 2
+flags/vertex_lighting = true
+nodes/fragment/0/position = Vector2(540, 200)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_crwrj")
+nodes/fragment/2/position = Vector2(-140, 200)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture2DParameter_2biiv")
+nodes/fragment/3/position = Vector2(-700, 200)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 3, 0, 2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gpxs5"]
+resource_local_to_scene = true
+render_priority = 0
+shader = SubResource("VisualShader_x573r")
+shader_parameter/Texture = ExtResource("8_0paiu")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_o20ms"]
+output_port_for_preview = 0
+source = 5
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_dfi2u"]
+parameter_name = "Texture"
+texture_filter = 1
+
+[sub_resource type="VisualShader" id="VisualShader_pflpx"]
+resource_local_to_scene = true
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_disabled, vertex_lighting;
+
+uniform sampler2D Texture : filter_nearest;
+
+
+
+void fragment() {
+	vec4 n_out2p0;
+// Texture2D:2
+	n_out2p0 = texture(Texture, UV);
+
+
+// Output:0
+	ALBEDO = vec3(n_out2p0.xyz);
+
+
+}
+"
+modes/specular = 2
+flags/vertex_lighting = true
+nodes/fragment/0/position = Vector2(540, 200)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_o20ms")
+nodes/fragment/2/position = Vector2(-140, 200)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture2DParameter_dfi2u")
+nodes/fragment/3/position = Vector2(-700, 200)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 3, 0, 2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mwdgg"]
+resource_local_to_scene = true
+render_priority = 0
+shader = SubResource("VisualShader_pflpx")
+shader_parameter/Texture = ExtResource("9_hx06e")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_p5xqx"]
+output_port_for_preview = 0
+source = 5
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_d62lx"]
+parameter_name = "Texture"
+texture_filter = 1
+
+[sub_resource type="VisualShader" id="VisualShader_w40bi"]
+resource_local_to_scene = true
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_disabled, vertex_lighting;
+
+uniform sampler2D Texture : filter_nearest;
+
+
+
+void fragment() {
+	vec4 n_out2p0;
+// Texture2D:2
+	n_out2p0 = texture(Texture, UV);
+
+
+// Output:0
+	ALBEDO = vec3(n_out2p0.xyz);
+
+
+}
+"
+modes/specular = 2
+flags/vertex_lighting = true
+nodes/fragment/0/position = Vector2(540, 200)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_p5xqx")
+nodes/fragment/2/position = Vector2(-140, 200)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture2DParameter_d62lx")
+nodes/fragment/3/position = Vector2(-700, 200)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 3, 0, 2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0cpnd"]
+resource_local_to_scene = true
+render_priority = 0
+shader = SubResource("VisualShader_w40bi")
+shader_parameter/Texture = ExtResource("10_r2pl6")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_yiabm"]
+output_port_for_preview = 0
+source = 5
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_rcfrp"]
+parameter_name = "Texture"
+texture_filter = 1
+
+[sub_resource type="VisualShader" id="VisualShader_86jfa"]
+resource_local_to_scene = true
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_disabled, vertex_lighting;
+
+uniform sampler2D Texture : filter_nearest;
+
+
+
+void fragment() {
+	vec4 n_out2p0;
+// Texture2D:2
+	n_out2p0 = texture(Texture, UV);
+
+
+// Output:0
+	ALBEDO = vec3(n_out2p0.xyz);
+
+
+}
+"
+modes/specular = 2
+flags/vertex_lighting = true
+nodes/fragment/0/position = Vector2(540, 200)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_yiabm")
+nodes/fragment/2/position = Vector2(-140, 200)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture2DParameter_rcfrp")
+nodes/fragment/3/position = Vector2(-700, 200)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 3, 0, 2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pgubm"]
+resource_local_to_scene = true
+render_priority = 0
+shader = SubResource("VisualShader_86jfa")
+shader_parameter/Texture = ExtResource("11_w2w46")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_ayxjc"]
+output_port_for_preview = 0
+source = 5
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_w7lna"]
+parameter_name = "Texture"
+texture_filter = 1
+
+[sub_resource type="VisualShader" id="VisualShader_u3scg"]
+resource_local_to_scene = true
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_disabled, vertex_lighting;
+
+uniform sampler2D Texture : filter_nearest;
+
+
+
+void fragment() {
+	vec4 n_out2p0;
+// Texture2D:2
+	n_out2p0 = texture(Texture, UV);
+
+
+// Output:0
+	ALBEDO = vec3(n_out2p0.xyz);
+
+
+}
+"
+modes/specular = 2
+flags/vertex_lighting = true
+nodes/fragment/0/position = Vector2(540, 200)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_ayxjc")
+nodes/fragment/2/position = Vector2(-140, 200)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture2DParameter_w7lna")
+nodes/fragment/3/position = Vector2(-700, 200)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 3, 0, 2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_05j7g"]
+resource_local_to_scene = true
+render_priority = 0
+shader = SubResource("VisualShader_u3scg")
+shader_parameter/Texture = ExtResource("12_crwrj")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_7oyed"]
+output_port_for_preview = 0
+source = 5
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_qfikj"]
+parameter_name = "Texture"
+texture_filter = 1
+
+[sub_resource type="VisualShader" id="VisualShader_f78vj"]
+resource_local_to_scene = true
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_disabled, vertex_lighting;
+
+uniform sampler2D Texture : filter_nearest;
+
+
+
+void fragment() {
+	vec4 n_out2p0;
+// Texture2D:2
+	n_out2p0 = texture(Texture, UV);
+
+
+// Output:0
+	ALBEDO = vec3(n_out2p0.xyz);
+
+
+}
+"
+modes/specular = 2
+flags/vertex_lighting = true
+nodes/fragment/0/position = Vector2(540, 200)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_7oyed")
+nodes/fragment/2/position = Vector2(-140, 200)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture2DParameter_qfikj")
+nodes/fragment/3/position = Vector2(-700, 200)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 3, 0, 2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kn5up"]
+resource_local_to_scene = true
+render_priority = 0
+shader = SubResource("VisualShader_f78vj")
+shader_parameter/Texture = ExtResource("7_pho54")
 
 [node name="Mansion" instance=ExtResource("1_emiwf")]
 
-[node name="Bookshelves" type="Node" parent="." index="2"]
+[node name="LibraryDecoration" type="Node" parent="." index="2"]
 
-[node name="Bookshelf" parent="Bookshelves" index="0" instance=ExtResource("2_emiwf")]
+[node name="Bookshelf" parent="LibraryDecoration" index="0" instance=ExtResource("2_emiwf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.3, 0, -26)
 
-[node name="Bookshelf2" parent="Bookshelves" index="1" instance=ExtResource("2_emiwf")]
+[node name="Bookshelf2" parent="LibraryDecoration" index="1" instance=ExtResource("2_emiwf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.3, 0, -22)
 
-[node name="Bookshelf6" parent="Bookshelves" index="2" instance=ExtResource("2_emiwf")]
+[node name="Bookshelf6" parent="LibraryDecoration" index="2" instance=ExtResource("2_emiwf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.3, 0, -12)
 
-[node name="Bookshelf3" parent="Bookshelves" index="3" instance=ExtResource("2_emiwf")]
+[node name="Bookshelf3" parent="LibraryDecoration" index="3" instance=ExtResource("2_emiwf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.3, 2.5000002, -26)
 
-[node name="Bookshelf4" parent="Bookshelves" index="4" instance=ExtResource("2_emiwf")]
+[node name="Bookshelf4" parent="LibraryDecoration" index="4" instance=ExtResource("2_emiwf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.3, 2.5000002, -22)
 
-[node name="Bookshelf7" parent="Bookshelves" index="5" instance=ExtResource("2_emiwf")]
+[node name="Bookshelf7" parent="LibraryDecoration" index="5" instance=ExtResource("2_emiwf")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 29.3, 0, -16)
 
-[node name="Bookshelf8" parent="Bookshelves" index="6" instance=ExtResource("2_emiwf")]
+[node name="Bookshelf8" parent="LibraryDecoration" index="6" instance=ExtResource("2_emiwf")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 29.3, 0, -12)
 
-[node name="Bookshelf9" parent="Bookshelves" index="7" instance=ExtResource("2_emiwf")]
+[node name="Bookshelf9" parent="LibraryDecoration" index="7" instance=ExtResource("2_emiwf")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 29.3, 2.5000002, -16)
 
-[node name="Bookshelf11" parent="Bookshelves" index="8" instance=ExtResource("2_emiwf")]
+[node name="Bookshelf11" parent="LibraryDecoration" index="8" instance=ExtResource("2_emiwf")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 29.3, 0, -20)
 
-[node name="Bookshelf12" parent="Bookshelves" index="9" instance=ExtResource("2_emiwf")]
+[node name="Bookshelf12" parent="LibraryDecoration" index="9" instance=ExtResource("2_emiwf")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 29.3, 2.5000002, -20)
 
-[node name="Bookshelf13" parent="Bookshelves" index="10" instance=ExtResource("2_emiwf")]
+[node name="Bookshelf13" parent="LibraryDecoration" index="10" instance=ExtResource("2_emiwf")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 29.3, 0, -26)
 
-[node name="Bookshelf14" parent="Bookshelves" index="11" instance=ExtResource("2_emiwf")]
+[node name="Bookshelf14" parent="LibraryDecoration" index="11" instance=ExtResource("2_emiwf")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 29.3, 2.5000002, -26)
 
-[node name="Bookshelf10" parent="Bookshelves" index="12" instance=ExtResource("2_emiwf")]
+[node name="Bookshelf10" parent="LibraryDecoration" index="12" instance=ExtResource("2_emiwf")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 29.3, 2.5000002, -12)
 
-[node name="Bookshelf2" parent="." index="3" instance=ExtResource("3_vur0x")]
+[node name="LibraryBookshelfPuzzle" parent="." index="3" node_paths=PackedStringArray("Books", "BookSlots", "SolveTrigger") instance=ExtResource("3_vur0x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.300001, 0, -16)
+Books = [NodePath("PuzzleBook7"), NodePath("PuzzleBook8"), NodePath("PuzzleBook9"), NodePath("PuzzleBook10"), NodePath("PuzzleBook11"), NodePath("PuzzleBook12")]
+BookSlots = [NodePath("Bookends12"), NodePath("Bookends11"), NodePath("Bookends10"), NodePath("Bookends9"), NodePath("Bookends8"), NodePath("Bookends7")]
+SolveTrigger = NodePath("TestTrigger")
+
+[node name="TestReceiver" type="Node" parent="LibraryBookshelfPuzzle" index="2"]
+script = ExtResource("4_1ydxa")
+
+[node name="TestTrigger" type="Node" parent="LibraryBookshelfPuzzle" index="3" node_paths=PackedStringArray("ConnectedEntity")]
+script = ExtResource("5_eqokd")
+ConnectedEntity = NodePath("../TestReceiver")
+
+[node name="PuzzleBook7" parent="LibraryBookshelfPuzzle" index="4" instance=ExtResource("6_iall3")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.3, 1.5999999)
+BookCover = SubResource("ShaderMaterial_w2w46")
+
+[node name="PuzzleBook8" parent="LibraryBookshelfPuzzle" index="5" instance=ExtResource("6_iall3")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.3, 1.5)
+ID = 1
+BookCover = SubResource("ShaderMaterial_gpxs5")
+
+[node name="PuzzleBook9" parent="LibraryBookshelfPuzzle" index="6" instance=ExtResource("6_iall3")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.3, 1.4)
+ID = 2
+BookCover = SubResource("ShaderMaterial_mwdgg")
+
+[node name="PuzzleBook10" parent="LibraryBookshelfPuzzle" index="7" instance=ExtResource("6_iall3")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.3, 1.3)
+ID = 3
+BookCover = SubResource("ShaderMaterial_0cpnd")
+
+[node name="PuzzleBook11" parent="LibraryBookshelfPuzzle" index="8" instance=ExtResource("6_iall3")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.3, 1.1999999)
+ID = 4
+BookCover = SubResource("ShaderMaterial_pgubm")
+
+[node name="PuzzleBook12" parent="LibraryBookshelfPuzzle" index="9" instance=ExtResource("6_iall3")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.3, 1.0999999)
+ID = 5
+BookCover = SubResource("ShaderMaterial_05j7g")
+
+[node name="Bookends7" parent="LibraryBookshelfPuzzle" index="10" instance=ExtResource("13_2biiv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0.1)
+
+[node name="Bookends8" parent="LibraryBookshelfPuzzle" index="11" instance=ExtResource("13_2biiv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0.4)
+
+[node name="Bookends9" parent="LibraryBookshelfPuzzle" index="12" instance=ExtResource("13_2biiv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0.7)
+
+[node name="Bookends10" parent="LibraryBookshelfPuzzle" index="13" instance=ExtResource("13_2biiv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0.1)
+
+[node name="Bookends11" parent="LibraryBookshelfPuzzle" index="14" instance=ExtResource("13_2biiv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0.4)
+
+[node name="Bookends12" parent="LibraryBookshelfPuzzle" index="15" instance=ExtResource("13_2biiv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0.7)
+
+[node name="OfficeBookshelves" type="Node" parent="." index="4" node_paths=PackedStringArray("ConnectedEntity")]
+script = ExtResource("5_eqokd")
+ConnectedEntity = NodePath("Bookshelf_NoCol")
+
+[node name="OfficePuzzle" parent="OfficeBookshelves" index="0" node_paths=PackedStringArray("Books", "BookSlots", "SolveTrigger") instance=ExtResource("3_vur0x")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 31.6, 6, -5)
+Books = [NodePath("PuzzleBook")]
+BookSlots = [NodePath("Bookends")]
+SolveTrigger = NodePath("..")
+SolutionIDs = Array[int]([1])
+
+[node name="Bookends" parent="OfficeBookshelves/OfficePuzzle" index="2" instance=ExtResource("13_2biiv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0.5)
+
+[node name="PuzzleBook" parent="OfficeBookshelves/OfficePuzzle" index="3" instance=ExtResource("6_iall3")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 1.3, 1.4)
+ID = 1
+BookCover = SubResource("ShaderMaterial_kn5up")
+
+[node name="Bookshelf_NoCol" parent="OfficeBookshelves" index="1" instance=ExtResource("14_0paiu")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 31.6, 6, 7)
+script = ExtResource("15_hx06e")
+Destination = Vector3(31.6, 6, 4)

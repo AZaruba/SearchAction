@@ -59,10 +59,11 @@ public partial class PuzzleBook : Node3D
 		PositionTween.Parallel().TweenProperty(this, "rotation", new Vector3(Mathf.DegToRad(20), Mathf.Pi, 0), 1f);
 		PositionTween.Play();
 		locked = true;
+		CurrentSlot = -1;
 		PositionTween.Finished += UnlockBook;
 	}
 
-	public void OnBookMovedToSlot(Vector3 SlotPosition)
+	public void OnBookMovedToSlot(Vector3 SlotPosition, int idx)
 	{
 		GD.Print("Tween start");
 		PositionTween = GetTree().CreateTween().BindNode(this).SetTrans(Tween.TransitionType.Expo).SetEase(Tween.EaseType.Out);
@@ -72,6 +73,7 @@ public partial class PuzzleBook : Node3D
 
 		PositionTween.Play();
 		locked = true;
+		CurrentSlot = idx;
 		PositionTween.Finished += UnlockBook;
 	}
 
@@ -84,5 +86,10 @@ public partial class PuzzleBook : Node3D
 	public bool IsBookLocked()
 	{
 		return locked;
+	}
+
+	public int GetID()
+	{
+		return ID;
 	}
 }

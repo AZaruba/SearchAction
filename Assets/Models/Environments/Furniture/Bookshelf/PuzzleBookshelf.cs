@@ -15,6 +15,10 @@ public partial class PuzzleBookshelf : Node3D
 	[Export] Array<PuzzleBook> Books;
 	[Export] Array<Bookends> BookSlots;
 
+	[Export] IEventTrigger SolveTrigger;
+
+	[Export] Array<int> SolutionIDs;
+
 	private PuzzleBook HeldBook = null;
 
 	private Vector3 ReturnCamera;
@@ -24,7 +28,6 @@ public partial class PuzzleBookshelf : Node3D
 	{
 		foreach(PuzzleBook book in Books)
 		{
-			GD.Print("Subbing");
 			book.BookPickup += OnBookPickup;
 		}
 
@@ -55,15 +58,13 @@ public partial class PuzzleBookshelf : Node3D
 
 	private void OnBookPickup(PuzzleBook book, Node3D camera, int currentSlot)
 	{
-		GD.Print("Book picking up time");
-		if (HeldBook != null)
+		if (HeldBook != null || book.IsBookLocked())
 		{
 			return;
 		}
 
 		if (Books.Contains(book))
 		{
-			GD.Print("Found it, picked it up!");
 			if (currentSlot > -1)
 			{
 				BookSlots[currentSlot].OnBookPickup();
@@ -75,18 +76,47 @@ public partial class PuzzleBookshelf : Node3D
 
 	private void OnBookendClicked(Bookends bookend, Node3D camera)
 	{
-		GD.Print("bookend clicked");
+		int idx = BookSlots.IndexOf(bookend);
 		if(bookend.HasBook() && HeldBook == null)
 		{
 			// pickup?
-			OnBookPickup(bookend.CurrentBook, camera, BookSlots.IndexOf(bookend));
+			OnBookPickup(bookend.CurrentBook, camera, idx);
 		}
 		else if (HeldBook != null && !HeldBook.IsBookLocked())
 		{
-			GD.Print("and we have the book");
 			HeldBook.Reparent(bookend);
-			bookend.OnBookMovedToSlot(HeldBook);
-			HeldBook = null;
+			PuzzleBook BookFromSlot = bookend.OnBookMovedToSlot(HeldBook, idx);
+			if (BookFromSlot != null)
+			{
+				HeldBook = null;
+				OnBookPickup(BookFromSlot, camera, BookSlots.IndexOf(bookend));
+			}
+			HeldBook = BookFromSlot;
+
+			CheckAndConfirmSolution();
+		}
+	}
+
+	private void CheckAndConfirmSolution()
+	{
+		bool Solved = true;
+		for(int i = 0; i < BookSlots.Count; i++)
+		{
+			Bookends slot = BookSlots[i];
+			if (!slot.HasBook() || slot.HasBook() && slot.CurrentBook.GetID() != SolutionIDs[i])
+			{
+				Solved = false;
+			}
+		}
+
+		if (Solved)
+		{
+			GD.Print("Solved!");
+			SolveTrigger.TriggerEvent();
+		}
+		else
+		{
+			GD.Print("Not solved!");
 		}
 	}
 }

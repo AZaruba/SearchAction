@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dthfduq4epy1t"]
+
+[ext_resource type="PackedScene" uid="uid://d1ayx8fwteq12" path="res://Assets/Models/Entities/IceChunks/DoorIceChunk.blend" id="1_4vwna"]
+[ext_resource type="Script" uid="uid://btpbwwrnvlqd6" path="res://Nodes/Entities/IceBlock/IceBlock.cs" id="2_s4134"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s4134"]
+size = Vector3(0.5746094, 0.9, 0.2)
+
+[node name="DoorIceChunk" instance=ExtResource("1_4vwna")]
+script = ExtResource("2_s4134")
+requiredItem = null
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="Cube" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.45, 0)
+collision_layer = 16
+sync_to_physics = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube/AnimatableBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1873047, 0, 0)
+shape = SubResource("BoxShape3D_s4134")
+
+[connection signal="input_event" from="Cube/AnimatableBody3D" to="." method="OnMouseInput"]

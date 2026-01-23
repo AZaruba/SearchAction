@@ -6,9 +6,6 @@ public partial class SingleDoor : UnlockableEntity
   public static readonly string OPEN_ANIM = "Open";
   public static readonly string LOCKED_ANIM = "OpenLocked";
 
-  public static readonly float INTERACT_DISTANCE = 5;
-  private bool unlocked = false;
-
   [Export] AnimationPlayer AnimPlayer;
 
   private bool IsUnlocked = false;
@@ -21,11 +18,10 @@ public partial class SingleDoor : UnlockableEntity
 
   public override void OnInteractWithItem()
   {
-    if (!unlocked)
+    if (!IsUnlocked)
     {
-      GD.Print("Unlocked the door!");
       AnimPlayer.Play(OPEN_ANIM);
-      unlocked = true;
+      IsUnlocked = true;
     }
 
     base.OnInteractWithItem();
@@ -34,7 +30,8 @@ public partial class SingleDoor : UnlockableEntity
   // TODO: Add animation for locked door
   public override void OnInteractWithoutItem()
   {
-    GD.Print("You can't open that!");
+
+    // potential edge case: interacting without item set
     AnimPlayer.Play(LOCKED_ANIM);
     base.OnInteractWithoutItem();
   }

@@ -19,17 +19,17 @@ public class ProgressInfo
       { ItemID.SaphKey, false },
       { ItemID.EmerKey, false },
       { ItemID.ReadingGlasses, true },
-      { ItemID.Headlamp, true },
-      { ItemID.DiveMask, true },
-      { ItemID.TDGlasses, true },
+      { ItemID.Headlamp, false },
+      { ItemID.DiveMask, false },
+      { ItemID.TDGlasses, false },
       { ItemID.Sweater, true },
-      { ItemID.Swimsuit, true },
+      { ItemID.Swimsuit, false },
       { ItemID.WinterCoat, false },
       { ItemID.Lighter, true },
       { ItemID.BoltCutters, false },
-      { ItemID.Fins, true },
+      { ItemID.Fins, false },
       { ItemID.WorkGloves, false },
-      { ItemID.Treads, true },
+      { ItemID.Treads, false },
       { ItemID.SpeedOne, false },
       { ItemID.SpeedTwo, false },
       { ItemID.SpeedThree, false },
@@ -37,7 +37,7 @@ public class ProgressInfo
 
     EquippedHat = ItemID.ReadingGlasses;
     EquippedBody = ItemID.Sweater;
-    EquippedTool = ItemID.Treads;
+    EquippedTool = ItemID.None;
   }
 }
 

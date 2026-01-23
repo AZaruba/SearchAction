@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bsvcsug2emh60"]
+[gd_scene load_steps=23 format=3 uid="uid://bsvcsug2emh60"]
 
 [ext_resource type="Sky" uid="uid://ble1xcqnre6ho" path="res://Assets/Skybox/NightSky.tres" id="1_qsjrb"]
 [ext_resource type="PackedScene" uid="uid://dlk3re05kefyw" path="res://Assets/Particles/Snowfall.tscn" id="3_ytmxh"]
@@ -12,6 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://c1sxxkcovj6rq" path="res://Nodes/Entities/Volumes/WaterVolume/WaterVolume.tscn" id="10_201fe"]
 [ext_resource type="Texture2D" uid="uid://iq2n6gvgwbt3" path="res://Assets/2D/Inventory/Head/3DGlasses.png" id="10_ytmxh"]
 [ext_resource type="PackedScene" uid="uid://t622wlat3n41" path="res://Nodes/Entities/Volumes/IceVolume/IceVolume.tscn" id="11_xjl2p"]
+[ext_resource type="Texture2D" uid="uid://bp3mv1q820fcy" path="res://Assets/2D/Inventory/Keys/RubyKey.png" id="13_hctok"]
+[ext_resource type="Texture2D" uid="uid://pl11cc0pnw3n" path="res://Assets/2D/Inventory/Keys/SaphKey.png" id="14_lp1f3"]
+[ext_resource type="Texture2D" uid="uid://csh17ai24y78t" path="res://Assets/2D/Inventory/Items/Lighter.png" id="14_t2vuu"]
 
 [sub_resource type="Environment" id="Environment_c264a"]
 background_mode = 2
@@ -47,13 +50,14 @@ size = Vector3(4, 3, 0.5)
 environment = SubResource("Environment_c264a")
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("4_iufkg")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 22.572, 7, -5)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 22.572, 2.0728216, -20.822632)
 collision_mask = 263
 floor_constant_speed = true
 floor_max_angle = 1.3089969
 floor_snap_length = 0.2
 
 [node name="OmniLight3D" type="OmniLight3D" parent="PlayerCharacter"]
+visible = false
 light_color = Color(1, 0.88666666, 0.83, 1)
 light_energy = 3.0
 omni_range = 14.0
@@ -81,24 +85,48 @@ omni_attenuation = 0.725
 [node name="Doors" type="Node" parent="."]
 
 [node name="PBClosetDoor" parent="Doors" instance=ExtResource("7_c264a")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -25, 6, -10.799996)
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -24.75, 6.05, -10.8)
+requiredItem = null
 
 [node name="PBBathroomDoor" parent="Doors" instance=ExtResource("7_c264a")]
-transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -25, 6, -18.799995)
-requiredItem = 1
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -24.75, 6.05, -18.8)
+requiredItem = 4
 
 [node name="SideHallDoor" parent="Doors" instance=ExtResource("7_c264a")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 10.8, 0, 0.55)
+requiredItem = null
 
 [node name="OfficeDoor" parent="Doors" instance=ExtResource("7_c264a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2, 6, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2, 6.05, -5.5)
+requiredItem = null
+
+[node name="2FBathroomDoor" parent="Doors" instance=ExtResource("7_c264a")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 12.65, 6.05, -11)
+requiredItem = 3
+
+[node name="SBDoor" parent="Doors" instance=ExtResource("7_c264a")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -10.65, 6.05, -11)
+requiredItem = 3
 
 [node name="LibraryDoor" parent="Doors" instance=ExtResource("7_c264a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2, 0, -19.45)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2, 0, -19.6)
+requiredItem = 2
+
+[node name="FrontCloset" parent="Doors" instance=ExtResource("7_c264a")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 14.6, 0, 5)
 requiredItem = 2
 
 [node name="DoubleDoor" parent="Doors" instance=ExtResource("7_ytmxh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0, 0)
+requiredItem = 4
+
+[node name="BedroomBalconyDoor" parent="Doors" instance=ExtResource("7_ytmxh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 6.05, 5.1)
+requiredItem = null
+
+[node name="OfficeBalconyDoor2" parent="Doors" instance=ExtResource("7_ytmxh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 6.05, 5.2)
+requiredItem = null
 
 [node name="Inventory" parent="." instance=ExtResource("7_6xh1p")]
 visible = false
@@ -182,3 +210,20 @@ size = Vector3(18, 12, 44)
 [node name="GPUParticlesCollisionBox3D7" type="GPUParticlesCollisionBox3D" parent="ParticleColliders"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -50)
 size = Vector3(200, 2, 200)
+
+[node name="Node" type="Node" parent="."]
+
+[node name="RubyKey" parent="Node" instance=ExtResource("8_6xh1p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.372026, 0, -15.104148)
+Item = 2
+Icon = ExtResource("13_hctok")
+
+[node name="SaphKey" parent="Node" instance=ExtResource("8_6xh1p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.49672, 4.7557716, -27.933933)
+Item = 3
+Icon = ExtResource("14_lp1f3")
+
+[node name="Lighter" parent="Node" instance=ExtResource("8_6xh1p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 0, 8)
+Item = 12
+Icon = ExtResource("14_t2vuu")

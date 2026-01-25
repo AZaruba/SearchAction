@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://crhaqd6q2icri"]
+
+[ext_resource type="Shader" uid="uid://cqb1x81ow3m2u" path="res://Assets/Shaders/Entities/EnvObjectShader.tres" id="1_bb6m0"]
+[ext_resource type="Texture2D" uid="uid://dm0ylm5vpkii3" path="res://Assets/Models/UI/Journal/JournalCover.png" id="2_bb6m0"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_bb6m0")
+shader_parameter/Texture = ExtResource("2_bb6m0")

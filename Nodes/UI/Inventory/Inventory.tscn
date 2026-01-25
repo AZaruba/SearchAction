@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://08e4tfmy8v50"]
+[gd_scene load_steps=16 format=3 uid="uid://08e4tfmy8v50"]
 
 [ext_resource type="Script" uid="uid://cha1r8aqbcisq" path="res://Nodes/UI/Inventory/InventoryController.cs" id="1_37fcu"]
 [ext_resource type="PackedScene" uid="uid://br1caiktq7fbj" path="res://Nodes/UI/Inventory/InventoryItem.tscn" id="1_e0e0o"]
@@ -14,170 +14,177 @@
 [ext_resource type="Texture2D" uid="uid://bp3mv1q820fcy" path="res://Assets/2D/Inventory/Keys/RubyKey.png" id="7_ohmyt"]
 [ext_resource type="Texture2D" uid="uid://pl11cc0pnw3n" path="res://Assets/2D/Inventory/Keys/SaphKey.png" id="8_ibsio"]
 [ext_resource type="Texture2D" uid="uid://dviqibxavl8s0" path="res://Assets/2D/Inventory/Items/Fins.png" id="11_ibsio"]
+[ext_resource type="Theme" uid="uid://cyndqifyd4qoe" path="res://Assets/2D/Fonts/DescriptorTheme.tres" id="15_vuy1p"]
 
 [node name="Inventory" type="CanvasLayer"]
 script = ExtResource("1_37fcu")
 
-[node name="Container" type="Control" parent="."]
+[node name="Items" type="Control" parent="."]
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
 offset_right = 16.0
 offset_bottom = 16.0
 
-[node name="Head" type="Control" parent="Container"]
+[node name="Head" type="Control" parent="Items"]
 anchors_preset = 0
 offset_top = 16.0
 offset_right = 16.0
 offset_bottom = 32.0
 script = ExtResource("2_egdkt")
+Category = null
 
-[node name="Readers" parent="Container/Head" instance=ExtResource("1_e0e0o")]
+[node name="Readers" parent="Items/Head" instance=ExtResource("1_e0e0o")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 16.0
-offset_top = 16.0
+offset_top = 24.0
 offset_right = 16.0
-offset_bottom = 16.0
+offset_bottom = 24.0
 grow_horizontal = 1
 grow_vertical = 1
 ItemIcon = ExtResource("4_ohmyt")
 ID = 8
+Category = null
 
-[node name="Headlamp" parent="Container/Head" instance=ExtResource("1_e0e0o")]
+[node name="Headlamp" parent="Items/Head" instance=ExtResource("1_e0e0o")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 48.0
-offset_top = 16.0
+offset_top = 24.0
 offset_right = 48.0
-offset_bottom = 16.0
+offset_bottom = 24.0
 grow_horizontal = 1
 grow_vertical = 1
 ItemIcon = ExtResource("5_303pr")
 ID = 5
+Category = null
 
-[node name="Mask" parent="Container/Head" instance=ExtResource("1_e0e0o")]
+[node name="Mask" parent="Items/Head" instance=ExtResource("1_e0e0o")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 80.0
-offset_top = 16.0
+offset_top = 24.0
 offset_right = 80.0
-offset_bottom = 16.0
+offset_bottom = 24.0
 grow_horizontal = 1
 grow_vertical = 1
 ItemIcon = ExtResource("5_egdkt")
 ID = 6
+Category = null
 
-[node name="3DGlasses" parent="Container/Head" instance=ExtResource("1_e0e0o")]
+[node name="3DGlasses" parent="Items/Head" instance=ExtResource("1_e0e0o")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 112.0
-offset_top = 16.0
+offset_top = 24.0
 offset_right = 112.0
-offset_bottom = 16.0
+offset_bottom = 24.0
 grow_horizontal = 1
 grow_vertical = 1
 ItemIcon = ExtResource("7_b7edi")
 ID = 7
+Category = null
 
-[node name="HeadLabel" type="RichTextLabel" parent="Container/Head"]
+[node name="HeadLabel" type="RichTextLabel" parent="Items/Head"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 18.0
-offset_top = 2.0
-offset_right = 74.0
-offset_bottom = 16.0
+offset_left = 16.0
+offset_right = 88.0
+offset_bottom = 22.0
 theme = ExtResource("4_303pr")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 text = "HEAD"
 scroll_active = false
 autowrap_mode = 0
 
-[node name="Body" type="Control" parent="Container"]
+[node name="Body" type="Control" parent="Items"]
 anchors_preset = 0
-offset_top = 64.0
+offset_top = 72.0
 offset_right = 16.0
-offset_bottom = 80.0
+offset_bottom = 88.0
 script = ExtResource("2_egdkt")
 Category = 1
 
-[node name="WinterCoat" parent="Container/Body" instance=ExtResource("1_e0e0o")]
+[node name="WinterCoat" parent="Items/Body" instance=ExtResource("1_e0e0o")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 16.0
-offset_top = 16.0
+offset_top = 32.0
 offset_right = 16.0
-offset_bottom = 16.0
+offset_bottom = 32.0
 grow_horizontal = 1
 grow_vertical = 1
 ID = 11
 Category = 1
 
-[node name="Sweater" parent="Container/Body" instance=ExtResource("1_e0e0o")]
+[node name="Sweater" parent="Items/Body" instance=ExtResource("1_e0e0o")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 48.0
-offset_top = 16.0
+offset_top = 32.0
 offset_right = 48.0
-offset_bottom = 16.0
+offset_bottom = 32.0
 grow_horizontal = 1
 grow_vertical = 1
 ItemIcon = ExtResource("3_kgjj0")
 ID = 9
 Category = 1
 
-[node name="Swimsuit" parent="Container/Body" instance=ExtResource("1_e0e0o")]
+[node name="Swimsuit" parent="Items/Body" instance=ExtResource("1_e0e0o")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 80.0
-offset_top = 16.0
+offset_top = 32.0
 offset_right = 80.0
-offset_bottom = 16.0
+offset_bottom = 32.0
 grow_horizontal = 1
 grow_vertical = 1
 ItemIcon = ExtResource("4_mcien")
 ID = 10
 Category = 1
 
-[node name="BodyLabel" type="RichTextLabel" parent="Container/Body"]
+[node name="BodyLabel" type="RichTextLabel" parent="Items/Body"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 18.0
-offset_top = 2.0
-offset_right = 74.0
-offset_bottom = 16.0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 94.0
+offset_bottom = 30.0
 theme = ExtResource("4_303pr")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 text = "BODY"
 scroll_active = false
 autowrap_mode = 0
 
-[node name="Tools" type="Control" parent="Container"]
+[node name="Tools" type="Control" parent="Items"]
 anchors_preset = 0
-offset_top = 112.0
+offset_top = 136.0
 offset_right = 16.0
-offset_bottom = 128.0
+offset_bottom = 152.0
 script = ExtResource("2_egdkt")
 Category = 2
 
-[node name="BoltCutters" parent="Container/Tools" instance=ExtResource("1_e0e0o")]
+[node name="BoltCutters" parent="Items/Tools" instance=ExtResource("1_e0e0o")]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = -6.0
+anchor_top = -5.0
 anchor_right = 0.0
-anchor_bottom = -6.0
+anchor_bottom = -5.0
 offset_left = 16.0
 offset_top = 112.0
 offset_right = 16.0
@@ -188,12 +195,12 @@ ID = 13
 Category = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Lighter" parent="Container/Tools" instance=ExtResource("1_e0e0o")]
+[node name="Lighter" parent="Items/Tools" instance=ExtResource("1_e0e0o")]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = -6.0
+anchor_top = -5.0
 anchor_right = 0.0
-anchor_bottom = -6.0
+anchor_bottom = -5.0
 offset_left = 48.0
 offset_top = 112.0
 offset_right = 48.0
@@ -205,12 +212,12 @@ ID = 12
 Category = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Fins" parent="Container/Tools" instance=ExtResource("1_e0e0o")]
+[node name="Fins" parent="Items/Tools" instance=ExtResource("1_e0e0o")]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = -6.0
+anchor_top = -5.0
 anchor_right = 0.0
-anchor_bottom = -6.0
+anchor_bottom = -5.0
 offset_left = 80.0
 offset_top = 112.0
 offset_right = 80.0
@@ -222,13 +229,13 @@ ID = 14
 Category = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Treads" parent="Container/Tools" instance=ExtResource("1_e0e0o")]
+[node name="Treads" parent="Items/Tools" instance=ExtResource("1_e0e0o")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 2.0
-anchor_top = -6.0
+anchor_top = -5.0
 anchor_right = 2.0
-anchor_bottom = -6.0
+anchor_bottom = -5.0
 offset_left = 80.0
 offset_top = 112.0
 offset_right = 80.0
@@ -240,142 +247,159 @@ ID = 15
 Category = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="ToolLabel" type="RichTextLabel" parent="Container/Tools"]
+[node name="ToolLabel" type="RichTextLabel" parent="Items/Tools"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 18.0
-offset_top = 2.0
-offset_right = 74.0
-offset_bottom = 16.0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 102.0
+offset_bottom = 30.0
 theme = ExtResource("4_303pr")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 text = "TOOL"
 scroll_active = false
 autowrap_mode = 0
 
-[node name="Keys" type="Control" parent="Container"]
+[node name="Keys" type="Control" parent="Items"]
 anchors_preset = 0
-offset_left = 144.0
-offset_top = 16.0
-offset_right = 160.0
-offset_bottom = 32.0
+offset_top = 208.0
+offset_right = 16.0
+offset_bottom = 224.0
 script = ExtResource("2_egdkt")
 Category = 3
 
-[node name="Ruby" parent="Container/Keys" instance=ExtResource("1_e0e0o")]
+[node name="Ruby" parent="Items/Keys" instance=ExtResource("1_e0e0o")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 16.0
-offset_top = 16.0
+offset_top = 24.0
 offset_right = 16.0
-offset_bottom = 16.0
+offset_bottom = 24.0
 grow_horizontal = 1
 grow_vertical = 1
 ItemIcon = ExtResource("7_ohmyt")
 ID = 2
 Category = 3
 
-[node name="Sapphire" parent="Container/Keys" instance=ExtResource("1_e0e0o")]
+[node name="Sapphire" parent="Items/Keys" instance=ExtResource("1_e0e0o")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 48.0
-offset_top = 16.0
+offset_top = 24.0
 offset_right = 48.0
-offset_bottom = 16.0
+offset_bottom = 24.0
 grow_horizontal = 1
 grow_vertical = 1
 ItemIcon = ExtResource("8_ibsio")
 ID = 3
 Category = 3
 
-[node name="Emerald" parent="Container/Keys" instance=ExtResource("1_e0e0o")]
+[node name="Emerald" parent="Items/Keys" instance=ExtResource("1_e0e0o")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 80.0
-offset_top = 16.0
+offset_top = 24.0
 offset_right = 80.0
-offset_bottom = 16.0
+offset_bottom = 24.0
 grow_horizontal = 1
 grow_vertical = 1
 ID = 4
 Category = 3
 
-[node name="KeysLabel" type="RichTextLabel" parent="Container/Keys"]
+[node name="KeysLabel" type="RichTextLabel" parent="Items/Keys"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 18.0
-offset_top = 2.0
-offset_right = 74.0
-offset_bottom = 16.0
+offset_left = 16.0
+offset_right = 72.0
+offset_bottom = 22.0
 theme = ExtResource("4_303pr")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 text = "KEYS"
 scroll_active = false
 autowrap_mode = 0
 
-[node name="Upgrades" type="Control" parent="Container"]
+[node name="Upgrades" type="Control" parent="Items"]
 anchors_preset = 0
-offset_left = 112.0
-offset_top = 64.0
-offset_right = 128.0
-offset_bottom = 80.0
+offset_top = 264.0
+offset_right = 16.0
+offset_bottom = 280.0
 script = ExtResource("2_egdkt")
 Category = 4
 
-[node name="Speed1" parent="Container/Upgrades" instance=ExtResource("1_e0e0o")]
+[node name="Speed1" parent="Items/Upgrades" instance=ExtResource("1_e0e0o")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 16.0
-offset_top = 16.0
+offset_top = 32.0
 offset_right = 16.0
-offset_bottom = 16.0
+offset_bottom = 32.0
 grow_horizontal = 1
 grow_vertical = 1
 ID = 16
 Category = 4
 
-[node name="Speed2" parent="Container/Upgrades" instance=ExtResource("1_e0e0o")]
+[node name="Speed2" parent="Items/Upgrades" instance=ExtResource("1_e0e0o")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 48.0
-offset_top = 16.0
+offset_top = 32.0
 offset_right = 48.0
-offset_bottom = 16.0
+offset_bottom = 32.0
 grow_horizontal = 1
 grow_vertical = 1
 ID = 17
 Category = 4
 
-[node name="Speed3" parent="Container/Upgrades" instance=ExtResource("1_e0e0o")]
+[node name="Speed3" parent="Items/Upgrades" instance=ExtResource("1_e0e0o")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 80.0
-offset_top = 16.0
+offset_top = 32.0
 offset_right = 80.0
-offset_bottom = 16.0
+offset_bottom = 32.0
 grow_horizontal = 1
 grow_vertical = 1
 ID = 18
 Category = 4
 
-[node name="UpgradeLabel" type="RichTextLabel" parent="Container/Upgrades"]
+[node name="UpgradeLabel" type="RichTextLabel" parent="Items/Upgrades"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 18.0
-offset_top = 2.0
-offset_right = 116.0
-offset_bottom = 16.0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 150.0
+offset_bottom = 30.0
 theme = ExtResource("4_303pr")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 text = "UPGRADE"
 scroll_active = false
 autowrap_mode = 0
+
+[node name="Descriptors" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 296.0
+offset_right = 312.0
+offset_bottom = 16.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Descriptors"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 24.0
+offset_right = 296.0
+offset_bottom = 216.0
+theme = ExtResource("15_vuy1p")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "Descriptive Tesk for the thing"

@@ -20,14 +20,14 @@ public class ProgressInfo
       { ItemID.EmerKey, false },
       { ItemID.ReadingGlasses, true },
       { ItemID.Headlamp, false },
-      { ItemID.DiveMask, false },
+      { ItemID.DiveMask, true },
       { ItemID.TDGlasses, false },
       { ItemID.Sweater, true },
-      { ItemID.Swimsuit, false },
+      { ItemID.Swimsuit, true },
       { ItemID.WinterCoat, false },
       { ItemID.Lighter, true },
       { ItemID.BoltCutters, false },
-      { ItemID.Fins, false },
+      { ItemID.Fins, true },
       { ItemID.WorkGloves, false },
       { ItemID.Treads, false },
       { ItemID.SpeedOne, false },
@@ -96,10 +96,9 @@ public partial class ProgressTracker : Node
 
   public static void EquipItem(ItemID id, ItemCategory cat)
   {
-      GD.Print(id);
+    GD.Print(id);
     if (cat == ItemCategory.Hat)
     {
-      GD.Print(id);
       Instance.Progress.EquippedHat = id;
     }
     else if (cat == ItemCategory.Body)

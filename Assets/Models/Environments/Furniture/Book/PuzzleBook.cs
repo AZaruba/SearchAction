@@ -65,7 +65,6 @@ public partial class PuzzleBook : Node3D
 
 	public void OnBookMovedToSlot(Vector3 SlotPosition, int idx)
 	{
-		GD.Print("Tween start");
 		PositionTween = GetTree().CreateTween().BindNode(this).SetTrans(Tween.TransitionType.Expo).SetEase(Tween.EaseType.Out);
 		PositionTween.Parallel().TweenProperty(this, "position", SlotPosition + Vector3.Right * 0.4f, 0.6f);
 		PositionTween.Parallel().TweenProperty(this, "rotation", new Vector3(0, -Mathf.Pi, 0), 0.6f);

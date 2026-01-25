@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://lkfess0oebn5"]
+
+[ext_resource type="Shader" uid="uid://bayojg1vsc4a8" path="res://Assets/Models/UI/Journal/RenderTexture.gdshader" id="1_jup0v"]
+[ext_resource type="Texture2D" uid="uid://clnkvjy86sphx" path="res://Assets/Models/UI/Journal/JournalTexture.png" id="2_kjvay"]
+
+[resource]
+shader = ExtResource("1_jup0v")
+shader_parameter/Texture = ExtResource("2_kjvay")

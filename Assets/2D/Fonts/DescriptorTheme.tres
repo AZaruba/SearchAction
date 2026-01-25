@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cyndqifyd4qoe"]
+
+[ext_resource type="FontFile" uid="uid://bv0mr2sy66sv5" path="res://Assets/2D/Fonts/Seriffic.otf" id="1_qp15k"]
+
+[resource]
+default_font = ExtResource("1_qp15k")
+default_font_size = 20

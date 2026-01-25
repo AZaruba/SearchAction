@@ -23,7 +23,6 @@ ProgressTracker="*res://Nodes/GameState/ProgressTracker/ProgressTracker.cs"
 [display]
 
 window/size/initial_position_type=3
-window/stretch/scale=3.0
 window/stretch/scale_mode="integer"
 
 [dotnet]

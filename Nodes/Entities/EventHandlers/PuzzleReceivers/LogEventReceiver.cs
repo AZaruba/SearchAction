@@ -14,8 +14,8 @@ public partial class LogEventReceiver : IEventReceiver
 	}
 
   public override void OnTrigger()
-  {
-    GD.Print("You solved a fake puzzle!");
-  }
+	{
+		
+	}
 
 }

@@ -8,7 +8,8 @@ namespace Authorship.src
     Body,
     Tool,
     Key,
-    Upgrade
+    Upgrade,
+    Notes
   }
   public enum ItemID {
     ERR_ITEM = -1,

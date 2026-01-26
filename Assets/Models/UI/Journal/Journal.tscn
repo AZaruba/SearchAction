@@ -1,16 +1,22 @@
-[gd_scene load_steps=10 format=3 uid="uid://bx857hg6b3g3r"]
+[gd_scene load_steps=12 format=3 uid="uid://bx857hg6b3g3r"]
 
 [ext_resource type="Script" uid="uid://dl1tioh2a004t" path="res://Assets/Models/UI/Journal/UIJournal.cs" id="1_canlh"]
 [ext_resource type="PackedScene" uid="uid://cl54sj5j3x2gl" path="res://Assets/Models/UI/Journal/Journal.blend" id="1_pb1su"]
 [ext_resource type="Material" uid="uid://lkfess0oebn5" path="res://Assets/Models/UI/Journal/JournalPage.tres" id="2_8g5xs"]
 [ext_resource type="QuadMesh" uid="uid://b0c7g6xn0umb" path="res://Assets/Models/UI/Journal/JournalInterfaceQuad.tres" id="3_canlh"]
 [ext_resource type="PackedScene" uid="uid://08e4tfmy8v50" path="res://Nodes/UI/Inventory/Inventory.tscn" id="4_ikeq4"]
+[ext_resource type="Texture2D" uid="uid://dm0ylm5vpkii3" path="res://Assets/Models/UI/Journal/JournalCover.png" id="4_w6ctd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gj5un"]
+no_depth_test = true
+albedo_texture = ExtResource("4_w6ctd")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_8g5xs"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8g5xs"]
 resource_local_to_scene = true
+no_depth_test = true
 shading_mode = 0
 albedo_texture = SubResource("ViewportTexture_8g5xs")
 
@@ -23,16 +29,17 @@ size = Vector3(2.8, 0.1, 4)
 
 [node name="Journal2" node_paths=PackedStringArray("AnimPlayer", "RenderedTexture") instance=ExtResource("1_pb1su")]
 script = ExtResource("1_canlh")
+AnimPlayer = NodePath("AnimationPlayer")
 OpenPosition = null
 ClosePosition = null
-Quad = ExtResource("3_canlh")
-AnimPlayer = NodePath("AnimationPlayer")
 RenderedTexture = NodePath("SubViewport")
+Quad = ExtResource("3_canlh")
 
 [node name="Skeleton3D" parent="JournalArm" index="0"]
 bones/0/rotation = Quaternion(0.0008283046, 0.7071064, 0.0008283186, 0.7071062)
 
 [node name="Journal" parent="JournalArm/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_gj5un")
 surface_material_override/1 = SubResource("StandardMaterial3D_8g5xs")
 
 [node name="SubViewport" type="SubViewport" parent="." index="2"]

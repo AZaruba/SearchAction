@@ -30,7 +30,7 @@ public partial class InventoryItem : TextureButton
 
     public override void _ExitTree()
     {
-		EventBus.Instance.ItemPickup -= OnItemPickup;
+		  EventBus.Instance.ItemPickup -= OnItemPickup;
     }
 
 
@@ -47,19 +47,21 @@ public partial class InventoryItem : TextureButton
 		}
 	}
 
+	public void ChangeEquipStatus(ItemID id)
+	{
+		BackgroundTextureRect.Visible = id != ID;
+	}
+
 	private void OnClick()
 	{
     if (ProgressTracker.IsItemCollected(ID))
 		{
 			if (Category == ItemCategory.Key || Category == ItemCategory.Upgrade)
 			{
-				GD.Print("But it is a " + Category + " so it won't equip");
 				return;
 			}
 			
-			BackgroundTextureRect.Visible = false;
 			EventBus.Emit(EventBus.SignalName.SelectItem, ID, Category);
-			GetParent<InventoryCategory>().OnItemSelected(ID);
 		}
 	}
 

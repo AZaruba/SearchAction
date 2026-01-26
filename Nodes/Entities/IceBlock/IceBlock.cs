@@ -16,6 +16,14 @@ public partial class IceBlock : UnlockableEntity
 	{
 	}
 
+  public override void OnInteract()
+  {
+    if (ProgressTracker.GetEquippedItem(Authorship.src.ItemCategory.Tool) == requiredItem)
+		{
+			OnInteractWithItem();
+		}
+  }
+
   public override void OnInteractWithItem()
   {
 		MeltTween = GetTree().CreateTween().BindNode(this).SetTrans(Tween.TransitionType.Expo).SetEase(Tween.EaseType.Out);
@@ -27,6 +35,7 @@ public partial class IceBlock : UnlockableEntity
   private void UnlockAssociatedDoor()
 	{
 		AssociatedDoor.ToggleLock();
+		MeltTween.Finished -= UnlockAssociatedDoor;
 		QueueFree();
 	}
 }

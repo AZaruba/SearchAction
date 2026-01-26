@@ -79,7 +79,6 @@ public class PlayerSwimmingState : IPlayerState
 
   public override void EnterState()
   {
-    GD.Print("Enter swimming");
   }
 
   public override void ExitState()
@@ -243,7 +242,6 @@ public class PlayerFallingState : IPlayerState
 
   public override void EnterState()
   {
-    GD.Print("Enter falling");
     DataRef.SwimmingRate = Vector3.Zero;
   }
 

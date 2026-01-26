@@ -7,7 +7,7 @@ public partial class EventBus : Node
   [Signal] public delegate void ItemPickupEventHandler(ItemID id);
   [Signal] public delegate void SelectItemEventHandler(ItemID id, ItemCategory cat);
   [Signal] public delegate void InteractWithItemEventHandler(ItemID id);
-  [Signal] public delegate void ChangeEquippedItemEventHandler(ItemID id);
+  [Signal] public delegate void ChangeEquippedItemEventHandler(ItemID id, ItemCategory cat);
 
   public static EventBus Instance;
 

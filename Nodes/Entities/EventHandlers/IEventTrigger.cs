@@ -18,7 +18,6 @@ public partial class IEventTrigger : Node
 
 	public virtual void TriggerEvent()
 	{
-		GD.Print("Triggering!");
 		if (!Triggered)
 		{
 		  ConnectedEntity.OnTrigger();

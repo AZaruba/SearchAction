@@ -1,7 +1,5 @@
 using Authorship.src;
 using Godot;
-using System;
-using System.Diagnostics;
 
 public partial class UIJournal : Node3D
 {
@@ -32,14 +30,10 @@ public partial class UIJournal : Node3D
 		{
 			Vector2 unprojected = GetViewport().GetCamera3D().UnprojectPosition(eventPosition);
 			Vector3 affineTransformed = GlobalTransform.AffineInverse() * eventPosition;
-      GD.Print(Quad.Size);
-			GD.Print($"affine: {affineTransformed}");
-			GD.Print("TRANSLATED");
 
 			float TranslatedX = affineTransformed.Z / Quad.Size.Y + 0.5f;
 			float TranslatedY = affineTransformed.X * - 1 / Quad.Size.X + 1f;
 
-			GD.Print($"{new Vector2(TranslatedX * 600, TranslatedY * 600 * (4/2.8f))}");
 			InputEventMouse asMouse = @event as InputEventMouse;
 		  asMouse.Position = new Vector2(TranslatedX * 600, TranslatedY * 600 * (2.8f/4f));
 		  asMouse.GlobalPosition = new Vector2(TranslatedX * 600, TranslatedY * 600 * (2.8f/4f));
@@ -93,8 +87,8 @@ public partial class UIJournal : Node3D
 	public void TweenClose(StringName _animName)
 	{
 		AnimPlayer.AnimationFinished -= TweenClose;
-		PositionTween = GetTree().CreateTween().BindNode(this).SetTrans(Tween.TransitionType.Quart).SetEase(Tween.EaseType.InOut);
-		PositionTween.Parallel().TweenProperty(this, "position", ClosePosition, 0.2f);
+		PositionTween = GetTree().CreateTween().BindNode(this).SetTrans(Tween.TransitionType.Expo).SetEase(Tween.EaseType.InOut);
+		PositionTween.Parallel().TweenProperty(this, "position", ClosePosition, 1f);
 		PositionTween.Play();
 		PositionTween.Finished += Unlock;
 	}
@@ -102,8 +96,8 @@ public partial class UIJournal : Node3D
 
   public void Open()
 	{
-		PositionTween = GetTree().CreateTween().BindNode(this).SetTrans(Tween.TransitionType.Quart).SetEase(Tween.EaseType.InOut);
-		PositionTween.Parallel().TweenProperty(this, "position", OpenPosition, 0.2f);
+		PositionTween = GetTree().CreateTween().BindNode(this).SetTrans(Tween.TransitionType.Expo).SetEase(Tween.EaseType.InOut);
+		PositionTween.Parallel().TweenProperty(this, "position", OpenPosition, 1f);
 		PositionTween.Play();
 		PositionTween.Finished += AnimOpen;
 	}

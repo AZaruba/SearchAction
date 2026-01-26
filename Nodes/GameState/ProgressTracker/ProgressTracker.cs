@@ -19,9 +19,9 @@ public class ProgressInfo
       { ItemID.SaphKey, false },
       { ItemID.EmerKey, false },
       { ItemID.ReadingGlasses, true },
-      { ItemID.Headlamp, false },
+      { ItemID.Headlamp, true },
       { ItemID.DiveMask, true },
-      { ItemID.TDGlasses, false },
+      { ItemID.TDGlasses, true },
       { ItemID.Sweater, true },
       { ItemID.Swimsuit, true },
       { ItemID.WinterCoat, false },
@@ -53,7 +53,7 @@ public partial class ProgressTracker : Node
     Instance = this;
 
     EventBus.Instance.ItemPickup += CollectItem;
-    EventBus.Instance.SelectItem += EquipItem;
+    EventBus.Instance.ChangeEquippedItem += EquipItem;
 
     base._Ready();
   }
@@ -61,7 +61,6 @@ public partial class ProgressTracker : Node
     public override void _ExitTree()
     {
     EventBus.Instance.ItemPickup -= CollectItem;
-    EventBus.Instance.SelectItem -= EquipItem;
     }
 
 
@@ -96,7 +95,6 @@ public partial class ProgressTracker : Node
 
   public static void EquipItem(ItemID id, ItemCategory cat)
   {
-    GD.Print(id);
     if (cat == ItemCategory.Hat)
     {
       Instance.Progress.EquippedHat = id;
@@ -108,7 +106,6 @@ public partial class ProgressTracker : Node
     else if (cat == ItemCategory.Tool)
     {
       Instance.Progress.EquippedTool = id;
-      EventBus.Emit(EventBus.SignalName.ChangeEquippedItem, id);
     }
   }
 

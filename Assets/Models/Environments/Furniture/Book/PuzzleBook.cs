@@ -35,7 +35,6 @@ public partial class PuzzleBook : Node3D
 
 	private void DetectDistanceAndInteract(Node3D camera)
 	{
-		GD.Print("DETECTED");
 		if (GlobalPosition.DistanceTo(camera.GlobalPosition) < INTERACT_DISTANCE)
 		{
 			// pickup book
@@ -45,7 +44,6 @@ public partial class PuzzleBook : Node3D
 
 	public void OnBookPickup(Node3D camera)
 	{
-		GD.Print("EMITTING");
 		EmitSignal(SignalName.BookPickup, this, camera, CurrentSlot);
 	}
 

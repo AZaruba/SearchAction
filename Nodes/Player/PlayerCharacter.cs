@@ -145,7 +145,7 @@ public partial class PlayerCharacter : CharacterBody3D
     
   }
 
-  private void OnEquipItem(ItemID item)
+  private void OnEquipItem(ItemID item, ItemCategory _itemCategory)
   {
     if (item == ItemID.Fins)
     {

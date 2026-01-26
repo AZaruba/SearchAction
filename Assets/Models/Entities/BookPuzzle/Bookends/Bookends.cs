@@ -30,7 +30,6 @@ public partial class Bookends : Node3D
 	public void OnBookPickup()
 	{
 		CurrentBook = null;
-		GD.Print(CurrentBook);
 	}
 	private void OnMouseInput(Node3D camera, InputEvent @event, Vector3 eventPosition, Vector3 normal, long shapeIdx)
 	{

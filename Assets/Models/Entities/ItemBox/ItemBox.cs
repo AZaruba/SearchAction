@@ -32,7 +32,6 @@ public partial class ItemBox : Node3D
 
   private void OnCollision(Node3D body)
   {
-    GD.Print("Got it");
     QueueFree();
     EventBus.Emit(EventBus.SignalName.ItemPickup, Item);
   }

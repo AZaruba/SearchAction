@@ -22,7 +22,6 @@ public partial class DebugLog : CanvasLayer
   #if DEBUG
 	if (Input.IsActionJustPressed(InputActions.DEBUG_Toggle_Log))
 	{
-    GD.Print("Dropping?");
 	  LogLine1.Visible = !LogLine1.Visible;
 	  LogLine2.Visible = !LogLine2.Visible;
 	  LogLine3.Visible = !LogLine3.Visible;

@@ -50,7 +50,7 @@ size = Vector3(4, 3, 0.5)
 environment = SubResource("Environment_c264a")
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("4_iufkg")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 22.572, 2.0728216, -20.822632)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.6856518, 2.0728216, -6.1185503)
 collision_mask = 263
 floor_constant_speed = true
 floor_max_angle = 1.3089969
@@ -68,24 +68,13 @@ transform = Transform3D(1, 0, 0, 0, 0.9999965, -0.0026528975, 0, 0.0026528975, 0
 visibility_aabb = AABB(-30.324068, -1.5484649, -28.909891, 57.440937, 12.82168, 56.40091)
 
 [node name="Journal2" parent="PlayerCharacter" instance=ExtResource("16_p30di")]
-transform = Transform3D(-1.8976012e-09, 1.0761828e-08, -0.25, 0.24620193, 0.043412056, 0, 0.043412056, -0.24620193, -1.0927847e-08, 0, -1, 0.5)
-OpenPosition = Vector3(0, -0.1, 0.5)
-ClosePosition = Vector3(0, -1, 0.5)
+transform = Transform3D(-1.8976012e-09, 1.0761828e-08, -0.25, 0.24620193, 0.043412056, 0, 0.043412056, -0.24620193, -1.0927847e-08, 0, -1.5, 0.75)
+OpenPosition = Vector3(0, -0.1, 0.75)
+ClosePosition = Vector3(0, -1.5, 0.75)
 
 [node name="DebugLog" parent="." instance=ExtResource("4_0f5h7")]
 
 [node name="Mansion" parent="." instance=ExtResource("5_0f5h7")]
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Mansion"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 3, -76)
-omni_range = 69.556
-
-[node name="OmniLight3D2" type="OmniLight3D" parent="Mansion"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 5, -19)
-light_color = Color(1, 0.7593334, 0.62, 1)
-light_energy = 0.5
-omni_range = 4096.0
-omni_attenuation = 0.725
 
 [node name="Doors" type="Node" parent="."]
 

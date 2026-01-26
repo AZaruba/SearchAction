@@ -111,12 +111,7 @@ public partial class PuzzleBookshelf : Node3D
 
 		if (Solved)
 		{
-			GD.Print("Solved!");
 			SolveTrigger.TriggerEvent();
-		}
-		else
-		{
-			GD.Print("Not solved!");
 		}
 	}
 }

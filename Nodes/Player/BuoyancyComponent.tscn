@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dktl1osly1bjk"]
+
+[ext_resource type="Script" uid="uid://cn8hj4nhywknh" path="res://Nodes/Player/BuoyancyComponent.cs" id="1_llfj0"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_llfj0"]
+radius = 0.01
+
+[node name="BuoyancyComponent" type="Node3D" node_paths=PackedStringArray("SurfaceDetector")]
+script = ExtResource("1_llfj0")
+Buoyancy = 6.0
+SurfaceDetector = NodePath("Area3D")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 512
+collision_mask = 32
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_llfj0")

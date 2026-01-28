@@ -37,8 +37,6 @@ public partial class UIJournal : Node3D
 			InputEventMouse asMouse = @event as InputEventMouse;
 		  asMouse.Position = new Vector2(TranslatedX * 600, TranslatedY * 600 * (2.8f/4f));
 		  asMouse.GlobalPosition = new Vector2(TranslatedX * 600, TranslatedY * 600 * (2.8f/4f));
-			DebugLog.LogToScreen(asMouse.GlobalPosition.ToString(), 2);
-			DebugLog.LogToScreen(asMouse.Position.ToString(), 3);
 			RenderedTexture.PushInput(asMouse);
 		}
 	}

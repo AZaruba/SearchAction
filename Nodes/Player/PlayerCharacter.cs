@@ -8,7 +8,12 @@ public partial class PlayerCharacter : CharacterBody3D
 {
   [Export] PlayerData Data;
   [Export] CanvasLayer WaterOverlay;
+
+  [Export] BuoyancyComponent BuoyancyComponent;
+
   StateMachine<IPlayerState> StateMachine;
+
+  private int WaterVolumeCount;
 
   public override void _Ready()
   {
@@ -22,12 +27,17 @@ public partial class PlayerCharacter : CharacterBody3D
   {
     base._PhysicsProcess(delta);
 
+    DebugLog.LogToScreen(StateMachine.GetCurrentState().ToString(), 2);
     SetCollisionMaskValue(9, ProgressTracker.GetEquippedItem(ItemCategory.Body) != ItemID.Swimsuit);
 
     // synchronize character
     Data.CurrentGroundNormal = GetFloorNormal();
     Data.CurrentDirection = Basis;
     Data.Position = Position;
+    Data.CurrentBuoyancy = BuoyancyComponent.GetBuoyancy();
+    Data.CurrentBuoyancySurface = BuoyancyComponent.GetSurface();
+    Data.IsAtWaterSurface = BuoyancyComponent.IsAtSurface();
+    WaterOverlay.Visible = !Data.IsAtWaterSurface;
 
     // update state
     UpdateState();
@@ -74,10 +84,6 @@ public partial class PlayerCharacter : CharacterBody3D
     {
       CastInteractionRay();
     }
-    if (StateMachine.GetCurrentState().Key() == StateManagement.State.SWIMMING)
-    {
-      WaterOverlay.Visible = Position.Y < Data.WaterVolumeSurface.Y;
-    }
     if (Data.Position.DistanceSquaredTo(Data.SlidingTarget) < 1.1f)
     {
       StateMachine.Execute(StateManagement.Command.END_SLIDE);
@@ -102,16 +108,19 @@ public partial class PlayerCharacter : CharacterBody3D
 
   public void OnWaterVolumeEntered(Vector3 desiredHeight)
   {
-    Data.WaterVolumeSurface = desiredHeight;
+    WaterVolumeCount++;
     MotionMode = MotionModeEnum.Floating;
     StateMachine.Execute(StateManagement.Command.ENTER_WATER);
   }
 
   public void OnWaterVolumeExited()
   {
-    MotionMode = MotionModeEnum.Grounded;
-    Data.WaterVolumeSurface = Vector3.Zero;
-    StateMachine.Execute(StateManagement.Command.LEAVE_WATER);
+    WaterVolumeCount--;
+    if (WaterVolumeCount == 0)
+    {
+      MotionMode = MotionModeEnum.Grounded;
+      StateMachine.Execute(StateManagement.Command.LEAVE_WATER);
+    }
   }
 
   public void OnIceVolumeEntered(Vector3 targetLocation)
@@ -173,9 +182,10 @@ public partial class PlayerCharacter : CharacterBody3D
     Data.CurrentGroundNormal = GetFloorNormal();
     Data.CurrentDirection = Basis;
     Data.SwimmingRate = Vector3.Zero;
-    Data.WaterVolumeSurface = Vector3.Zero;
     Data.CurrentTimeInCold = 0;
     Data.SlidingTarget = Vector3.Zero;
+    Data.CurrentBuoyancy = 0;
+    Data.IsAtWaterSurface = true;
   }
 
   private void InitMessages()

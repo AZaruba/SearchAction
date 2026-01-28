@@ -69,6 +69,7 @@ _subresources={
 "use_external/fallback_path": "res://Assets/Models/Environments/ExteriorFloor.tres",
 "use_external/path": "uid://i0gcguqd2m1b"
 },
+"Greenhouse": null,
 "PlasterWall": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Assets/Models/Environments/PlasterWall.tres",

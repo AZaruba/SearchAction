@@ -4,7 +4,7 @@
 
 [node name="WaterVolume" type="Area3D"]
 collision_layer = 32
-monitorable = false
+collision_mask = 513
 script = ExtResource("1_2uq67")
 
 [connection signal="body_entered" from="." to="." method="OnPlayerEntered"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dsk41q2rvkrai"]
+[gd_scene load_steps=7 format=3 uid="uid://dsk41q2rvkrai"]
 
 [ext_resource type="Script" uid="uid://c4hl0rytaqwl2" path="res://Nodes/Player/PlayerCharacter.cs" id="1_5w4vw"]
 [ext_resource type="Resource" uid="uid://cb8pakvbt1sbs" path="res://Nodes/Player/PlayerData.tres" id="2_8pxfe"]
 [ext_resource type="Shader" uid="uid://dyl4tlgb41815" path="res://Assets/Shaders/Entities/Volumes/WaterVolume/WaterVolume.gdshader" id="3_63kml"]
+[ext_resource type="PackedScene" uid="uid://dktl1osly1bjk" path="res://Nodes/Player/BuoyancyComponent.tscn" id="4_kcs7r"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e2mqm"]
 
@@ -10,12 +11,13 @@
 shader = ExtResource("3_63kml")
 shader_parameter/fog_color = Color(0, 0.4833331, 1, 0.5019608)
 
-[node name="PlayerCharacter" type="CharacterBody3D" node_paths=PackedStringArray("WaterOverlay")]
+[node name="PlayerCharacter" type="CharacterBody3D" node_paths=PackedStringArray("WaterOverlay", "BuoyancyComponent")]
 physics_interpolation_mode = 1
 collision_mask = 199
 script = ExtResource("1_5w4vw")
 Data = ExtResource("2_8pxfe")
 WaterOverlay = NodePath("WaterEffect")
+BuoyancyComponent = NodePath("BuoyancyComponent")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_e2mqm")
@@ -30,3 +32,5 @@ visible = false
 material = SubResource("ShaderMaterial_kcs7r")
 offset_right = 1920.0
 offset_bottom = 1080.0
+
+[node name="BuoyancyComponent" parent="." instance=ExtResource("4_kcs7r")]

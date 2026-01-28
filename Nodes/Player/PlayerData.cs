@@ -16,7 +16,6 @@ public partial class PlayerData : Resource
   public Basis CurrentDirection;
   public float CurrentRotationRate;
   public Vector3 CurrentGroundNormal;
-  public Vector3 WaterVolumeSurface;
   public Vector3 SwimmingRate;
 
   public Vector3 SlidingTarget;
@@ -24,4 +23,9 @@ public partial class PlayerData : Resource
   public float CurrentTimeInCold;
   public float CurrentToolMoveModifier = 1;
   public float CurrentToolSwimModifier = 0.7f;
+
+  public float CurrentBuoyancy;
+  public Vector3 CurrentBuoyancySurface;
+
+  public bool IsAtWaterSurface;
 }

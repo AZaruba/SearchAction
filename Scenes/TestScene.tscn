@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bsvcsug2emh60"]
+[gd_scene load_steps=27 format=3 uid="uid://bsvcsug2emh60"]
 
 [ext_resource type="Sky" uid="uid://ble1xcqnre6ho" path="res://Assets/Skybox/NightSky.tres" id="1_qsjrb"]
 [ext_resource type="PackedScene" uid="uid://dlk3re05kefyw" path="res://Assets/Particles/Snowfall.tscn" id="3_ytmxh"]
@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c1sxxkcovj6rq" path="res://Nodes/Entities/Volumes/WaterVolume/WaterVolume.tscn" id="10_201fe"]
 [ext_resource type="Texture2D" uid="uid://iq2n6gvgwbt3" path="res://Assets/2D/Inventory/Head/3DGlasses.png" id="10_ytmxh"]
 [ext_resource type="PackedScene" uid="uid://t622wlat3n41" path="res://Nodes/Entities/Volumes/IceVolume/IceVolume.tscn" id="11_xjl2p"]
-[ext_resource type="ArrayMesh" uid="uid://w3geldbqtjff" path="res://Assets/Models/Environments/OutdoorWater/OutdoorWaterVolumeShape.res" id="12_p30di"]
+[ext_resource type="ArrayMesh" uid="uid://d30b1iy0xfy45" path="res://Assets/Models/Environments/OutdoorWater/OutdoorWaterVolumeSurface.res" id="12_p30di"]
 [ext_resource type="Texture2D" uid="uid://bp3mv1q820fcy" path="res://Assets/2D/Inventory/Keys/RubyKey.png" id="13_hctok"]
 [ext_resource type="Texture2D" uid="uid://pl11cc0pnw3n" path="res://Assets/2D/Inventory/Keys/SaphKey.png" id="14_lp1f3"]
 [ext_resource type="Texture2D" uid="uid://csh17ai24y78t" path="res://Assets/2D/Inventory/Items/Lighter.png" id="14_t2vuu"]
@@ -26,8 +26,25 @@ ambient_light_energy = 0.0
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8c81w"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.17254902, 0.4392157, 0.72156864, 0.39607844)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_p30di"]
+points = PackedVector3Array(-21.64153, -0.78536, 1.0749712, -11.6916275, 2.833333, 17.355726, -14.406179, 2.833333, 35.45238, -23.452381, 2.833333, 6.503188, -23.452381, -0.78536, 35.45238, -11.6916275, -0.78536, -4.3571434, -14.406179, -0.78536, 35.45238, -11.6916275, 2.833333, -4.3571434, -23.452381, 2.833333, 35.45238, -17.12073, 2.833333, -3.449194, -11.6916275, -0.78536, 17.355726, -23.452381, -0.78536, 6.503188, -15.311029, -0.78536, -4.3571434, -21.64153, 2.833333, 1.0749712, -17.12073, -0.78536, -3.449194, -15.311029, 2.833333, -4.3571434)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8c81w"]
+points = PackedVector3Array(4.594529, 2.833333, 6.5, 5.499645, -0.78536, -8.880953, 5.499645, 2.833333, -8.880953, -11.690476, 2.833333, -5.261551, -11.690476, -0.78536, 3.7854486, 6.4047613, -0.78536, 6.5, -11.690476, -0.78536, -5.261551, -11.690476, 2.833333, 3.7854486, 6.4047613, 2.833333, 6.5, 6.4047613, -0.78536, -8.880953, 6.4047613, 2.833333, -8.880953, 4.594529, -0.78536, 6.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fi7j4"]
+points = PackedVector3Array(13.642858, -4.4052935, -5.2619057, 8.214286, -13.452381, -22.452381, 13.642858, -13.452381, -22.452381, 8.214286, -1.6904764, -22.452381, 8.214286, -13.452381, -7.072492, 13.642858, -1.6904764, -22.452381, 8.214286, -1.6904764, -5.2619057, 13.642858, -13.452381, -7.072492, 13.642858, -1.6904764, -5.2619057, 8.214286, -4.4052935, -5.2619057)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4v62a"]
+points = PackedVector3Array(6.4047623, -0.7853601, -8.8798895, 17.261906, 2.8333333, 4.689679, 15.450965, 2.8333333, 6.49876, 8.215703, 2.8333333, -22.452381, 13.641087, -1.6904762, -22.452381, 6.4047623, -0.7853601, 7.4047623, 17.261906, -0.7853601, 4.689679, 6.4047623, 2.8333333, 7.4047623, 13.641087, 2.8333333, -22.452381, 8.215703, -1.6904762, -22.452381, 17.261906, 2.8333333, -6.1677294, 8.215703, -1.6904762, -4.3586483, 17.261906, -0.7853601, -6.1677294, 13.641087, -0.7853601, 7.4047623, 6.4047623, 2.8333333, -8.8798895, 13.641087, 2.8333333, 7.4047623, 15.450965, -0.7853601, 6.49876)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_xjl2p"]
-size = Vector3(17, 10, 57)
+size = Vector3(17, 10, 54)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_xjl2p"]
 
@@ -35,28 +52,6 @@ size = Vector3(17, 10, 57)
 transparency = 1
 shading_mode = 0
 albedo_color = Color(0.17280002, 0.4372799, 0.72, 0.39607844)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p30di"]
-transparency = 1
-albedo_color = Color(0, 1, 1, 0.23921569)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_dwn5r"]
-points = PackedVector3Array(-12.486662, 2.2684097, 15.933666, -21.53428, -12.207781, 31.31028, -12.486662, -12.207781, 31.31028, -21.53428, -3.1601617, 14.125382, -21.53428, -4.9696856, 30.405252, -12.486662, -3.1601617, 14.125382, -12.486662, -6.7777925, 32.21708, -21.53428, 2.2684097, 14.125382, -21.53428, 2.2684097, 15.933666, -12.486662, -4.9696856, 30.405252, -21.53428, -12.207781, 32.21708, -21.53428, -6.7777925, 32.21708, -12.486662, 2.2684097, 14.125382, -12.486662, -12.207781, 32.21708)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_c2lnq"]
-points = PackedVector3Array(12.846672, 1.7034855, -12.587968, 10.132386, -9.493495, -25.687681, 10.132386, 2.2684097, -25.687681, 15.560958, -9.493495, -25.687681, 10.132386, -9.493495, -13.022253, 15.560958, 2.2684097, -25.687681, 15.560958, -9.493495, -13.022253, 10.132386, 1.3623195, -13.022253, 15.560958, 0.45853186, -13.022253, 15.560958, 2.2684097, -21.162542, 10.132386, 2.2684097, -21.162542)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4v62a"]
-points = PackedVector3Array(-15.200239, -2.2553997, -6.684228, -7.2839165, 2.197839, 13.7647, -21.0819, 2.1270406, 13.410847, -7.2520146, 2.2078083, -8.18989, -7.05809, -2.2553997, 14.117415, -21.53428, -2.2553997, 14.117415, -18.97553, 1.9572504, -1.4774888, -7.05809, -2.2553997, -8.492778, -21.53428, -2.2553997, 3.263903, -13.484557, 2.0371654, -6.526176, -19.721924, -2.2553997, -2.161747, -20.397959, 1.913309, 3.193008, -9.774502, -2.2553997, -8.492778, -13.392132, -2.2553997, -7.58961, -15.07708, 1.9602706, -5.3905144)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fi7j4"]
-points = PackedVector3Array(-5.2482123, -2.2553997, -8.497205, 4.7038145, 6.792219, 0.5504141, 4.3633385, 6.5303144, -8.2353, -7.05809, 3.1726403, 0.5504141, 3.7977242, 1.3641791, 0.5504141, -7.05809, 3.1726403, -8.497205, -7.05809, -2.2553997, 0.5504141, 4.7038145, 2.2684097, -8.497205, 1.9889975, 6.792219, -8.497205, -1.6284561, -1.3502836, 0.5504141, 1.9889975, 6.792219, 0.5504141, -7.05809, -2.2553997, -8.497205, -1.6284561, -1.3502836, -8.497205, 4.7038145, 2.2684097, 0.5504141, 3.7977242, 1.3641791, -8.497205, -5.2482123, -2.2553997, 0.5504141)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8c81w"]
-points = PackedVector3Array(15.560958, -0.44711494, -2.1638718, 10.132386, -9.493495, -13.021014, 15.560958, -9.493495, -13.021014, 10.132386, 1.3615236, -13.021014, 15.560958, 1.3615236, -13.021014, 10.132386, 1.3615236, -3.0693421, 10.132386, -9.493495, -11.210073, 10.132386, -1.3524969, -3.0693421, 15.560958, -4.0654545, -4.8781576, 15.560958, 1.3615236, -3.0693421, 15.560958, -9.493495, -11.210073, 12.846672, -3.1611352, -3.9737499, 14.656019, 0.45720434, -2.1638718, 15.560958, -3.1611352, -3.9737499)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_p30di"]
-points = PackedVector3Array(5.439254, 6.5169606, -8.896878, 19.180006, 6.792219, 1.4535813, 15.5598955, 1.3641789, -13.021014, 4.7052307, 2.2691178, 0.5499711, 19.180006, 3.174057, 1.4535813, 18.414173, 6.505032, -8.87501, 4.7052307, 6.792219, 1.4535813, 4.7052307, 2.2691178, -9.401524, 10.320932, 6.5126333, -12.135573, 8.6902485, 3.265266, 3.302383, 19.180006, 2.2691178, -9.401524, 15.5598955, 1.3641789, -4.8767405, 10.134688, 1.3641789, -13.021014, 15.185587, 6.511378, 3.2800438, 15.9844675, 6.504449, -11.300348, 15.185587, 3.2676158, 3.2800438, 7.4199595, 2.2691178, -12.115721, 10.134688, 1.3641789, -4.8767405, 8.6902485, 6.5184317, 3.302383, 15.5598955, 3.174057, -13.021014, 7.8876104, 6.5115848, -11.320567, 4.7052307, 3.174057, 1.4535813, 19.180006, 2.2691178, -5.782034, 13.561413, 6.5102, -12.127867, 5.6106124, 2.2691178, 0.5499711)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ytmxh"]
 size = Vector3(4, 3, 0.5)
@@ -67,7 +62,7 @@ size = Vector3(4, 3, 0.5)
 environment = SubResource("Environment_c264a")
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("4_iufkg")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -14.1145, 2.0728216, -100.477005)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -11.1145, 4.0728216, -127.477005)
 collision_mask = 263
 floor_constant_speed = true
 floor_max_angle = 1.3089969
@@ -139,66 +134,66 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, -36)
 Item = 2
 Icon = ExtResource("10_ytmxh")
 
+[node name="OutdoorWaterVolume" parent="." node_paths=PackedStringArray("Volume") instance=ExtResource("10_201fe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -141)
+Volume = NodePath("CollisionShape3D")
+PushDirection = Vector3(0, 0, 2)
+IsDebug = null
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="OutdoorWaterVolume"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -2.3, 2)
+mesh = ExtResource("12_p30di")
+surface_material_override/0 = SubResource("StandardMaterial3D_8c81w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OutdoorWaterVolume"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -3.1, 2)
+shape = SubResource("ConvexPolygonShape3D_p30di")
+
+[node name="OutdoorWaterVolume2" parent="." node_paths=PackedStringArray("Volume") instance=ExtResource("10_201fe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -141)
+Volume = NodePath("CollisionShape3D2")
+PushDirection = Vector3(-2, 0, 0)
+IsDebug = null
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="OutdoorWaterVolume2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -3.1, 2)
+shape = SubResource("ConvexPolygonShape3D_8c81w")
+
+[node name="OutdoorWaterVolume3" parent="." node_paths=PackedStringArray("Volume") instance=ExtResource("10_201fe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -141)
+Volume = NodePath("CollisionShape3D3")
+PushDirection = null
+IsDebug = null
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="OutdoorWaterVolume3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -3.1, 2)
+shape = SubResource("ConvexPolygonShape3D_fi7j4")
+
+[node name="OutdoorWaterVolume4" parent="." node_paths=PackedStringArray("Volume") instance=ExtResource("10_201fe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -141)
+Volume = NodePath("CollisionShape3D4")
+PushDirection = null
+IsDebug = null
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="OutdoorWaterVolume4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -3.1, 2)
+shape = SubResource("ConvexPolygonShape3D_4v62a")
+
 [node name="PoolVolume" parent="." node_paths=PackedStringArray("Volume") instance=ExtResource("10_201fe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -71)
 Volume = NodePath("WaterShape")
-DesiredHeight = Vector3(0, -0.1, 0)
+PushDirection = null
+IsDebug = null
 
 [node name="WaterShape" type="CollisionShape3D" parent="PoolVolume"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -5.3, -7.050003)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -5.3, -5.550003)
 shape = SubResource("BoxShape3D_xjl2p")
+debug_color = Color(0, 0.6, 0.7019608, 0.41960785)
 
 [node name="WaterSurface" type="MeshInstance3D" parent="PoolVolume"]
-transform = Transform3D(12, 0, 0, 0, 14, 0, 0, 0, 31, 0, -0.3, -4)
+transform = Transform3D(12, 0, 0, 0, 14, 0, 0, 0, 29, 0, -0.3, -4)
 mesh = SubResource("PlaneMesh_xjl2p")
 surface_material_override/0 = SubResource("StandardMaterial3D_201fe")
-
-[node name="OutdoorVolume" parent="." node_paths=PackedStringArray("Volume") instance=ExtResource("10_201fe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 7, -136)
-Volume = NodePath("CollisionShape3D")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="OutdoorVolume"]
-mesh = ExtResource("12_p30di")
-surface_material_override/0 = SubResource("StandardMaterial3D_p30di")
-surface_material_override/1 = SubResource("StandardMaterial3D_p30di")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="OutdoorVolume"]
-shape = SubResource("ConvexPolygonShape3D_dwn5r")
-
-[node name="OutdoorVolume2" parent="." node_paths=PackedStringArray("Volume") instance=ExtResource("10_201fe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 7, -136)
-Volume = NodePath("CollisionShape3D2")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="OutdoorVolume2"]
-shape = SubResource("ConvexPolygonShape3D_c2lnq")
-
-[node name="OutdoorVolume3" parent="." node_paths=PackedStringArray("Volume") instance=ExtResource("10_201fe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 7, -136)
-Volume = NodePath("CollisionShape3D3")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="OutdoorVolume3"]
-shape = SubResource("ConvexPolygonShape3D_4v62a")
-
-[node name="OutdoorVolume4" parent="." node_paths=PackedStringArray("Volume") instance=ExtResource("10_201fe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 7, -136)
-Volume = NodePath("CollisionShape3D4")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="OutdoorVolume4"]
-shape = SubResource("ConvexPolygonShape3D_fi7j4")
-
-[node name="OutdoorVolume5" parent="." node_paths=PackedStringArray("Volume") instance=ExtResource("10_201fe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 7, -136)
-Volume = NodePath("CollisionShape3D5")
-
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="OutdoorVolume5"]
-shape = SubResource("ConvexPolygonShape3D_8c81w")
-
-[node name="OutdoorVolume6" parent="." node_paths=PackedStringArray("Volume") instance=ExtResource("10_201fe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 7, -136)
-Volume = NodePath("CollisionShape3D6")
-
-[node name="CollisionShape3D6" type="CollisionShape3D" parent="OutdoorVolume6"]
-shape = SubResource("ConvexPolygonShape3D_p30di")
 
 [node name="ForwardGardenIce" parent="." node_paths=PackedStringArray("Destination") instance=ExtResource("11_xjl2p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, -32)

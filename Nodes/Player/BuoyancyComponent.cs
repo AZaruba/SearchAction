@@ -20,6 +20,10 @@ public partial class BuoyancyComponent : Node3D
   {
     if (SurfaceDetector.HasOverlappingAreas())
     {
+      if (AtSurface)
+      {
+        SurfacePosition = GlobalPosition;
+      }
       DebugLog.LogToScreen("Buoyancy detects below surface");
       Descend();
       AtSurface = false;
@@ -28,7 +32,7 @@ public partial class BuoyancyComponent : Node3D
     {
       if (!AtSurface)
       {
-        SurfacePosition = Position;
+        SurfacePosition = GlobalPosition;
       }
       DebugLog.LogToScreen("Buoyancy detects surface");
       HitSurface();

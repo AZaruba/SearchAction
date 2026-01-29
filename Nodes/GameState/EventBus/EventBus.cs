@@ -2,7 +2,7 @@ using Authorship.src;
 using Godot;
 using System;
 
-public partial class EventBus : Node
+public partial class EventBus : Node3D
 {
   [Signal] public delegate void ItemPickupEventHandler(ItemID id);
   [Signal] public delegate void SelectItemEventHandler(ItemID id, ItemCategory cat);

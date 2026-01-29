@@ -34,3 +34,4 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 
 [node name="BuoyancyComponent" parent="." instance=ExtResource("4_kcs7r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)

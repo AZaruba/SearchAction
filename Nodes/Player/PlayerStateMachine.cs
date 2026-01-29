@@ -84,41 +84,52 @@ public class PlayerSwimmingState : IPlayerState
   public override void ExitState()
   {
     DataRef.SwimmingRate = Vector3.Zero;
+    DataRef.CurrentWaterFlowDirection = Vector3.Zero;
+    DataRef.CurrentWaterVelocity = Vector3.Zero;
   }
 
 
   public override void Act(float delta)
   {
 
-    if (ProgressTracker.GetEquippedItem(ItemCategory.Hat) == ItemID.DiveMask)
-    {
-      if (Input.IsActionPressed(InputActions.SwimUp))
-      {
-        DataRef.SwimmingRate = Vector3.Up * Mathf.Min(6 * DataRef.CurrentToolSwimModifier, DataRef.SwimmingRate.Y + delta * 3);
-        if (DataRef.IsAtWaterSurface)
-        {
-          DataRef.SwimmingRate = (DataRef.Position.Y - DataRef.CurrentBuoyancySurface.Y) * Vector3.Down;
-        }
-      }
-      else if (Input.IsActionPressed(InputActions.SwimDown))
-      {
-        DataRef.SwimmingRate = Vector3.Up * Mathf.Min(6 * DataRef.CurrentToolSwimModifier, DataRef.SwimmingRate.Y - delta * 3);
-      }
-      else
-      {
-        DataRef.SwimmingRate =  Vector3.Up * Mathf.Clamp(Mathf.Abs(DataRef.SwimmingRate.Y) - 5 * delta, 0, 6) * Mathf.Sign(DataRef.SwimmingRate.Y);
-      }
-    }
-    else
+    // if (ProgressTracker.GetEquippedItem(ItemCategory.Hat) == ItemID.DiveMask)
+    // {
+    //   // if (Input.IsActionPressed(InputActions.SwimUp))
+    //   // {
+        
+    //   //   if (!DataRef.IsAtWaterSurface)
+    //   //   {
+    //   //     DataRef.SwimmingRate = Vector3.Down * Mathf.MoveToward(DataRef.Position.Y, DataRef.CurrentBuoyancySurface.Y, delta);
+    //   //   }
+    //   // }
+    //   // else if (Input.IsActionPressed(InputActions.SwimDown))
+    //   // {
+    //   //   DataRef.SwimmingRate = Vector3.Up * Mathf.Min(6 * DataRef.CurrentToolSwimModifier, DataRef.SwimmingRate.Y - delta * 3);
+    //   // }
+    //   // else
+    //   // {
+    //   //   if (!DataRef.IsAtWaterSurface)
+    //   //   {
+    //   //     DataRef.SwimmingRate = Vector3.Down * Mathf.MoveToward(DataRef.Position.Y, DataRef.CurrentBuoyancySurface.Y, delta);
+    //   //   }
+    //   // }
+    // }
+    // else
     {
       if (!DataRef.IsAtWaterSurface)
       {
-        DataRef.SwimmingRate = Vector3.Up * Mathf.Min(DataRef.CurrentBuoyancy * DataRef.CurrentToolSwimModifier, DataRef.SwimmingRate.Y + delta * 5);
+        DataRef.SwimmingRate += Vector3.Up * DataRef.CurrentBuoyancy * delta;
       } 
       else
       {
-          DataRef.SwimmingRate = (DataRef.Position.Y - DataRef.CurrentBuoyancySurface.Y) * Vector3.Down;
+          DataRef.SwimmingRate = Vector3.Down * Mathf.MoveToward(DataRef.Position.Y, DataRef.CurrentBuoyancySurface.Y, delta);
       }
+    }
+    DataRef.CurrentWaterVelocity += DataRef.CurrentWaterFlowDirection * delta;
+    DataRef.CurrentWaterVelocity = DataRef.CurrentWaterVelocity.LimitLength(5f);
+    if (DataRef.CurrentWaterFlowDirection.Length() <= 0)
+    {
+      DataRef.CurrentWaterVelocity = DataRef.CurrentWaterVelocity.MoveToward(Vector3.Zero, delta * 5);
     }
   }
 
@@ -176,6 +187,8 @@ public class PlayerGroundedState : IPlayerState
   public override void EnterState()
   {
     DataRef.SwimmingRate = Vector3.Zero;
+    DataRef.CurrentWaterVelocity = Vector3.Zero;
+    DataRef.CurrentWaterFlowDirection = Vector3.Zero;
   }
 
   public override void ExitState()

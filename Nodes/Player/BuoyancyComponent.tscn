@@ -7,7 +7,7 @@ radius = 0.01
 
 [node name="BuoyancyComponent" type="Node3D" node_paths=PackedStringArray("SurfaceDetector")]
 script = ExtResource("1_llfj0")
-Buoyancy = 6.0
+Buoyancy = 1.0
 SurfaceDetector = NodePath("Area3D")
 
 [node name="Area3D" type="Area3D" parent="."]

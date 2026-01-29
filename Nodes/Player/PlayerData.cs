@@ -22,10 +22,12 @@ public partial class PlayerData : Resource
 
   public float CurrentTimeInCold;
   public float CurrentToolMoveModifier = 1;
-  public float CurrentToolSwimModifier = 0.7f;
+  public float CurrentToolSwimModifier = 0.5f;
 
   public float CurrentBuoyancy;
   public Vector3 CurrentBuoyancySurface;
+  public Vector3 CurrentWaterFlowDirection;
+  public Vector3 CurrentWaterVelocity;
 
   public bool IsAtWaterSurface;
 }

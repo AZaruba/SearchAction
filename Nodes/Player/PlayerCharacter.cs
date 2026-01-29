@@ -27,7 +27,8 @@ public partial class PlayerCharacter : CharacterBody3D
   {
     base._PhysicsProcess(delta);
 
-    DebugLog.LogToScreen(StateMachine.GetCurrentState().ToString(), 2);
+    DebugLog.LogToScreen(Data.CurrentWaterFlowDirection.ToString(), 2);
+    DebugLog.LogToScreen(Data.CurrentWaterVelocity.ToString(), 3);
     SetCollisionMaskValue(9, ProgressTracker.GetEquippedItem(ItemCategory.Body) != ItemID.Swimsuit);
 
     // synchronize character
@@ -49,7 +50,7 @@ public partial class PlayerCharacter : CharacterBody3D
 
     // Need to "Redirect" movement with rotation, as the rotation acceleration gives the rotation weight, preventing "drifting" feeling
     Data.CurrentVelocity = Data.CurrentVelocity.Rotated(UpDirection, Data.CurrentRotationRate * (float)delta);
-    Velocity = Data.CurrentVelocity + Data.SwimmingRate;
+    Velocity = Data.CurrentVelocity + Data.SwimmingRate + Data.CurrentWaterVelocity;
     Basis = Basis.Rotated(UpDirection, Data.CurrentRotationRate * (float)delta).Orthonormalized();
     MoveAndSlide();
   }
@@ -106,14 +107,15 @@ public partial class PlayerCharacter : CharacterBody3D
     }
   }
 
-  public void OnWaterVolumeEntered(Vector3 desiredHeight)
+  public void OnWaterVolumeEntered(Vector3 directionForce)
   {
     WaterVolumeCount++;
     MotionMode = MotionModeEnum.Floating;
     StateMachine.Execute(StateManagement.Command.ENTER_WATER);
+    Data.CurrentWaterFlowDirection += directionForce;
   }
 
-  public void OnWaterVolumeExited()
+  public void OnWaterVolumeExited(Vector3 directionForce)
   {
     WaterVolumeCount--;
     if (WaterVolumeCount == 0)
@@ -121,6 +123,7 @@ public partial class PlayerCharacter : CharacterBody3D
       MotionMode = MotionModeEnum.Grounded;
       StateMachine.Execute(StateManagement.Command.LEAVE_WATER);
     }
+    Data.CurrentWaterFlowDirection -= directionForce;
   }
 
   public void OnIceVolumeEntered(Vector3 targetLocation)
@@ -156,9 +159,13 @@ public partial class PlayerCharacter : CharacterBody3D
 
   private void OnEquipItem(ItemID item, ItemCategory _itemCategory)
   {
+    if (_itemCategory != ItemCategory.Tool)
+    {
+      return;
+    }
     if (item == ItemID.Fins)
     {
-      Data.CurrentToolSwimModifier = 1.5f;
+      Data.CurrentToolSwimModifier = 1.2f;
       Data.CurrentToolMoveModifier = 0.1f;
     }
     else if (item == ItemID.Treads)
@@ -168,7 +175,7 @@ public partial class PlayerCharacter : CharacterBody3D
     }
     else
     {
-      Data.CurrentToolSwimModifier = 1;
+      Data.CurrentToolSwimModifier = 0.5f;
       Data.CurrentToolMoveModifier = 0.7f;
     }
   }
@@ -180,6 +187,7 @@ public partial class PlayerCharacter : CharacterBody3D
     Data.Position = Position;
     Data.CurrentRotationRate = 0;
     Data.CurrentGroundNormal = GetFloorNormal();
+    Data.CurrentWaterFlowDirection = Vector3.Zero;
     Data.CurrentDirection = Basis;
     Data.SwimmingRate = Vector3.Zero;
     Data.CurrentTimeInCold = 0;

@@ -1,7 +1,10 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://dtd727lnm16mn"]
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dtd727lnm16mn"]
+
+[ext_resource type="Texture2D" uid="uid://mwttmt8wh4tl" path="res://Assets/Textures/TileWall.png" id="1_wm22r"]
 
 [resource]
 resource_name = "TileWall"
 cull_mode = 2
-albedo_color = Color(0.9063318, 0.9063318, 0.9063318, 1)
+albedo_texture = ExtResource("1_wm22r")
 roughness = 0.5
+texture_filter = 0

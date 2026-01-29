@@ -1,9 +1,12 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://k3sjks67q823"]
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://k3sjks67q823"]
+
+[ext_resource type="Texture2D" uid="uid://teb2v5im78to" path="res://Assets/Textures/Concrete.png" id="1_5pcqk"]
 
 [resource]
 resource_name = "ConcreteWall"
 cull_mode = 2
 shading_mode = 2
 disable_specular_occlusion = true
-albedo_color = Color(0.67859995, 0.70563996, 0.78, 1)
+albedo_texture = ExtResource("1_5pcqk")
 roughness = 0.5
+texture_filter = 0

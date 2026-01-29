@@ -1,7 +1,10 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://c38tdog4el80"]
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c38tdog4el80"]
+
+[ext_resource type="Texture2D" uid="uid://bk0o5ke38jm7j" path="res://Assets/Textures/Stairs.png" id="1_tutnr"]
 
 [resource]
 resource_name = "Stairs"
 cull_mode = 2
-albedo_color = Color(0.9063318, 0.9063318, 0.9063318, 1)
+albedo_texture = ExtResource("1_tutnr")
 roughness = 0.5
+texture_filter = 0

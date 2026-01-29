@@ -1,4 +1,6 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://k61pnwt28ixq"]
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://k61pnwt28ixq"]
+
+[ext_resource type="Texture2D" uid="uid://eq1edl81x1gj" path="res://Assets/Textures/ConcreteFloor.png" id="1_hghan"]
 
 [resource]
 resource_name = "ConcreteFloor"
@@ -6,5 +8,6 @@ cull_mode = 2
 shading_mode = 2
 specular_mode = 2
 disable_specular_occlusion = true
-albedo_color = Color(0.7917, 0.8252184, 0.91, 1)
+albedo_texture = ExtResource("1_hghan")
 roughness = 0.5
+texture_filter = 0

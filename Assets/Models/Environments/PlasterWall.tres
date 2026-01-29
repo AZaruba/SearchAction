@@ -1,4 +1,6 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://b2ia3psqu7mvs"]
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b2ia3psqu7mvs"]
+
+[ext_resource type="Texture2D" uid="uid://dys3aaoce5sas" path="res://Assets/Textures/Plaster.png" id="1_1q55o"]
 
 [resource]
 resource_name = "PlasterWall"
@@ -6,5 +8,6 @@ cull_mode = 2
 shading_mode = 2
 specular_mode = 2
 disable_specular_occlusion = true
-albedo_color = Color(0.84, 0.78946, 0.68039995, 1)
+albedo_texture = ExtResource("1_1q55o")
 roughness = 0.5
+texture_filter = 0

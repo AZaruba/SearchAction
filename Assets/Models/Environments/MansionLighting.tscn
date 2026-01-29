@@ -1,0 +1,176 @@
+[gd_scene format=3 uid="uid://b1ek50qsa0jx0"]
+
+[node name="Lighting" type="Node"]
+
+[node name="Lobby" type="Node" parent="."]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lobby"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3.6859097, 0)
+light_bake_mode = 1
+omni_range = 20.0
+omni_attenuation = 0.0
+
+[node name="Library" type="Node" parent="."]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Library"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.26141, 7.3488526, -23.02809)
+light_color = Color(1, 0.95233333, 0.87, 1)
+light_energy = 2.0
+omni_range = 30.0
+omni_attenuation = 0.8
+
+[node name="SideHall" type="Node" parent="."]
+
+[node name="ClosetLight" type="OmniLight3D" parent="SideHall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 1.9, 8)
+light_energy = 16.0
+omni_range = 10.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="SideHall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 3.5, -18)
+light_energy = 16.0
+omni_range = 10.0
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="SideHall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 3.5, 0)
+light_energy = 16.0
+omni_range = 10.0
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="SideHall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 3.5, -36)
+light_energy = 16.0
+omni_range = 10.0
+
+[node name="UpstairsHall" type="Node" parent="."]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="UpstairsHall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 8.5, -6)
+omni_range = 8.0
+
+[node name="StairLight" type="OmniLight3D" parent="UpstairsHall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7117691, 7.2352333, -20.30444)
+omni_range = 8.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="UpstairsHall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 8.5, -6)
+omni_range = 8.0
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="UpstairsHall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 8.5, -6)
+omni_range = 8.0
+
+[node name="Office" type="Node" parent="."]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Office"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 32, 8, -2)
+light_color = Color(1, 0.9036667, 0.65999997, 1)
+light_energy = 0.8
+omni_range = 20.0
+omni_attenuation = 0.0
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Office"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 21.400015, 8.232199, 1.7209461)
+light_color = Color(1, 0.9036667, 0.65999997, 1)
+light_energy = 0.6
+omni_range = 20.0
+omni_attenuation = 0.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Office"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 32, 8, 4)
+light_color = Color(1, 0.9036667, 0.65999997, 1)
+light_energy = 0.8
+omni_range = 20.0
+omni_attenuation = 0.0
+
+[node name="Pool" type="Node" parent="."]
+
+[node name="UWLight1" type="OmniLight3D" parent="Pool"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, -4, -86)
+light_color = Color(0.6, 0.84, 1, 1)
+light_energy = 8.0
+omni_range = 40.0
+omni_attenuation = 1.5
+
+[node name="UWLight2" type="OmniLight3D" parent="Pool"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, -4, -86)
+light_color = Color(0.6, 0.84, 1, 1)
+light_energy = 8.0
+omni_range = 40.0
+omni_attenuation = 1.5
+
+[node name="UWLight3" type="OmniLight3D" parent="Pool"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, -1, -64)
+light_color = Color(0.6, 0.84, 1, 1)
+light_energy = 6.0
+omni_range = 40.0
+omni_attenuation = 2.0
+
+[node name="UWLight4" type="OmniLight3D" parent="Pool"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, -1, -64)
+light_color = Color(0.6, 0.84, 1, 1)
+light_energy = 6.0
+omni_range = 40.0
+omni_attenuation = 2.0
+
+[node name="Ambient" type="OmniLight3D" parent="Pool"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.010134, 3.9516263, -71.570625)
+light_color = Color(0.82, 0.928, 1, 1)
+light_energy = 2.0
+omni_range = 100.0
+omni_attenuation = 2.0
+
+[node name="LockerRoom1Light" type="OmniLight3D" parent="Pool"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, -50.5)
+light_energy = 0.8
+omni_range = 8.0
+omni_attenuation = 0.0
+
+[node name="LockerRoom2Light" type="OmniLight3D" parent="Pool"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, -64.5)
+light_energy = 0.8
+omni_range = 8.0
+omni_attenuation = 0.0
+
+[node name="PrimaryBD" type="Node" parent="."]
+
+[node name="BDBalconyLight" type="OmniLight3D" parent="PrimaryBD"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.879932, 8.5, 5.077237)
+omni_range = 10.0
+omni_attenuation = 0.0
+
+[node name="BDClosetDoor" type="OmniLight3D" parent="PrimaryBD"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.724432, 8.5, -9.710209)
+light_indirect_energy = 0.0
+omni_range = 10.0
+omni_attenuation = 0.0
+
+[node name="BDClosetLight" type="OmniLight3D" parent="PrimaryBD"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.976933, 8.5, -15.44701)
+light_color = Color(1, 0.8605, 0.69, 1)
+light_indirect_energy = 0.0
+
+[node name="BDBathroomLight" type="OmniLight3D" parent="PrimaryBD"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.712925, 8.690487, -23.037296)
+light_indirect_energy = 0.0
+omni_range = 15.0
+
+[node name="SecondaryBD" type="Node" parent="."]
+
+[node name="SBDLight" type="OmniLight3D" parent="SecondaryBD"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 8.8, -16)
+light_energy = 0.5
+omni_range = 15.0
+omni_attenuation = 0.0
+
+[node name="BackRoom" type="Node" parent="."]
+
+[node name="BackRoomlight" type="OmniLight3D" parent="BackRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 3.8, -58)
+omni_range = 20.0
+omni_attenuation = 0.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.094108306, 0.9680545, -0.23240937, 0, 0.23344542, 0.9723699, 0.99556196, -0.09150808, 0.021969153, 0, 18.422424, 0)
+visible = false
+light_energy = 0.1
+sky_mode = 1

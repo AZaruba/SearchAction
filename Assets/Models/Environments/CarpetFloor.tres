@@ -1,9 +1,12 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://ce4e4s1xem1uo"]
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://ce4e4s1xem1uo"]
+
+[ext_resource type="Texture2D" uid="uid://7s7fjlo1ktva" path="res://Assets/Textures/Carpet.png" id="1_586c6"]
 
 [resource]
 resource_name = "CarpetFloor"
 cull_mode = 2
 shading_mode = 2
 specular_mode = 2
-albedo_color = Color(0.0455, 0.07595004, 0.35, 1)
+albedo_texture = ExtResource("1_586c6")
 roughness = 0.5
+texture_filter = 0

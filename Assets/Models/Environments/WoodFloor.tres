@@ -1,4 +1,6 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://bpa1ok4ay8yew"]
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bpa1ok4ay8yew"]
+
+[ext_resource type="Texture2D" uid="uid://dvt8y3l6fj7x4" path="res://Assets/Textures/Floor_Wood.png" id="1_2m70o"]
 
 [resource]
 resource_name = "WoodFloor"
@@ -6,4 +8,5 @@ cull_mode = 2
 shading_mode = 2
 specular_mode = 2
 disable_specular_occlusion = true
-albedo_color = Color(0.35, 0.16916667, 0, 1)
+albedo_texture = ExtResource("1_2m70o")
+texture_filter = 0

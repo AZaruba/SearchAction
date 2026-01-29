@@ -1,7 +1,10 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://bgtlr1xyb0a1v"]
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bgtlr1xyb0a1v"]
+
+[ext_resource type="Texture2D" uid="uid://teb2v5im78to" path="res://Assets/Textures/Concrete.png" id="1_oi30l"]
 
 [resource]
 resource_name = "Ceiling"
 cull_mode = 2
-albedo_color = Color(0.9063318, 0.9063318, 0.9063318, 1)
+albedo_texture = ExtResource("1_oi30l")
 roughness = 0.5
+texture_filter = 0

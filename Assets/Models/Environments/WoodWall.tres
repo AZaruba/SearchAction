@@ -1,4 +1,6 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://chpqa45hw0fkv"]
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://chpqa45hw0fkv"]
+
+[ext_resource type="Texture2D" uid="uid://cbrw43uxsf6el" path="res://Assets/Textures/WoodWall2.png" id="1_1annu"]
 
 [resource]
 resource_name = "WoodWall"
@@ -6,5 +8,6 @@ cull_mode = 2
 shading_mode = 2
 specular_mode = 2
 disable_specular_occlusion = true
-albedo_color = Color(0.33, 0.20553502, 0.089099996, 1)
+albedo_texture = ExtResource("1_1annu")
 roughness = 0.5
+texture_filter = 0

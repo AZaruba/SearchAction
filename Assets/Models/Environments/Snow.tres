@@ -1,7 +1,10 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://dk0imq0pnnofo"]
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dk0imq0pnnofo"]
+
+[ext_resource type="Texture2D" uid="uid://c4lnwn46tfagj" path="res://Assets/Textures/Snow.png" id="1_c6w6w"]
 
 [resource]
 resource_name = "Snow"
 cull_mode = 2
-albedo_color = Color(0.9063318, 0.9063318, 0.9063318, 1)
+albedo_texture = ExtResource("1_c6w6w")
 roughness = 0.5
+texture_filter = 0

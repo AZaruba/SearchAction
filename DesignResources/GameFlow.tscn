@@ -1,0 +1,293 @@
+[gd_scene format=3 uid="uid://butaqgtqml7tj"]
+
+[node name="GameFlow" type="CanvasLayer"]
+
+[node name="Glasses" type="ColorRect" parent="."]
+offset_left = 1899.0
+offset_top = 439.0
+offset_right = 2027.0
+offset_bottom = 567.0
+color = Color(0, 0.6600965, 0.26319245, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Glasses"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 122.0
+offset_bottom = 73.0
+theme_override_font_sizes/normal_font_size = 24
+text = "3D GLASSES"
+
+[node name="Start" type="ColorRect" parent="."]
+offset_left = 32.0
+offset_top = 452.0
+offset_right = 160.0
+offset_bottom = 580.0
+color = Color(0.55212253, 0.54399544, 0.5502031, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Start"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 122.0
+offset_bottom = 73.0
+theme_override_font_sizes/normal_font_size = 24
+text = "GAME START"
+
+[node name="Start2" type="ColorRect" parent="."]
+offset_left = 2105.0
+offset_top = 435.0
+offset_right = 2233.0
+offset_bottom = 563.0
+color = Color(0.55212253, 0.54399544, 0.5502031, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Start2"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 122.0
+offset_bottom = 73.0
+theme_override_font_sizes/normal_font_size = 24
+text = "GAME END"
+
+[node name="DiveMask" type="ColorRect" parent="."]
+offset_left = 1281.0
+offset_top = 375.0
+offset_right = 1409.0
+offset_bottom = 503.0
+color = Color(0, 0.6600965, 0.26319245, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DiveMask"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 122.0
+offset_bottom = 73.0
+theme_override_font_sizes/normal_font_size = 24
+text = "Dive Mask
+"
+
+[node name="Headlamp" type="ColorRect" parent="."]
+offset_left = 939.0
+offset_top = 586.0
+offset_right = 1067.0
+offset_bottom = 714.0
+color = Color(0, 0.6600965, 0.26319245, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Headlamp"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 122.0
+offset_bottom = 73.0
+theme_override_font_sizes/normal_font_size = 24
+text = "Head Lamp
+"
+
+[node name="Swimsuit" type="ColorRect" parent="."]
+offset_left = 937.0
+offset_top = 280.0
+offset_right = 1065.0
+offset_bottom = 408.0
+color = Color(0, 0.6288486, 0.62884855, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Swimsuit"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 122.0
+offset_bottom = 73.0
+theme_override_font_sizes/normal_font_size = 24
+text = "Swimsuit"
+
+[node name="Coat" type="ColorRect" parent="."]
+offset_left = 557.0
+offset_top = 456.0
+offset_right = 685.0
+offset_bottom = 584.0
+color = Color(0, 0.6288486, 0.62884855, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Coat"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 122.0
+offset_bottom = 73.0
+theme_override_font_sizes/normal_font_size = 24
+text = "Coat
+"
+
+[node name="Treads" type="ColorRect" parent="."]
+offset_left = 1098.0
+offset_top = 278.0
+offset_right = 1226.0
+offset_bottom = 406.0
+color = Color(0.67665285, 0.5254931, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Treads"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 122.0
+offset_bottom = 73.0
+theme_override_font_sizes/normal_font_size = 24
+text = "Treads"
+
+[node name="Lighter" type="ColorRect" parent="."]
+offset_left = 394.0
+offset_top = 455.0
+offset_right = 522.0
+offset_bottom = 583.0
+color = Color(0.67665285, 0.5254931, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Lighter"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 122.0
+offset_bottom = 73.0
+theme_override_font_sizes/normal_font_size = 24
+text = "Lighter
+"
+
+[node name="Speed1" type="ColorRect" parent="."]
+offset_left = 393.0
+offset_top = 626.0
+offset_right = 521.0
+offset_bottom = 754.0
+color = Color(0.47965932, 0.46268338, 1, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Speed1"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 122.0
+offset_bottom = 73.0
+theme_override_font_sizes/normal_font_size = 24
+text = "SPEED
+"
+
+[node name="Speed2" type="ColorRect" parent="."]
+offset_left = 1463.0
+offset_top = 699.0
+offset_right = 1591.0
+offset_bottom = 827.0
+color = Color(0.47965932, 0.46268338, 1, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Speed2"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 122.0
+offset_bottom = 73.0
+theme_override_font_sizes/normal_font_size = 24
+text = "SPEED
+"
+
+[node name="Speed3" type="ColorRect" parent="."]
+offset_left = 1278.0
+offset_top = 214.0
+offset_right = 1406.0
+offset_bottom = 342.0
+color = Color(0.47965932, 0.46268338, 1, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Speed3"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 122.0
+offset_bottom = 73.0
+theme_override_font_sizes/normal_font_size = 24
+text = "SPEED
+"
+
+[node name="Fins" type="ColorRect" parent="."]
+offset_left = 1284.0
+offset_top = 588.0
+offset_right = 1412.0
+offset_bottom = 716.0
+color = Color(0.67665285, 0.5254931, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Fins"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 122.0
+offset_bottom = 73.0
+theme_override_font_sizes/normal_font_size = 24
+text = "Fins
+bed 2
+"
+
+[node name="RKey" type="ColorRect" parent="."]
+offset_left = 237.0
+offset_top = 455.0
+offset_right = 365.0
+offset_bottom = 583.0
+color = Color(0.9568258, 1.8193425e-05, 0.64703405, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="RKey"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 122.0
+offset_bottom = 73.0
+theme_override_font_sizes/normal_font_size = 24
+text = "RUBY KEY"
+
+[node name="SKey" type="ColorRect" parent="."]
+offset_left = 1090.0
+offset_top = 582.0
+offset_right = 1218.0
+offset_bottom = 710.0
+color = Color(0.9568258, 1.8193425e-05, 0.64703405, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SKey"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 122.0
+offset_bottom = 73.0
+theme_override_font_sizes/normal_font_size = 24
+text = "SAPPHIREKEY"
+
+[node name="EKey" type="ColorRect" parent="."]
+offset_left = 1721.0
+offset_top = 437.0
+offset_right = 1849.0
+offset_bottom = 565.0
+color = Color(0.9568258, 1.8193425e-05, 0.64703405, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="EKey"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 122.0
+offset_bottom = 73.0
+theme_override_font_sizes/normal_font_size = 24
+text = "EMERALD
+KEY"
+
+[node name="Branch 1" type="RichTextLabel" parent="."]
+offset_left = 704.0
+offset_top = 322.0
+offset_right = 925.0
+offset_bottom = 392.09113
+theme_override_font_sizes/normal_font_size = 40
+text = "BRANCH 1"
+
+[node name="Branch 3" type="RichTextLabel" parent="."]
+offset_left = 1453.0
+offset_top = 504.0
+offset_right = 1674.0
+offset_bottom = 574.0911
+theme_override_font_sizes/normal_font_size = 40
+text = "CONVERGE"
+
+[node name="Branch 2" type="RichTextLabel" parent="."]
+offset_left = 696.0
+offset_top = 614.0
+offset_right = 912.0
+offset_bottom = 684.0911
+theme_override_font_sizes/normal_font_size = 40
+text = "BRANCH 2"

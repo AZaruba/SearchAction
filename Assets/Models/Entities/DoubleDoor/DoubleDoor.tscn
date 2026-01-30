@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=4 uid="uid://41cmrwq60ve6"]
+[gd_scene load_steps=8 format=4 uid="uid://41cmrwq60ve6"]
 
 [ext_resource type="PackedScene" uid="uid://b7sevo5nnf6e8" path="res://Assets/Models/Entities/DoubleDoor/DoubleDoor.blend" id="1_kmdsr"]
-[ext_resource type="Script" uid="uid://b0ju7fbmi5vy0" path="res://Nodes/Entities/Door/SingleDoor.cs" id="2_dcslt"]
+[ext_resource type="Script" uid="uid://dwa0xivxugsir" path="res://Assets/Models/Entities/DoubleDoor/DoubleDoor.cs" id="2_dcslt"]
 [ext_resource type="Texture2D" uid="uid://vm5c8p7wx0f3" path="res://Assets/Models/Entities/SingleDoor/DoorTexture.png" id="3_dcslt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2lsr6"]
@@ -35,9 +35,13 @@ blend_shape_mode = 0
 [sub_resource type="BoxShape3D" id="BoxShape3D_4y8ud"]
 size = Vector3(0.2, 2.1, 1.1)
 
-[node name="DoubleDoor" node_paths=PackedStringArray("AnimPlayer") instance=ExtResource("1_kmdsr")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_pkok2"]
+size = Vector3(3, 3, 5)
+
+[node name="DoubleDoor" node_paths=PackedStringArray("AnimPlayer", "OpeningSide") instance=ExtResource("1_kmdsr")]
 script = ExtResource("2_dcslt")
 AnimPlayer = NodePath("AnimationPlayer")
+OpeningSide = NodePath("UnlockedSide")
 
 [node name="Skeleton3D" parent="." index="0"]
 bones/2/rotation = Quaternion(-5.4790405e-08, -5.4790455e-08, -0.7071065, 0.70710707)
@@ -71,6 +75,14 @@ sync_to_physics = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Skeleton3D/BoneAttachment3D2/AnimatableBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 3.0793072e-17, 1, -1.9709608e-15, 0, 0, 1, -0.1, 1.05, -0.55)
 shape = SubResource("BoxShape3D_4y8ud")
+
+[node name="UnlockedSide" type="Area3D" parent="." index="2"]
+collision_layer = 1024
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="UnlockedSide" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, 0)
+shape = SubResource("BoxShape3D_pkok2")
 
 [connection signal="input_event" from="Skeleton3D/BoneAttachment3D/AnimatableBody3D" to="." method="OnMouseInput"]
 [connection signal="input_event" from="Skeleton3D/BoneAttachment3D2/AnimatableBody3D" to="." method="OnMouseInput"]

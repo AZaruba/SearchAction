@@ -130,6 +130,7 @@ SwimDown={
 3d_physics/layer_8="ColdVolume"
 3d_physics/layer_9="WaterBarrier"
 3d_physics/layer_10="BuoyancyDetector"
+3d_physics/layer_11="InteractVolume"
 
 [rendering]
 

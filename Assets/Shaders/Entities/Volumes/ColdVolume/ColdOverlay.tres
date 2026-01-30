@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://c0tg13sdjy7p7"]
+
+[ext_resource type="Shader" uid="uid://80q7sivfss51" path="res://Assets/Shaders/Entities/Volumes/ColdVolume/ColdOverlayShader.tres" id="1_ytjum"]
+[ext_resource type="Texture2D" uid="uid://bku7emtclki77" path="res://Assets/2D/Effects/ColdOverlay.png" id="2_faeej"]
+
+[resource]
+shader = ExtResource("1_ytjum")
+shader_parameter/Texture2DParameter = ExtResource("2_faeej")
+shader_parameter/AlphaValue = 0.9

@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dsk41q2rvkrai"]
+[gd_scene load_steps=9 format=3 uid="uid://dsk41q2rvkrai"]
 
 [ext_resource type="Script" uid="uid://c4hl0rytaqwl2" path="res://Nodes/Player/PlayerCharacter.cs" id="1_5w4vw"]
 [ext_resource type="Resource" uid="uid://cb8pakvbt1sbs" path="res://Nodes/Player/PlayerData.tres" id="2_8pxfe"]
 [ext_resource type="Shader" uid="uid://dyl4tlgb41815" path="res://Assets/Shaders/Entities/Volumes/WaterVolume/WaterVolume.gdshader" id="3_63kml"]
 [ext_resource type="PackedScene" uid="uid://dktl1osly1bjk" path="res://Nodes/Player/BuoyancyComponent.tscn" id="4_kcs7r"]
+[ext_resource type="Script" uid="uid://bya1jomyvh0if" path="res://Nodes/Player/ColdEffect.cs" id="4_pb5vt"]
+[ext_resource type="Material" uid="uid://c0tg13sdjy7p7" path="res://Assets/Shaders/Entities/Volumes/ColdVolume/ColdOverlay.tres" id="4_somdb"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e2mqm"]
 
@@ -11,13 +13,14 @@
 shader = ExtResource("3_63kml")
 shader_parameter/fog_color = Color(0, 0.4833331, 1, 0.5019608)
 
-[node name="PlayerCharacter" type="CharacterBody3D" node_paths=PackedStringArray("WaterOverlay", "BuoyancyComponent")]
+[node name="PlayerCharacter" type="CharacterBody3D" node_paths=PackedStringArray("WaterOverlay", "BuoyancyComponent", "ColdOverlay")]
 physics_interpolation_mode = 1
 collision_mask = 199
 script = ExtResource("1_5w4vw")
 Data = ExtResource("2_8pxfe")
 WaterOverlay = NodePath("WaterEffect")
 BuoyancyComponent = NodePath("BuoyancyComponent")
+ColdOverlay = NodePath("ColdEffect")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_e2mqm")
@@ -32,6 +35,17 @@ visible = false
 material = SubResource("ShaderMaterial_kcs7r")
 offset_right = 1920.0
 offset_bottom = 1080.0
+mouse_filter = 2
+
+[node name="ColdEffect" type="CanvasLayer" parent="."]
+script = ExtResource("4_pb5vt")
+Mat = ExtResource("4_somdb")
+
+[node name="ColorRect" type="ColorRect" parent="ColdEffect"]
+material = ExtResource("4_somdb")
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
 
 [node name="BuoyancyComponent" parent="." instance=ExtResource("4_kcs7r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)

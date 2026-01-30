@@ -1,9 +1,10 @@
 using Godot;
 using System;
+using System.ComponentModel;
 
 public partial class ColdVolume : Area3D
 {
-	Node3D ResetDestination;
+	[Export] Node3D ResetDestination;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -16,7 +17,7 @@ public partial class ColdVolume : Area3D
 	}
 	public void OnPlayerEntered(PlayerCharacter player)
 	{
-		player.OnColdVolumeEntered(ResetDestination.Position);
+		player.OnColdVolumeEntered(ResetDestination.GlobalPosition);
 	}
 
 	public void OnPlayerExited(PlayerCharacter player)

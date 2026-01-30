@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bsvcsug2emh60"]
+[gd_scene load_steps=34 format=3 uid="uid://bsvcsug2emh60"]
 
 [ext_resource type="Sky" uid="uid://ble1xcqnre6ho" path="res://Assets/Skybox/NightSky.tres" id="1_qsjrb"]
 [ext_resource type="PackedScene" uid="uid://dlk3re05kefyw" path="res://Assets/Particles/Snowfall.tscn" id="3_ytmxh"]
@@ -6,14 +6,21 @@
 [ext_resource type="PackedScene" uid="uid://dsk41q2rvkrai" path="res://Nodes/Player/PlayerCharacter.tscn" id="4_iufkg"]
 [ext_resource type="PackedScene" uid="uid://f7a4itxgeb4k" path="res://Assets/Models/Environments/mansion.tscn" id="5_0f5h7"]
 [ext_resource type="PackedScene" uid="uid://ccglv7aoo0nlw" path="res://Assets/Models/Entities/ItemBox/ItemBox.tscn" id="8_6xh1p"]
+[ext_resource type="Texture2D" uid="uid://dssmvexgsppxx" path="res://Assets/2D/Inventory/Head/DiveMask.png" id="8_fi7j4"]
 [ext_resource type="PackedScene" uid="uid://c1sxxkcovj6rq" path="res://Nodes/Entities/Volumes/WaterVolume/WaterVolume.tscn" id="10_201fe"]
 [ext_resource type="Texture2D" uid="uid://iq2n6gvgwbt3" path="res://Assets/2D/Inventory/Head/3DGlasses.png" id="10_ytmxh"]
 [ext_resource type="PackedScene" uid="uid://t622wlat3n41" path="res://Nodes/Entities/Volumes/IceVolume/IceVolume.tscn" id="11_xjl2p"]
 [ext_resource type="ArrayMesh" uid="uid://bcs28rwe5snp0" path="res://Assets/Models/Environments/OutdoorWater/OutdoorWaterVolumeSurface.res" id="12_p30di"]
 [ext_resource type="Texture2D" uid="uid://bp3mv1q820fcy" path="res://Assets/2D/Inventory/Keys/RubyKey.png" id="13_hctok"]
+[ext_resource type="Texture2D" uid="uid://dt0ili6oj7b1c" path="res://Assets/2D/Inventory/Keys/EmerKey.png" id="14_4v62a"]
 [ext_resource type="Texture2D" uid="uid://pl11cc0pnw3n" path="res://Assets/2D/Inventory/Keys/SaphKey.png" id="14_lp1f3"]
 [ext_resource type="Texture2D" uid="uid://csh17ai24y78t" path="res://Assets/2D/Inventory/Items/Lighter.png" id="14_t2vuu"]
+[ext_resource type="Texture2D" uid="uid://c8y8dvf0tr7qm" path="res://Assets/2D/Inventory/Head/Headlamp.png" id="16_c2lnq"]
 [ext_resource type="PackedScene" uid="uid://bx857hg6b3g3r" path="res://Assets/Models/UI/Journal/Journal.tscn" id="16_p30di"]
+[ext_resource type="Texture2D" uid="uid://ifal8hdi6l8c" path="res://Assets/2D/Inventory/Clothes/Swimsuit.png" id="17_dwn5r"]
+[ext_resource type="Texture2D" uid="uid://dviqibxavl8s0" path="res://Assets/2D/Inventory/Items/Fins.png" id="18_1vcy8"]
+[ext_resource type="Texture2D" uid="uid://7s7fjlo1ktva" path="res://Assets/Textures/Carpet.png" id="20_c2lnq"]
+[ext_resource type="PackedScene" uid="uid://bfllvjutouh7h" path="res://Nodes/Entities/Volumes/ColdVolume/ColdVolume.tscn" id="21_dwn5r"]
 
 [sub_resource type="Environment" id="Environment_c264a"]
 background_mode = 2
@@ -54,14 +61,20 @@ albedo_color = Color(0.17280002, 0.4372799, 0.72, 0.39607844)
 [sub_resource type="BoxShape3D" id="BoxShape3D_ytmxh"]
 size = Vector3(4, 3, 0.5)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_1vcy8"]
+size = Vector3(50, 100, 51)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dwn5r"]
+size = Vector3(32, 4, 11)
+
 [node name="Root" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_c264a")
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("4_iufkg")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 19.988693, 0.99262476, -14.107664)
-collision_mask = 263
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 4.3744144, 2.351624, -7.9637747)
+collision_mask = 423
 floor_constant_speed = true
 floor_max_angle = 1.3089969
 floor_snap_length = 0.2
@@ -81,13 +94,14 @@ ClosePosition = Vector3(0, -1.5, 0.75)
 
 [node name="TestItemBox" parent="." instance=ExtResource("8_6xh1p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, -36)
-Item = 2
-Icon = ExtResource("10_ytmxh")
+Item = 6
+Icon = ExtResource("8_fi7j4")
 
 [node name="OutdoorWaterVolume" parent="." node_paths=PackedStringArray("Volume") instance=ExtResource("10_201fe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -141)
-Volume = NodePath("CollisionShape3D")
 PushDirection = Vector3(0, 0, 2)
+IsDebug = null
+Volume = NodePath("CollisionShape3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="OutdoorWaterVolume"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -2.3, 2)
@@ -100,8 +114,9 @@ shape = SubResource("ConvexPolygonShape3D_p30di")
 
 [node name="OutdoorWaterVolume2" parent="." node_paths=PackedStringArray("Volume") instance=ExtResource("10_201fe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -141)
-Volume = NodePath("CollisionShape3D2")
 PushDirection = Vector3(-2, 0, 0)
+IsDebug = null
+Volume = NodePath("CollisionShape3D2")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="OutdoorWaterVolume2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -3.1, 2)
@@ -109,6 +124,8 @@ shape = SubResource("ConvexPolygonShape3D_8c81w")
 
 [node name="OutdoorWaterVolume3" parent="." node_paths=PackedStringArray("Volume") instance=ExtResource("10_201fe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -141)
+PushDirection = null
+IsDebug = null
 Volume = NodePath("CollisionShape3D3")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="OutdoorWaterVolume3"]
@@ -117,6 +134,8 @@ shape = SubResource("ConvexPolygonShape3D_fi7j4")
 
 [node name="OutdoorWaterVolume4" parent="." node_paths=PackedStringArray("Volume") instance=ExtResource("10_201fe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -141)
+PushDirection = null
+IsDebug = null
 Volume = NodePath("CollisionShape3D4")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="OutdoorWaterVolume4"]
@@ -125,6 +144,8 @@ shape = SubResource("ConvexPolygonShape3D_4v62a")
 
 [node name="PoolVolume" parent="." node_paths=PackedStringArray("Volume") instance=ExtResource("10_201fe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, -71)
+PushDirection = null
+IsDebug = null
 Volume = NodePath("WaterShape")
 
 [node name="WaterShape" type="CollisionShape3D" parent="PoolVolume"]
@@ -187,19 +208,79 @@ size = Vector3(18, 12, 44)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -50)
 size = Vector3(200, 2, 200)
 
-[node name="Node" type="Node" parent="."]
+[node name="ItemBoxes" type="Node" parent="."]
 
-[node name="RubyKey" parent="Node" instance=ExtResource("8_6xh1p")]
+[node name="RubyKey" parent="ItemBoxes" instance=ExtResource("8_6xh1p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.372026, 0, -15.104148)
 Item = 2
 Icon = ExtResource("13_hctok")
 
-[node name="SaphKey" parent="Node" instance=ExtResource("8_6xh1p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.49672, 4.7557716, -27.933933)
+[node name="SaphKey" parent="ItemBoxes" instance=ExtResource("8_6xh1p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0735674, -7.555565, 3.0268583)
 Item = 3
 Icon = ExtResource("14_lp1f3")
 
-[node name="Lighter" parent="Node" instance=ExtResource("8_6xh1p")]
+[node name="EmeraldKey" parent="ItemBoxes" instance=ExtResource("8_6xh1p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.974926, -10, -84.39632)
+Item = 4
+Icon = ExtResource("14_4v62a")
+
+[node name="Lighter" parent="ItemBoxes" instance=ExtResource("8_6xh1p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 0, 8)
 Item = 12
 Icon = ExtResource("14_t2vuu")
+
+[node name="TDGlasses" parent="ItemBoxes" instance=ExtResource("8_6xh1p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.96324, 4.7683716e-07, -155.14311)
+Item = 7
+Icon = ExtResource("10_ytmxh")
+
+[node name="headlamp" parent="ItemBoxes" instance=ExtResource("8_6xh1p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.034012, 0.15728498, -160.39073)
+Item = 5
+Icon = ExtResource("16_c2lnq")
+
+[node name="Swimsuit" parent="ItemBoxes" instance=ExtResource("8_6xh1p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.712864, 6, -14.730176)
+Item = 10
+Icon = ExtResource("17_dwn5r")
+
+[node name="Fins" parent="ItemBoxes" instance=ExtResource("8_6xh1p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.047735, 6, -23.585556)
+Item = 14
+Icon = ExtResource("18_1vcy8")
+
+[node name="Treads" parent="ItemBoxes" instance=ExtResource("8_6xh1p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -64)
+Item = 15
+Icon = ExtResource("20_c2lnq")
+
+[node name="WinterCoat" parent="ItemBoxes" instance=ExtResource("8_6xh1p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -50)
+Item = 11
+Icon = ExtResource("20_c2lnq")
+
+[node name="ColdVolumes" type="Node" parent="."]
+
+[node name="BackyardVolume" parent="ColdVolumes" node_paths=PackedStringArray("ResetDestination") instance=ExtResource("21_dwn5r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -120)
+monitorable = false
+ResetDestination = NodePath("Resetter")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ColdVolumes/BackyardVolume"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 24)
+shape = SubResource("BoxShape3D_1vcy8")
+
+[node name="Resetter" type="Node3D" parent="ColdVolumes/BackyardVolume"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 54)
+
+[node name="BalconyVolume" parent="ColdVolumes" node_paths=PackedStringArray("ResetDestination") instance=ExtResource("21_dwn5r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.458586, 4.065493)
+ResetDestination = NodePath("Resetter")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ColdVolumes/BalconyVolume"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -1.5, 0)
+shape = SubResource("BoxShape3D_dwn5r")
+
+[node name="Resetter" type="Node3D" parent="ColdVolumes/BalconyVolume"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, -2, 1.1)

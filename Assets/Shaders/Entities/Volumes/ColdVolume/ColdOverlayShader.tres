@@ -1,0 +1,19 @@
+[gd_resource type="Shader" format=3 uid="uid://80q7sivfss51"]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform sampler2D Texture2DParameter : filter_nearest;
+uniform float AlphaValue;
+
+void fragment()
+{
+	vec4 AlphaCorrectedColor = texture(Texture2DParameter, UV);
+	if (AlphaCorrectedColor.a < AlphaValue)
+	{
+		discard;
+	}
+	AlphaCorrectedColor.a = AlphaCorrectedColor.a - AlphaValue;
+	COLOR = AlphaCorrectedColor;
+}
+"

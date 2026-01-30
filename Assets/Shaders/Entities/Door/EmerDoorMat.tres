@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dsthv5301kq5k"]
+
+[ext_resource type="Shader" uid="uid://cjh52d03eqh3f" path="res://Assets/Shaders/Entities/Door/DoorShader.tres" id="1_3yci1"]
+[ext_resource type="Texture2D" uid="uid://dxlqhvktwaed1" path="res://Assets/Models/Entities/SingleDoor/DoorTexture_E.png" id="2_3yci1"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_3yci1")
+shader_parameter/Texture2DParameter = ExtResource("2_3yci1")

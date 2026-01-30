@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://ct5ed5vm84h61"]
+
+[ext_resource type="Script" uid="uid://cldk86ldjbdty" path="res://Assets/Models/Environments/PushButton.cs" id="1_ypvjs"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_mwdgg"]
+radius = 0.2
+
+[sub_resource type="SphereMesh" id="SphereMesh_p5xqx"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pflpx"]
+shading_mode = 0
+albedo_color = Color(0, 1, 0, 1)
+
+[node name="PushButton" type="Node3D"]
+script = ExtResource("1_ypvjs")
+requiredItem = null
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("SphereShape3D_mwdgg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("SphereMesh_p5xqx")
+surface_material_override/0 = SubResource("StandardMaterial3D_pflpx")
+
+[connection signal="input_event" from="StaticBody3D" to="." method="OnMouseInput"]

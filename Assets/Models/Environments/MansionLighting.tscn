@@ -8,7 +8,6 @@
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3.6859097, 0)
 light_bake_mode = 1
 omni_range = 20.0
-omni_attenuation = 0.0
 
 [node name="Library" type="Node" parent="."]
 
@@ -16,8 +15,7 @@ omni_attenuation = 0.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.26141, 7.3488526, -23.02809)
 light_color = Color(1, 0.95233333, 0.87, 1)
 light_energy = 2.0
-omni_range = 30.0
-omni_attenuation = 0.8
+omni_range = 40.0
 
 [node name="SideHall" type="Node" parent="."]
 
@@ -174,3 +172,13 @@ transform = Transform3D(0.094108306, 0.9680545, -0.23240937, 0, 0.23344542, 0.97
 visible = false
 light_energy = 0.1
 sky_mode = 1
+
+[node name="Shed" type="Node" parent="."]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Shed"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.436535, 8.390672, -160.17477)
+omni_range = 20.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Shed"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.497946, 8.390672, -160.17477)
+omni_range = 20.0

@@ -11,9 +11,14 @@ public partial class PlayerCharacter : CharacterBody3D
 
   [Export] BuoyancyComponent BuoyancyComponent;
 
+  [Export] ColdEffect ColdOverlay;
+
   StateMachine<IPlayerState> StateMachine;
 
   private int WaterVolumeCount;
+
+  private Vector3 ResetLocation;
+  private bool Outside = false;
 
   public override void _Ready()
   {
@@ -149,34 +154,55 @@ public partial class PlayerCharacter : CharacterBody3D
 
   public void OnColdVolumeEntered(Vector3 resetLocation)
   {
-    
+    Outside = true;
+    ResetLocation = resetLocation;
+    if (ProgressTracker.GetEquippedItem(ItemCategory.Body) == ItemID.WinterCoat)
+    {
+      return;
+    }
+    GD.Print("Going outside");
+    ResetLocation = resetLocation;
+    ColdOverlay.OnPlayerEnteredColdVolume();
   }
 
   public void OnColdVolumeExited()
   {
-    
+    GD.Print("Regretting it");
+    ColdOverlay.OnPlayerExitedColdVolume();
+    Outside = false;
   }
 
   private void OnEquipItem(ItemID item, ItemCategory _itemCategory)
   {
-    if (_itemCategory != ItemCategory.Tool)
+    if (_itemCategory == ItemCategory.Tool)
     {
+      if (item == ItemID.Fins)
+      {
+        Data.CurrentToolSwimModifier = 1.2f;
+        Data.CurrentToolMoveModifier = 0.1f;
+      }
+      else if (item == ItemID.Treads)
+      {
+        Data.CurrentToolSwimModifier = 0.1f;
+        Data.CurrentToolMoveModifier = 0.6f;
+      }
+      else
+      {
+        Data.CurrentToolSwimModifier = 0.5f;
+        Data.CurrentToolMoveModifier = 0.7f;
+      }
       return;
     }
-    if (item == ItemID.Fins)
+    if (_itemCategory == ItemCategory.Body)
     {
-      Data.CurrentToolSwimModifier = 1.2f;
-      Data.CurrentToolMoveModifier = 0.1f;
-    }
-    else if (item == ItemID.Treads)
-    {
-      Data.CurrentToolSwimModifier = 0.1f;
-      Data.CurrentToolMoveModifier = 0.6f;
-    }
-    else
-    {
-      Data.CurrentToolSwimModifier = 0.5f;
-      Data.CurrentToolMoveModifier = 0.7f;
+      if (item == ItemID.WinterCoat)
+      {
+        ColdOverlay.OnPlayerExitedColdVolume();
+      }
+      else if (Outside)
+      {
+        ColdOverlay.OnPlayerEnteredColdVolume();
+      }
     }
   }
   
@@ -226,5 +252,11 @@ public partial class PlayerCharacter : CharacterBody3D
   public override void _ExitTree()
   {
     EventBus.Instance.ChangeEquippedItem -= OnEquipItem;
+  }
+
+  public void OnPlayerFreezeReset()
+  {
+    GD.Print($"Got reset, going to location {ResetLocation}");
+    Position = ResetLocation;
   }
 }

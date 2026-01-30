@@ -24,7 +24,7 @@ public class ProgressInfo
       { ItemID.TDGlasses, true },
       { ItemID.Sweater, true },
       { ItemID.Swimsuit, true },
-      { ItemID.WinterCoat, false },
+      { ItemID.WinterCoat, true },
       { ItemID.Lighter, true },
       { ItemID.BoltCutters, false },
       { ItemID.Fins, true },
@@ -36,7 +36,7 @@ public class ProgressInfo
     };
 
     EquippedHat = ItemID.DiveMask;
-    EquippedBody = ItemID.Swimsuit;
+    EquippedBody = ItemID.WinterCoat;
     EquippedTool = ItemID.None;
   }
 }

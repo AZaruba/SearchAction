@@ -5,3 +5,6 @@
 [node name="ColdVolume" type="Area3D"]
 collision_layer = 128
 script = ExtResource("1_5xmlu")
+
+[connection signal="body_entered" from="." to="." method="OnPlayerEntered"]
+[connection signal="body_exited" from="." to="." method="OnPlayerExited"]

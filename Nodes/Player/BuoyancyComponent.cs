@@ -24,7 +24,6 @@ public partial class BuoyancyComponent : Node3D
       {
         SurfacePosition = GlobalPosition;
       }
-      DebugLog.LogToScreen("Buoyancy detects below surface");
       Descend();
       AtSurface = false;
     }
@@ -34,7 +33,6 @@ public partial class BuoyancyComponent : Node3D
       {
         SurfacePosition = GlobalPosition;
       }
-      DebugLog.LogToScreen("Buoyancy detects surface");
       HitSurface();
       AtSurface = true;
     }

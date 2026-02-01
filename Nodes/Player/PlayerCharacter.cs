@@ -12,10 +12,12 @@ public partial class PlayerCharacter : CharacterBody3D
   [Export] BuoyancyComponent BuoyancyComponent;
 
   [Export] ColdEffect ColdOverlay;
+  [Export] SpotLight3D Headlamp;
 
   StateMachine<IPlayerState> StateMachine;
 
   private int WaterVolumeCount;
+  public static bool IsSwimming = false;
 
   private Vector3 ResetLocation;
   private bool Outside = false;
@@ -32,8 +34,6 @@ public partial class PlayerCharacter : CharacterBody3D
   {
     base._PhysicsProcess(delta);
 
-    DebugLog.LogToScreen(Data.CurrentWaterFlowDirection.ToString(), 2);
-    DebugLog.LogToScreen(Data.CurrentWaterVelocity.ToString(), 3);
     SetCollisionMaskValue(9, ProgressTracker.GetEquippedItem(ItemCategory.Body) != ItemID.Swimsuit);
 
     // synchronize character
@@ -118,6 +118,7 @@ public partial class PlayerCharacter : CharacterBody3D
     MotionMode = MotionModeEnum.Floating;
     StateMachine.Execute(StateManagement.Command.ENTER_WATER);
     Data.CurrentWaterFlowDirection += directionForce;
+    IsSwimming = true;
   }
 
   public void OnWaterVolumeExited(Vector3 directionForce)
@@ -127,6 +128,7 @@ public partial class PlayerCharacter : CharacterBody3D
     {
       MotionMode = MotionModeEnum.Grounded;
       StateMachine.Execute(StateManagement.Command.LEAVE_WATER);
+      IsSwimming = false;
     }
     Data.CurrentWaterFlowDirection -= directionForce;
   }
@@ -184,12 +186,12 @@ public partial class PlayerCharacter : CharacterBody3D
       else if (item == ItemID.Treads)
       {
         Data.CurrentToolSwimModifier = 0.1f;
-        Data.CurrentToolMoveModifier = 0.6f;
+        Data.CurrentToolMoveModifier = 0.8f;
       }
       else
       {
         Data.CurrentToolSwimModifier = 0.5f;
-        Data.CurrentToolMoveModifier = 0.7f;
+        Data.CurrentToolMoveModifier = 1f;
       }
       return;
     }
@@ -202,6 +204,17 @@ public partial class PlayerCharacter : CharacterBody3D
       else if (Outside)
       {
         ColdOverlay.OnPlayerEnteredColdVolume();
+      }
+    }
+    if (_itemCategory == ItemCategory.Hat)
+    {
+      if (item == ItemID.Headlamp)
+      {
+        Headlamp.Visible = true;
+      }
+      else
+      {
+        Headlamp.Visible = false;
       }
     }
   }

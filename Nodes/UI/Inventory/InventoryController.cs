@@ -36,6 +36,10 @@ public partial class InventoryController : CanvasLayer
 
   private void OnEquipButtonClicked()
   {
+    if (CurrentCategory == ItemCategory.Body && PlayerCharacter.IsSwimming)
+    {
+      return;
+    }
     EventBus.Emit(EventBus.SignalName.ChangeEquippedItem, CurrentItemID, CurrentCategory);
   }
 
@@ -45,25 +49,25 @@ public partial class InventoryController : CanvasLayer
 
       { ItemID.SaphKey, "[center][u][font_size={32}]Saphhire Key[/font_size][/u][/center][left][font_size={20}]\nA key with a picture of a blue gemstone printed on it. Significantly less effort made to make this look real.[/font_size][/left]" },
 
-      { ItemID.EmerKey, "[center][u][font_size={32}]Emerald Key[/font_size][/u][/center][left][font_size={20}]\nYet another key with a... hang on is this Emerald real? How much is this thing worth!? Should you just pocket it and go home?[/font_size][/left]" },
+      { ItemID.EmerKey, "[center][u][font_size={32}]Emerald Key[/font_size][/u][/center][left][font_size={20}]\nYet another key with a -- hang on is this emerald real? How much is this thing worth!? Should you just pocket it and go home?[/font_size][/left]" },
 
       { ItemID.ReadingGlasses, "[center][u][font_size={32}]Reading Glasses[/font_size][/u][/center][left][font_size={20}]\nYou turned thirty and your eyes aren't what they used to be.[/font_size][/left]" },
 
-      { ItemID.Headlamp, "[center][u][font_size={32}]Head Lamp[/font_size][/u][/center][left][font_size={20}]\nIlluminate the space in front of you![/font_size][/left]" },
+      { ItemID.Headlamp, "[center][u][font_size={32}]Head Lamp[/font_size][/u][/center][left][font_size={20}]\nIlluminate the space in front of you! Dark spaces will be dark no longer![/font_size][/left]" },
 
-      { ItemID.DiveMask, "[center][u][font_size={32}]Dive Mask[/font_size][/u][/center][left][font_size={20}]\nSee underwater and dive down! Pinch your nose to equalize. Recreate a scene from Death in the Deep End where Detective Beauford cracks the case by finding a stray earring in a swimming pool.[/font_size][/left]" },
+      { ItemID.DiveMask, "[center][u][font_size={32}]Dive Mask[/font_size][/u][/center][left][font_size={20}]\nSee underwater and dive down! Pinch your nose to equalize.[/font_size][/left]" },
 
-      { ItemID.TDGlasses, "[center][u][font_size={32}]3D Glasses[/font_size][/u][/center][left][font_size={20}]\n[/font_size][/left]" },
+      { ItemID.TDGlasses, "[center][u][font_size={32}]3D Glasses[/font_size][/u][/center][left][font_size={20}]\nYou're not entirely sure what purpose these will serve, but maybe some things will be come more clear if you put them on.[/font_size][/left]" },
 
       { ItemID.Sweater, "[center][u][font_size={32}]Sweater and Slacks[/font_size][/u][/center][left][font_size={20}]\nA fashionable combo that's also comfortable! You figured you'd be outside for only a few seconds, so you left your coat at home. You certainly won't be warm in a surprise snowstorm![/font_size][/left]" },
 
       { ItemID.Swimsuit, "[center][u][font_size={32}]Swimsuit[/font_size][/u][/center][left][font_size={20}]\nA sporty suit appropriate for swimming laps at the gym. Makes you agile in water and you'll be able to change back into dry clothes.[/font_size][/left]" },
 
-      { ItemID.WinterCoat, "[center][u][font_size={32}]Winter Coat[/font_size][/u][/center][left][font_size={20}]\nA thick winter coat that's sure to keep you warm. Matches the luxurious description of Detective Beauford's choice of attire in Cold Shoulder[/font_size][/left]" },
+      { ItemID.WinterCoat, "[center][u][font_size={32}]Winter Coat[/font_size][/u][/center][left][font_size={20}]\nA thick winter coat that's sure to keep you warm if you venture outside.[/font_size][/left]" },
 
       { ItemID.Lighter, "[center][u][font_size={32}]Lighter[/font_size][/u][/center][left][font_size={20}]\nAn old-fashioned lighter. An excellent fidget toy even though you don't smoke. Should be able to melt a little ice but won't keep you warm.[/font_size][/left]" },
 
-      { ItemID.BoltCutters, "[center][u][font_size={32}]Bolt Cutters[/font_size][/u][/center][left][font_size={20}]\n[/font_size][/left]" },
+      { ItemID.BoltCutters, "[center][u][font_size={32}]Bolt Cutters[/font_size][/u][/center][left][font_size={20}]\nA pair of comfy, fashionable shoes. You're guaranteed to slip on the ice wearing these...[/font_size][/left]" },
 
       { ItemID.Fins, "[center][u][font_size={32}]Fins[/font_size][/u][/center][left][font_size={20}]\nDive-appropriate fins that make you fast in the water. A crucial clue in Death in the Deep End.[/font_size][/left]" },
       

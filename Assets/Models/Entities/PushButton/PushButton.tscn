@@ -6,11 +6,15 @@
 radius = 0.2
 
 [sub_resource type="SphereMesh" id="SphereMesh_p5xqx"]
+lightmap_size_hint = Vector2i(5, 3)
+add_uv2 = true
 radius = 0.1
 height = 0.2
+radial_segments = 8
+rings = 8
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pflpx"]
-shading_mode = 0
+shading_mode = 2
 albedo_color = Color(0, 1, 0, 1)
 
 [node name="PushButton" type="Node3D"]

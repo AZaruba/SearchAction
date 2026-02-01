@@ -1,10 +1,10 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://by3m0k475nubu"]
 
-[ext_resource type="Shader" uid="uid://cqb1x81ow3m2u" path="res://Assets/Shaders/Entities/EnvObjectShader.tres" id="1_uy8mp"]
-[ext_resource type="Texture2D" uid="uid://fd171d24mas0" path="res://Assets/Textures/BookCovers/Puzz1.png" id="2_wsnli"]
+[ext_resource type="Shader" uid="uid://w6ebnhfhqauh" path="res://Assets/Textures/BookCovers/BookShader.gdshader" id="1_dubbh"]
+[ext_resource type="Texture2D" uid="uid://bvnnkmrct31ne" path="res://Assets/Textures/BookCovers/FinalRound/Deep.png" id="2_kv7bm"]
 
 [resource]
 resource_local_to_scene = true
 render_priority = 0
-shader = ExtResource("1_uy8mp")
-shader_parameter/Texture = ExtResource("2_wsnli")
+shader = ExtResource("1_dubbh")
+shader_parameter/Texture2DParameter = ExtResource("2_kv7bm")

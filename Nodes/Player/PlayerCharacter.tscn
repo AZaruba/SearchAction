@@ -13,14 +13,15 @@
 shader = ExtResource("3_63kml")
 shader_parameter/fog_color = Color(0, 0.4833331, 1, 0.5019608)
 
-[node name="PlayerCharacter" type="CharacterBody3D" node_paths=PackedStringArray("WaterOverlay", "BuoyancyComponent", "ColdOverlay")]
+[node name="PlayerCharacter" type="CharacterBody3D" node_paths=PackedStringArray("WaterOverlay", "BuoyancyComponent", "ColdOverlay", "Headlamp")]
 physics_interpolation_mode = 1
-collision_mask = 199
+collision_mask = 455
 script = ExtResource("1_5w4vw")
 Data = ExtResource("2_8pxfe")
 WaterOverlay = NodePath("WaterEffect")
 BuoyancyComponent = NodePath("BuoyancyComponent")
 ColdOverlay = NodePath("ColdEffect")
+Headlamp = NodePath("Headlamp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_e2mqm")
@@ -49,3 +50,12 @@ mouse_filter = 2
 
 [node name="BuoyancyComponent" parent="." instance=ExtResource("4_kcs7r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+
+[node name="Headlamp" type="SpotLight3D" parent="."]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1, 0)
+visible = false
+light_energy = 2.5
+spot_range = 10.0
+spot_angle = 30.0
+
+[connection signal="PlayerFreezeReset" from="ColdEffect" to="." method="OnPlayerFreezeReset"]

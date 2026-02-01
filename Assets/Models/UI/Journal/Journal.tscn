@@ -36,7 +36,7 @@ RenderedTexture = NodePath("SubViewport")
 Quad = ExtResource("3_canlh")
 
 [node name="Skeleton3D" parent="JournalArm" index="0"]
-bones/0/rotation = Quaternion(0.0008283046, 0.7071064, 0.0008283186, 0.7071062)
+bones/0/rotation = Quaternion(-0.7071062, 0.0008283044, -0.7071064, 0.0008282903)
 
 [node name="Journal" parent="JournalArm/Skeleton3D" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_gj5un")

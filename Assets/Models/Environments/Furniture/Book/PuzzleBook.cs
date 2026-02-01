@@ -54,7 +54,7 @@ public partial class PuzzleBook : Node3D
 		// Tween to player
 		PositionTween = GetTree().CreateTween().BindNode(this).SetTrans(Tween.TransitionType.Expo).SetEase(Tween.EaseType.Out);
 		PositionTween.Parallel().TweenProperty(this, "position", HoldingOffset, 1f);
-		PositionTween.Parallel().TweenProperty(this, "rotation", new Vector3(Mathf.DegToRad(20), Mathf.Pi, 0), 1f);
+		PositionTween.Parallel().TweenProperty(this, "rotation", new Vector3(Mathf.DegToRad(-20), 0, 0), 1f);
 		PositionTween.Play();
 		locked = true;
 		CurrentSlot = -1;
@@ -65,7 +65,7 @@ public partial class PuzzleBook : Node3D
 	{
 		PositionTween = GetTree().CreateTween().BindNode(this).SetTrans(Tween.TransitionType.Expo).SetEase(Tween.EaseType.Out);
 		PositionTween.Parallel().TweenProperty(this, "position", SlotPosition + Vector3.Right * 0.4f, 0.6f);
-		PositionTween.Parallel().TweenProperty(this, "rotation", new Vector3(0, -Mathf.Pi, 0), 0.6f);
+		PositionTween.Parallel().TweenProperty(this, "rotation", new Vector3(0, Mathf.Pi, 0), 0.6f);
 		PositionTween.TweenProperty(this, "position", SlotPosition, 0.4f).SetEase(Tween.EaseType.In);
 
 		PositionTween.Play();

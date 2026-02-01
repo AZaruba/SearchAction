@@ -59,6 +59,7 @@ public class PlayerSlidingState : IPlayerState
     public override void ExitState()
     {
         DataRef.SlidingTarget = Vector3.Zero;
+        DataRef.CurrentVelocity = Vector3.Zero;
     }
 
     public override void Act(float delta)
@@ -92,29 +93,35 @@ public class PlayerSwimmingState : IPlayerState
   public override void Act(float delta)
   {
 
-    // if (ProgressTracker.GetEquippedItem(ItemCategory.Hat) == ItemID.DiveMask)
-    // {
-    //   // if (Input.IsActionPressed(InputActions.SwimUp))
-    //   // {
+    if (ProgressTracker.GetEquippedItem(ItemCategory.Hat) == ItemID.DiveMask)
+    {
+      if (Input.IsActionPressed(InputActions.SwimUp))
+      {
         
-    //   //   if (!DataRef.IsAtWaterSurface)
-    //   //   {
-    //   //     DataRef.SwimmingRate = Vector3.Down * Mathf.MoveToward(DataRef.Position.Y, DataRef.CurrentBuoyancySurface.Y, delta);
-    //   //   }
-    //   // }
-    //   // else if (Input.IsActionPressed(InputActions.SwimDown))
-    //   // {
-    //   //   DataRef.SwimmingRate = Vector3.Up * Mathf.Min(6 * DataRef.CurrentToolSwimModifier, DataRef.SwimmingRate.Y - delta * 3);
-    //   // }
-    //   // else
-    //   // {
-    //   //   if (!DataRef.IsAtWaterSurface)
-    //   //   {
-    //   //     DataRef.SwimmingRate = Vector3.Down * Mathf.MoveToward(DataRef.Position.Y, DataRef.CurrentBuoyancySurface.Y, delta);
-    //   //   }
-    //   // }
-    // }
-    // else
+        if (!DataRef.IsAtWaterSurface)
+        {
+          DataRef.SwimmingRate += Vector3.Up * delta * 6 * DataRef.CurrentToolSwimModifier;
+          DataRef.SwimmingRate = DataRef.SwimmingRate.Clamp(-5, 5);
+        }
+        else
+        {
+          DataRef.SwimmingRate = Vector3.Zero;
+        }
+      }
+      else if (Input.IsActionPressed(InputActions.SwimDown))
+      {
+        DataRef.SwimmingRate += Vector3.Down * delta * 6 * DataRef.CurrentToolSwimModifier;
+        DataRef.SwimmingRate = DataRef.SwimmingRate.Clamp(-5, 5);
+      }
+      else if (DataRef.IsAtWaterSurface)
+      {
+        DataRef.SwimmingRate = Vector3.Zero;
+      } else
+      {
+        DataRef.SwimmingRate = DataRef.SwimmingRate.MoveToward(Vector3.Zero, delta * 8);
+      }
+    }
+    else
     {
       if (!DataRef.IsAtWaterSurface)
       {

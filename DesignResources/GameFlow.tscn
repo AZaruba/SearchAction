@@ -51,10 +51,10 @@ theme_override_font_sizes/normal_font_size = 24
 text = "GAME END"
 
 [node name="DiveMask" type="ColorRect" parent="."]
-offset_left = 1281.0
-offset_top = 375.0
-offset_right = 1409.0
-offset_bottom = 503.0
+offset_left = 1092.0
+offset_top = 584.0
+offset_right = 1220.0
+offset_bottom = 712.0
 color = Color(0, 0.6600965, 0.26319245, 1)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="DiveMask"]
@@ -68,18 +68,18 @@ text = "Dive Mask
 "
 
 [node name="Headlamp" type="ColorRect" parent="."]
-offset_left = 939.0
-offset_top = 586.0
-offset_right = 1067.0
-offset_bottom = 714.0
+offset_left = 1092.0
+offset_top = 280.0
+offset_right = 1220.0
+offset_bottom = 408.0
 color = Color(0, 0.6600965, 0.26319245, 1)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Headlamp"]
 layout_mode = 0
 offset_left = 2.0
-offset_top = 1.0
+offset_top = -3.0
 offset_right = 122.0
-offset_bottom = 73.0
+offset_bottom = 69.0
 theme_override_font_sizes/normal_font_size = 24
 text = "Head Lamp
 "
@@ -118,10 +118,10 @@ text = "Coat
 "
 
 [node name="Treads" type="ColorRect" parent="."]
-offset_left = 1098.0
-offset_top = 278.0
-offset_right = 1226.0
-offset_bottom = 406.0
+offset_left = 937.0
+offset_top = 583.0
+offset_right = 1065.0
+offset_bottom = 711.0
 color = Color(0.67665285, 0.5254931, 0, 1)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Treads"]
@@ -202,10 +202,10 @@ text = "SPEED
 "
 
 [node name="Fins" type="ColorRect" parent="."]
-offset_left = 1284.0
-offset_top = 588.0
-offset_right = 1412.0
-offset_bottom = 716.0
+offset_left = 1254.0
+offset_top = 585.0
+offset_right = 1382.0
+offset_bottom = 713.0
 color = Color(0.67665285, 0.5254931, 0, 1)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Fins"]
@@ -236,10 +236,10 @@ theme_override_font_sizes/normal_font_size = 24
 text = "RUBY KEY"
 
 [node name="SKey" type="ColorRect" parent="."]
-offset_left = 1090.0
-offset_top = 582.0
-offset_right = 1218.0
-offset_bottom = 710.0
+offset_left = 1278.0
+offset_top = 353.0
+offset_right = 1406.0
+offset_bottom = 481.0
 color = Color(0.9568258, 1.8193425e-05, 0.64703405, 1)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="SKey"]

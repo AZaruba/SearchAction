@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://gh40o8cvjx3b"]
+
+[ext_resource type="PackedScene" uid="uid://ct0b4dhejrjb6" path="res://Assets/Models/Environments/FinishLine/ThankYou.blend" id="1_q351l"]
+[ext_resource type="Texture2D" uid="uid://n2y8oul3t1y" path="res://Assets/Models/Environments/FinishLine/ThanksText.png" id="2_yqp2w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tynq1"]
+transparency = 1
+cull_mode = 1
+shading_mode = 0
+albedo_texture = ExtResource("2_yqp2w")
+
+[node name="ThankYou" instance=ExtResource("1_q351l")]
+
+[node name="Plane" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_tynq1")

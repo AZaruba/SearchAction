@@ -56,10 +56,6 @@ public partial class InventoryItem : TextureButton
 	{
     if (ProgressTracker.IsItemCollected(ID))
 		{
-			if (Category == ItemCategory.Key || Category == ItemCategory.Upgrade)
-			{
-				return;
-			}
 			
 			EventBus.Emit(EventBus.SignalName.SelectItem, ID, Category);
 		}

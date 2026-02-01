@@ -3,5 +3,6 @@
 [ext_resource type="FontFile" uid="uid://bv0mr2sy66sv5" path="res://Assets/2D/Fonts/Seriffic.otf" id="1_kliwb"]
 
 [resource]
+default_base_scale = 1.0
 default_font = ExtResource("1_kliwb")
 default_font_size = 24

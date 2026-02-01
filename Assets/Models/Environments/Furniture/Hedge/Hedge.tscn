@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=4 uid="uid://bau0virom45jd"]
+
+[ext_resource type="PackedScene" uid="uid://duwmonth5lvc0" path="res://Assets/Models/Environments/Furniture/Hedge/Hedge.blend" id="1_dwddp"]
+[ext_resource type="Texture2D" uid="uid://bxfo5i4amvpyr" path="res://Assets/Models/Environments/Furniture/Hedge/Grass_06-128x128.png" id="2_svutc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s6dfe"]
+resource_name = "Material"
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("2_svutc")
+roughness = 0.5
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_4y8st"]
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -2, 1, 2, 4),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAwACAAEAAAAEAAEAAwAFAAIABQAAAAIABgAEAAAABQAGAAAABwABAAQABwADAAEABgAHAAQABQADAAcABQAHAAYA"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("/////wAAAAAAAP////8AAAAA//8AAAAAAAAAAP//AAD///////8AAAAAAAAAAAAA//8AAAAAAAD//wAA//8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_3ycds"]
+resource_name = "Hedge_Cube"
+lightmap_size_hint = Vector2i(134, 110)
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -2, 1, 2, 4),
+"attribute_data": PackedByteArray("tVQ1PwAAAAAbEyk/SpAnPZVUlT4AAIA/rDFRP1j7Rj+VVJU+AAAAAKwxUT9KkCc9tVQ1PwAAgD8bEyk/WPtGP7VUNT/rqWo/zm4hP7H2TT+VVJU+q6iqPd7Cbz8c1n4/tVQ1P6uoqj3ewm8/sfZNP5VUlT7rqWo/zm4hPxzWfj8AAAAA66lqP+FXIz84rD0/AACAP6uoqj2kB6o+CfKUOwAAAACrqKo9pAeqPjisPT8AAIA/66lqP+FXIz8J8pQ7lVSVPgAAAACNiXQ7+4Z1P7VUNT8AAIA/lbMbP5CnRD+1VDU/AAAAAI2JdDuQp0Q/lVSVPgAAgD+Vsxs/+4Z1PwAAgD/rqWo/MpGePgnylDsAAAAAq6iqPY2JdDs4rD0/AACAP6uoqj2NiXQ7CfKUOwAAAADrqWo/MpGePjisPT+VVJU+66lqP+XsVj9KkCc9tVQ1P6uoqj12C38/JcjTPpVUlT6rqKo95exWPyXI0z61VDU/66lqP3YLfz9KkCc9"),
+"format": 34359742519,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_s6dfe"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAPwAAAEAAAADAAAAAvwAAAEAAAABAAAAAvwAAAEAAAADAAAAAPwAAAEAAAABAAAAAPwAAAAAAAABAAAAAvwAAAEAAAABAAAAAPwAAAEAAAABAAAAAvwAAAAAAAABAAAAAvwAAAAAAAABAAAAAvwAAAEAAAADAAAAAvwAAAEAAAABAAAAAvwAAAAAAAADAAAAAvwAAAAAAAADAAAAAPwAAAAAAAABAAAAAPwAAAAAAAADAAAAAvwAAAAAAAABAAAAAPwAAAAAAAADAAAAAPwAAAEAAAABAAAAAPwAAAEAAAADAAAAAPwAAAAAAAABAAAAAvwAAAAAAAADAAAAAPwAAAEAAAADAAAAAvwAAAEAAAADAAAAAPwAAAAAAAADA/3/9//7//7//f/3//v//v/9//f/+//+//3/9//7//7/9f/9//f//v/1//3/9//+//X//f/3//7/9f/9//f//vwAA+n/+/wEAAAD6f/7/AQAAAPp//v8BAAAA+n/+/wEAAoAAAP7//z8CgAAA/v//PwKAAAD+//8/AoAAAP7//z/9/wCA/v/+//3/AID+//7//f8AgP7//v/9/wCA/v/+/wAAAAD//wBAAAAAAP//AEAAAAAA//8AQAAAAAD//wBA")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_4y8st")
+
+[node name="Hedge2" instance=ExtResource("1_dwddp")]
+
+[node name="Hedge" parent="." index="0"]
+mesh = SubResource("ArrayMesh_3ycds")
+
+[node name="StaticBody3D" parent="Hedge" index="0"]
+collision_layer = 2

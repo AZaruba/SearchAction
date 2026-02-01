@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://08e4tfmy8v50"]
+[gd_scene load_steps=20 format=3 uid="uid://08e4tfmy8v50"]
 
 [ext_resource type="Script" uid="uid://cha1r8aqbcisq" path="res://Nodes/UI/Inventory/InventoryController.cs" id="1_37fcu"]
 [ext_resource type="PackedScene" uid="uid://br1caiktq7fbj" path="res://Nodes/UI/Inventory/InventoryItem.tscn" id="1_e0e0o"]
@@ -13,8 +13,12 @@
 [ext_resource type="Texture2D" uid="uid://iq2n6gvgwbt3" path="res://Assets/2D/Inventory/Head/3DGlasses.png" id="7_b7edi"]
 [ext_resource type="Texture2D" uid="uid://bp3mv1q820fcy" path="res://Assets/2D/Inventory/Keys/RubyKey.png" id="7_ohmyt"]
 [ext_resource type="Texture2D" uid="uid://pl11cc0pnw3n" path="res://Assets/2D/Inventory/Keys/SaphKey.png" id="8_ibsio"]
+[ext_resource type="Texture2D" uid="uid://kyi628mlmxye" path="res://Assets/2D/Inventory/Clothes/Coat.png" id="9_rl614"]
 [ext_resource type="Texture2D" uid="uid://dviqibxavl8s0" path="res://Assets/2D/Inventory/Items/Fins.png" id="11_ibsio"]
+[ext_resource type="Texture2D" uid="uid://bg3br5smaberk" path="res://Assets/2D/Inventory/Items/Shoes.png" id="11_tp1tg"]
+[ext_resource type="Texture2D" uid="uid://gsa033r8kkbl" path="res://Assets/2D/Inventory/Items/Boots.png" id="14_q4vkd"]
 [ext_resource type="Theme" uid="uid://cyndqifyd4qoe" path="res://Assets/2D/Fonts/DescriptorTheme.tres" id="15_vuy1p"]
+[ext_resource type="Texture2D" uid="uid://dt0ili6oj7b1c" path="res://Assets/2D/Inventory/Keys/EmerKey.png" id="17_q4vkd"]
 
 [node name="Inventory" type="CanvasLayer" node_paths=PackedStringArray("DescriptiveText", "EquipButton")]
 script = ExtResource("1_37fcu")
@@ -121,12 +125,13 @@ layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 16.0
+offset_left = 48.0
 offset_top = 32.0
-offset_right = 16.0
+offset_right = 48.0
 offset_bottom = 32.0
 grow_horizontal = 1
 grow_vertical = 1
+ItemIcon = ExtResource("9_rl614")
 ID = 11
 Category = 1
 
@@ -135,9 +140,9 @@ layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 48.0
+offset_left = 16.0
 offset_top = 32.0
-offset_right = 48.0
+offset_right = 16.0
 offset_bottom = 32.0
 grow_horizontal = 1
 grow_vertical = 1
@@ -181,7 +186,7 @@ offset_bottom = 152.0
 script = ExtResource("2_egdkt")
 Category = 2
 
-[node name="BoltCutters" parent="Items/Tools" instance=ExtResource("1_e0e0o")]
+[node name="Loafers" parent="Items/Tools" instance=ExtResource("1_e0e0o")]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = -5.0
@@ -193,6 +198,7 @@ offset_right = 16.0
 offset_bottom = 112.0
 grow_horizontal = 1
 grow_vertical = 1
+ItemIcon = ExtResource("11_tp1tg")
 ID = 13
 Category = 2
 metadata/_edit_use_anchors_ = true
@@ -244,7 +250,7 @@ offset_right = 80.0
 offset_bottom = 112.0
 grow_horizontal = 1
 grow_vertical = 1
-ItemIcon = ExtResource("6_egdkt")
+ItemIcon = ExtResource("14_q4vkd")
 ID = 15
 Category = 2
 metadata/_edit_use_anchors_ = true
@@ -311,6 +317,7 @@ offset_right = 80.0
 offset_bottom = 24.0
 grow_horizontal = 1
 grow_vertical = 1
+ItemIcon = ExtResource("17_q4vkd")
 ID = 4
 Category = 3
 
@@ -327,6 +334,7 @@ scroll_active = false
 autowrap_mode = 0
 
 [node name="Upgrades" type="Control" parent="Items"]
+visible = false
 anchors_preset = 0
 offset_top = 264.0
 offset_right = 16.0

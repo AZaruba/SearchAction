@@ -67,7 +67,7 @@ public partial class InventoryController : CanvasLayer
 
       { ItemID.Lighter, "[center][u][font_size={32}]Lighter[/font_size][/u][/center][left][font_size={20}]\nAn old-fashioned lighter. An excellent fidget toy even though you don't smoke. Should be able to melt a little ice but won't keep you warm.[/font_size][/left]" },
 
-      { ItemID.BoltCutters, "[center][u][font_size={32}]Bolt Cutters[/font_size][/u][/center][left][font_size={20}]\nA pair of comfy, fashionable shoes. You're guaranteed to slip on the ice wearing these...[/font_size][/left]" },
+      { ItemID.BoltCutters, "[center][u][font_size={32}]Shoes[/font_size][/u][/center][left][font_size={20}]\nA pair of comfy, fashionable shoes. You're guaranteed to slip on the ice wearing these...[/font_size][/left]" },
 
       { ItemID.Fins, "[center][u][font_size={32}]Fins[/font_size][/u][/center][left][font_size={20}]\nDive-appropriate fins that make you fast in the water. A crucial clue in Death in the Deep End.[/font_size][/left]" },
       

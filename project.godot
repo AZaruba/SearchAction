@@ -137,3 +137,4 @@ SwimDown={
 textures/canvas_textures/default_texture_filter=0
 textures/vram_compression/import_etc2_astc=true
 shading/overrides/force_vertex_shading=true
+limits/cluster_builder/max_clustered_elements=1024.0
